@@ -1,0 +1,2561 @@
+openapi: 3.0.1
+info:
+  title: product/product.proto
+  version: version not set
+servers:
+- url: /
+paths:
+  /product.Product/AddMediaGalleryEntry:
+    post:
+      operationId: Product_AddMediaGalleryEntry
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/productAddMediaGalleryEntryRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/productAddMediaGalleryEntryResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Product
+      x-codegen-request-body-name: body
+  /product.Product/BulkCreateAttribute:
+    post:
+      operationId: Product_BulkCreateAttribute
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/entitymanagerBulkCreateAttributeRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/entitymanagerBulkCreateAttributeResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Product
+      x-codegen-request-body-name: body
+  /product.Product/BulkUpdate:
+    post:
+      operationId: Product_BulkUpdate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/productBulkUpdateRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/productBulkUpdateResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Product
+      x-codegen-request-body-name: body
+  /product.Product/CreateAttributeOptions:
+    post:
+      operationId: Product_CreateAttributeOptions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/entitymanagerCreateAttributeOptionsRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/entitymanagerCreateAttributeOptionsResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Product
+      x-codegen-request-body-name: body
+  /product.Product/CreateEntity:
+    post:
+      operationId: Product_CreateEntity
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/entitymanagerEntity'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/entitymanagerCreateEntityResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Product
+      x-codegen-request-body-name: body
+  /product.Product/CreateOptionsList:
+    post:
+      operationId: Product_CreateOptionsList
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/entitymanagerCreateOptionsListRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/entitymanagerCreateOptionsListResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Product
+      x-codegen-request-body-name: body
+  /product.Product/CreateProduct:
+    post:
+      operationId: Product_CreateProduct
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/productCreateProductRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/productCreateProductResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Product
+      x-codegen-request-body-name: body
+  /product.Product/Delete:
+    post:
+      operationId: Product_Delete
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/productDeleteRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/productDeleteResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Product
+      x-codegen-request-body-name: body
+  /product.Product/GetAttributeOption:
+    post:
+      operationId: Product_GetAttributeOption
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/entitymanagerGetAttributeOptionRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/entitymanagerGetAttributeOptionResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Product
+      x-codegen-request-body-name: body
+  /product.Product/GetAttributeOptionByCode:
+    post:
+      operationId: Product_GetAttributeOptionByCode
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/entitymanagerGetAttributeOptionByCodeRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/entitymanagerGetAttributeOptionByCodeResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Product
+      x-codegen-request-body-name: body
+  /product.Product/GetAttributeOptions:
+    post:
+      operationId: Product_GetAttributeOptions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/entitymanagerGetAttributeOptionsRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/entitymanagerGetAttributeOptionsResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Product
+      x-codegen-request-body-name: body
+  /product.Product/GetEntity:
+    post:
+      operationId: Product_GetEntity
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/entitymanagerEntityRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/entitymanagerEntity'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Product
+      x-codegen-request-body-name: body
+  /product.Product/GetOptionsList:
+    post:
+      operationId: Product_GetOptionsList
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/entitymanagerGetOptionsListRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/entitymanagerGetOptionsListResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Product
+      x-codegen-request-body-name: body
+  /product.Product/GetProduct:
+    post:
+      operationId: Product_GetProduct
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/productGetProductRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/productGetProductResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Product
+      x-codegen-request-body-name: body
+  /product.Product/GetProductByCode:
+    post:
+      operationId: Product_GetProductByCode
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/productGetProductByCodeRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/productGetProductByCodeResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Product
+      x-codegen-request-body-name: body
+  /product.Product/GetProductByUrlKey:
+    post:
+      operationId: Product_GetProductByUrlKey
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/productGetProductByUrlKeyRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/productGetProductByUrlKeyResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Product
+      x-codegen-request-body-name: body
+  /product.Product/ListAttributeOptions:
+    post:
+      operationId: Product_ListAttributeOptions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/entitymanagerListAttributeOptionsRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/entitymanagerListAttributeOptionsResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Product
+      x-codegen-request-body-name: body
+  /product.Product/ListEntities:
+    post:
+      operationId: Product_ListEntities
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/entitymanagerListEntitiesRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/entitymanagerListEntitiesResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Product
+      x-codegen-request-body-name: body
+  /product.Product/ListOptionsLists:
+    post:
+      operationId: Product_ListOptionsLists
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/entitymanagerListOptionsListsRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/entitymanagerListOptionsListsResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Product
+      x-codegen-request-body-name: body
+  /product.Product/ListProducts:
+    post:
+      operationId: Product_ListProducts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/productListProductsRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/productListProductsResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Product
+      x-codegen-request-body-name: body
+  /product.Product/ListProductsByIds:
+    post:
+      operationId: Product_ListProductsByIds
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/productListProductsByIdsRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/productListProductsByIdsResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Product
+      x-codegen-request-body-name: body
+  /product.Product/RemoveMediaGalleryEntry:
+    post:
+      operationId: Product_RemoveMediaGalleryEntry
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/productRemoveMediaGalleryEntryRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/productRemoveMediaGalleryEntryResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Product
+      x-codegen-request-body-name: body
+  /product.Product/UpdateAttributeOptions:
+    post:
+      operationId: Product_UpdateAttributeOptions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/entitymanagerUpdateAttributeOptionsRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/entitymanagerUpdateAttributeOptionsResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Product
+      x-codegen-request-body-name: body
+  /product.Product/UpdateMediaGalleryEntry:
+    post:
+      operationId: Product_UpdateMediaGalleryEntry
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/productUpdateMediaGalleryEntryRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/productUpdateMediaGalleryEntryResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Product
+      x-codegen-request-body-name: body
+  /product.Product/UpdateOptionsList:
+    post:
+      operationId: Product_UpdateOptionsList
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/entitymanagerUpdateOptionsListRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/entitymanagerUpdateOptionsListResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Product
+      x-codegen-request-body-name: body
+  /product.Product/UpdateProduct:
+    post:
+      operationId: Product_UpdateProduct
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/productUpdateProductRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/productUpdateProductResponse'
+          description: A successful response.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: An unexpected error response.
+      tags:
+      - Product
+      x-codegen-request-body-name: body
+components:
+  schemas:
+    BulkUpdateRequestPayload:
+      properties:
+        updateMask:
+          $ref: '#/components/schemas/productFieldMask'
+        attributes:
+          additionalProperties:
+            $ref: '#/components/schemas/protobufAny'
+          type: object
+      type: object
+    BulkUpdateResponseResponse:
+      example:
+        productId: productId
+        success: true
+        attributes:
+          key:
+            typeUrl: typeUrl
+            value: value
+      properties:
+        productId:
+          type: string
+        success:
+          type: boolean
+        attributes:
+          additionalProperties:
+            $ref: '#/components/schemas/protobufAny'
+          type: object
+      type: object
+    entitymanagerAttribute:
+      example:
+        isSystem: true
+        isRequired: true
+        default: default
+        code: code
+        optionList: optionList
+        entityId: entityId
+        isRepeated: true
+        label: label
+        type: null
+        entity: entity
+      properties:
+        entityId:
+          type: string
+        code:
+          type: string
+        label:
+          type: string
+        type:
+          $ref: '#/components/schemas/entitymanagerTypes'
+        optionList:
+          type: string
+        entity:
+          type: string
+        default:
+          type: string
+        isRequired:
+          type: boolean
+        isSystem:
+          type: boolean
+        isRepeated:
+          type: boolean
+      type: object
+    entitymanagerAttributeOption:
+      example:
+        code: code
+        sort: 0
+        id: id
+        value:
+          value:
+            key: value
+        swatches:
+        - grn: grn
+          hex: hex
+        - grn: grn
+          hex: hex
+        option:
+          key: option
+      properties:
+        option:
+          additionalProperties:
+            type: string
+          type: object
+        sort:
+          format: int64
+          type: integer
+        id:
+          type: string
+        code:
+          type: string
+        value:
+          $ref: '#/components/schemas/productentitymanagerLocalizedText'
+        swatches:
+          items:
+            $ref: '#/components/schemas/entitymanagerAttributeOptionSwatch'
+          type: array
+      type: object
+    entitymanagerAttributeOptionErrors:
+      example:
+        error: error
+        option:
+          key: option
+      properties:
+        error:
+          type: string
+        option:
+          additionalProperties:
+            type: string
+          type: object
+      type: object
+    entitymanagerAttributeOptionSwatch:
+      example:
+        grn: grn
+        hex: hex
+      properties:
+        grn:
+          type: string
+        hex:
+          type: string
+      type: object
+    entitymanagerAttributeWriteError:
+      example:
+        attributeCode: attributeCode
+        errorCode: errorCode
+        message: message
+      properties:
+        errorCode:
+          type: string
+        attributeCode:
+          type: string
+        message:
+          type: string
+      type: object
+    entitymanagerAttributeWriteErrors:
+      example:
+        attributeWriteErrors:
+        - attributeCode: attributeCode
+          errorCode: errorCode
+          message: message
+        - attributeCode: attributeCode
+          errorCode: errorCode
+          message: message
+      properties:
+        attributeWriteErrors:
+          items:
+            $ref: '#/components/schemas/entitymanagerAttributeWriteError'
+          type: array
+      type: object
+    entitymanagerBulkCreateAttributeRequest:
+      properties:
+        tenantId:
+          type: string
+        entityData:
+          $ref: '#/components/schemas/entitymanagerEntityIdentifier'
+        entityId:
+          type: string
+        attributes:
+          items:
+            $ref: '#/components/schemas/entitymanagerAttribute'
+          type: array
+      type: object
+    entitymanagerBulkCreateAttributeResponse:
+      example:
+        attributes:
+        - isSystem: true
+          isRequired: true
+          default: default
+          code: code
+          optionList: optionList
+          entityId: entityId
+          isRepeated: true
+          label: label
+          type: null
+          entity: entity
+        - isSystem: true
+          isRequired: true
+          default: default
+          code: code
+          optionList: optionList
+          entityId: entityId
+          isRepeated: true
+          label: label
+          type: null
+          entity: entity
+      properties:
+        attributes:
+          items:
+            $ref: '#/components/schemas/entitymanagerAttribute'
+          type: array
+      type: object
+    entitymanagerCreateAttributeOptionsRequest:
+      properties:
+        tenantId:
+          type: string
+        listCode:
+          type: string
+        options:
+          items:
+            $ref: '#/components/schemas/entitymanagerAttributeOption'
+          type: array
+      type: object
+    entitymanagerCreateAttributeOptionsResponse:
+      example:
+        options:
+        - code: code
+          sort: 0
+          id: id
+          value:
+            value:
+              key: value
+          swatches:
+          - grn: grn
+            hex: hex
+          - grn: grn
+            hex: hex
+          option:
+            key: option
+        - code: code
+          sort: 0
+          id: id
+          value:
+            value:
+              key: value
+          swatches:
+          - grn: grn
+            hex: hex
+          - grn: grn
+            hex: hex
+          option:
+            key: option
+        errors:
+        - error: error
+          option:
+            key: option
+        - error: error
+          option:
+            key: option
+      properties:
+        options:
+          items:
+            $ref: '#/components/schemas/entitymanagerAttributeOption'
+          type: array
+        errors:
+          items:
+            $ref: '#/components/schemas/entitymanagerAttributeOptionErrors'
+          type: array
+      type: object
+    entitymanagerCreateEntityResponse:
+      example:
+        entity:
+          relationships:
+          - relationships
+          - relationships
+          code: code
+          parentCode: parentCode
+          tenantId: tenantId
+          attributes:
+          - isSystem: true
+            isRequired: true
+            default: default
+            code: code
+            optionList: optionList
+            entityId: entityId
+            isRepeated: true
+            label: label
+            type: null
+            entity: entity
+          - isSystem: true
+            isRequired: true
+            default: default
+            code: code
+            optionList: optionList
+            entityId: entityId
+            isRepeated: true
+            label: label
+            type: null
+            entity: entity
+          id: id
+          label: label
+          type: type
+        attributeWriteErrors:
+          attributeWriteErrors:
+          - attributeCode: attributeCode
+            errorCode: errorCode
+            message: message
+          - attributeCode: attributeCode
+            errorCode: errorCode
+            message: message
+      properties:
+        attributeWriteErrors:
+          $ref: '#/components/schemas/entitymanagerAttributeWriteErrors'
+        entity:
+          $ref: '#/components/schemas/entitymanagerEntity'
+      type: object
+    entitymanagerCreateOptionsListRequest:
+      properties:
+        tenantId:
+          type: string
+        optionList:
+          $ref: '#/components/schemas/entitymanagerOptionsList'
+      type: object
+    entitymanagerCreateOptionsListResponse:
+      example:
+        optionList:
+          code: code
+          name: name
+      properties:
+        optionList:
+          $ref: '#/components/schemas/entitymanagerOptionsList'
+      type: object
+    entitymanagerEntity:
+      example:
+        relationships:
+        - relationships
+        - relationships
+        code: code
+        parentCode: parentCode
+        tenantId: tenantId
+        attributes:
+        - isSystem: true
+          isRequired: true
+          default: default
+          code: code
+          optionList: optionList
+          entityId: entityId
+          isRepeated: true
+          label: label
+          type: null
+          entity: entity
+        - isSystem: true
+          isRequired: true
+          default: default
+          code: code
+          optionList: optionList
+          entityId: entityId
+          isRepeated: true
+          label: label
+          type: null
+          entity: entity
+        id: id
+        label: label
+        type: type
+      properties:
+        tenantId:
+          type: string
+        id:
+          type: string
+        type:
+          type: string
+        code:
+          type: string
+        parentCode:
+          type: string
+        label:
+          type: string
+        relationships:
+          items:
+            type: string
+          type: array
+        attributes:
+          items:
+            $ref: '#/components/schemas/entitymanagerAttribute'
+          type: array
+      type: object
+    entitymanagerEntityIdentifier:
+      properties:
+        type:
+          type: string
+        code:
+          type: string
+      type: object
+    entitymanagerEntityRequest:
+      properties:
+        tenantId:
+          type: string
+        entityData:
+          $ref: '#/components/schemas/entitymanagerEntityIdentifier'
+        entityId:
+          type: string
+      type: object
+    entitymanagerGetAttributeOptionByCodeRequest:
+      properties:
+        tenantId:
+          type: string
+        listCode:
+          type: string
+        code:
+          type: string
+      type: object
+    entitymanagerGetAttributeOptionByCodeResponse:
+      example:
+        option:
+          code: code
+          sort: 0
+          id: id
+          value:
+            value:
+              key: value
+          swatches:
+          - grn: grn
+            hex: hex
+          - grn: grn
+            hex: hex
+          option:
+            key: option
+      properties:
+        option:
+          $ref: '#/components/schemas/entitymanagerAttributeOption'
+      type: object
+    entitymanagerGetAttributeOptionRequest:
+      properties:
+        tenantId:
+          type: string
+        listCode:
+          type: string
+        optionId:
+          type: string
+      type: object
+    entitymanagerGetAttributeOptionResponse:
+      example:
+        option:
+          code: code
+          sort: 0
+          id: id
+          value:
+            value:
+              key: value
+          swatches:
+          - grn: grn
+            hex: hex
+          - grn: grn
+            hex: hex
+          option:
+            key: option
+      properties:
+        option:
+          $ref: '#/components/schemas/entitymanagerAttributeOption'
+      type: object
+    entitymanagerGetAttributeOptionsRequest:
+      properties:
+        tenantId:
+          type: string
+        optionIds:
+          items:
+            $ref: '#/components/schemas/entitymanagerGetAttributeOptionsRequestOption'
+          type: array
+      type: object
+    entitymanagerGetAttributeOptionsRequestOption:
+      properties:
+        listCode:
+          type: string
+        optionId:
+          type: string
+      type: object
+    entitymanagerGetAttributeOptionsResponse:
+      example:
+        options:
+        - listCode: listCode
+          option:
+            code: code
+            sort: 0
+            id: id
+            value:
+              value:
+                key: value
+            swatches:
+            - grn: grn
+              hex: hex
+            - grn: grn
+              hex: hex
+            option:
+              key: option
+        - listCode: listCode
+          option:
+            code: code
+            sort: 0
+            id: id
+            value:
+              value:
+                key: value
+            swatches:
+            - grn: grn
+              hex: hex
+            - grn: grn
+              hex: hex
+            option:
+              key: option
+      properties:
+        options:
+          items:
+            $ref: '#/components/schemas/entitymanagerGetAttributeOptionsResponseOption'
+          type: array
+      type: object
+    entitymanagerGetAttributeOptionsResponseOption:
+      example:
+        listCode: listCode
+        option:
+          code: code
+          sort: 0
+          id: id
+          value:
+            value:
+              key: value
+          swatches:
+          - grn: grn
+            hex: hex
+          - grn: grn
+            hex: hex
+          option:
+            key: option
+      properties:
+        listCode:
+          type: string
+        option:
+          $ref: '#/components/schemas/entitymanagerAttributeOption'
+      type: object
+    entitymanagerGetOptionsListRequest:
+      properties:
+        tenantId:
+          type: string
+        listCode:
+          type: string
+      type: object
+    entitymanagerGetOptionsListResponse:
+      example:
+        optionList:
+          code: code
+          name: name
+      properties:
+        optionList:
+          $ref: '#/components/schemas/entitymanagerOptionsList'
+      type: object
+    entitymanagerListAttributeOptionsRequest:
+      properties:
+        tenantId:
+          type: string
+        listCode:
+          type: string
+      type: object
+    entitymanagerListAttributeOptionsResponse:
+      example:
+        options:
+        - code: code
+          sort: 0
+          id: id
+          value:
+            value:
+              key: value
+          swatches:
+          - grn: grn
+            hex: hex
+          - grn: grn
+            hex: hex
+          option:
+            key: option
+        - code: code
+          sort: 0
+          id: id
+          value:
+            value:
+              key: value
+          swatches:
+          - grn: grn
+            hex: hex
+          - grn: grn
+            hex: hex
+          option:
+            key: option
+      properties:
+        options:
+          items:
+            $ref: '#/components/schemas/entitymanagerAttributeOption'
+          type: array
+      type: object
+    entitymanagerListEntitiesRequest:
+      properties:
+        tenantId:
+          type: string
+        pageSize:
+          format: int32
+          type: integer
+      type: object
+    entitymanagerListEntitiesResponse:
+      example:
+        entities:
+        - relationships:
+          - relationships
+          - relationships
+          code: code
+          parentCode: parentCode
+          tenantId: tenantId
+          attributes:
+          - isSystem: true
+            isRequired: true
+            default: default
+            code: code
+            optionList: optionList
+            entityId: entityId
+            isRepeated: true
+            label: label
+            type: null
+            entity: entity
+          - isSystem: true
+            isRequired: true
+            default: default
+            code: code
+            optionList: optionList
+            entityId: entityId
+            isRepeated: true
+            label: label
+            type: null
+            entity: entity
+          id: id
+          label: label
+          type: type
+        - relationships:
+          - relationships
+          - relationships
+          code: code
+          parentCode: parentCode
+          tenantId: tenantId
+          attributes:
+          - isSystem: true
+            isRequired: true
+            default: default
+            code: code
+            optionList: optionList
+            entityId: entityId
+            isRepeated: true
+            label: label
+            type: null
+            entity: entity
+          - isSystem: true
+            isRequired: true
+            default: default
+            code: code
+            optionList: optionList
+            entityId: entityId
+            isRepeated: true
+            label: label
+            type: null
+            entity: entity
+          id: id
+          label: label
+          type: type
+        nextPage: 0
+      properties:
+        entities:
+          items:
+            $ref: '#/components/schemas/entitymanagerEntity'
+          type: array
+        nextPage:
+          format: int32
+          type: integer
+      type: object
+    entitymanagerListOptionsListsRequest:
+      properties:
+        tenantId:
+          type: string
+      type: object
+    entitymanagerListOptionsListsResponse:
+      example:
+        options:
+        - code: code
+          name: name
+        - code: code
+          name: name
+      properties:
+        options:
+          items:
+            $ref: '#/components/schemas/entitymanagerOptionsList'
+          type: array
+      type: object
+    entitymanagerOptionsList:
+      example:
+        code: code
+        name: name
+      properties:
+        code:
+          type: string
+        name:
+          type: string
+      type: object
+    entitymanagerTypes:
+      default: TEXT
+      enum:
+      - TEXT
+      - NUMBER
+      - BOOLEAN
+      - DATETIME
+      - EXTERNAL
+      - EMBED
+      - FLOAT32
+      type: string
+    entitymanagerUpdateAttributeOptionsRequest:
+      properties:
+        tenantId:
+          type: string
+        listCode:
+          type: string
+        options:
+          items:
+            $ref: '#/components/schemas/entitymanagerAttributeOption'
+          type: array
+      type: object
+    entitymanagerUpdateAttributeOptionsResponse:
+      example:
+        options:
+        - code: code
+          sort: 0
+          id: id
+          value:
+            value:
+              key: value
+          swatches:
+          - grn: grn
+            hex: hex
+          - grn: grn
+            hex: hex
+          option:
+            key: option
+        - code: code
+          sort: 0
+          id: id
+          value:
+            value:
+              key: value
+          swatches:
+          - grn: grn
+            hex: hex
+          - grn: grn
+            hex: hex
+          option:
+            key: option
+        errors:
+        - error: error
+          option:
+            key: option
+        - error: error
+          option:
+            key: option
+      properties:
+        options:
+          items:
+            $ref: '#/components/schemas/entitymanagerAttributeOption'
+          type: array
+        errors:
+          items:
+            $ref: '#/components/schemas/entitymanagerAttributeOptionErrors'
+          type: array
+      type: object
+    entitymanagerUpdateOptionsListRequest:
+      properties:
+        tenantId:
+          type: string
+        optionList:
+          $ref: '#/components/schemas/entitymanagerOptionsList'
+      type: object
+    entitymanagerUpdateOptionsListResponse:
+      example:
+        optionList:
+          code: code
+          name: name
+      properties:
+        optionList:
+          $ref: '#/components/schemas/entitymanagerOptionsList'
+      type: object
+    productAddMediaGalleryEntryRequest:
+      properties:
+        tenantId:
+          type: string
+        productId:
+          type: string
+        assetGrn:
+          type: string
+        position:
+          format: int64
+          type: integer
+        metadata:
+          items:
+            $ref: '#/components/schemas/productMediaGalleryEntryMetadata'
+          type: array
+      type: object
+    productAddMediaGalleryEntryResponse:
+      example:
+        mediaGalleryEntry:
+          assetGrn: assetGrn
+          metadata:
+          - roles:
+            - roles
+            - roles
+            alt:
+              value:
+                key: value
+          - roles:
+            - roles
+            - roles
+            alt:
+              value:
+                key: value
+          id: id
+          position: 0
+      properties:
+        mediaGalleryEntry:
+          $ref: '#/components/schemas/productMediaGalleryEntry'
+      type: object
+    productAttributeResponseError:
+      example:
+        attributeCode: attributeCode
+        code: code
+        message: message
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        attributeCode:
+          type: string
+      type: object
+    productBulkUpdateRequest:
+      properties:
+        tenantId:
+          type: string
+        productIds:
+          items:
+            type: string
+          type: array
+        payload:
+          $ref: '#/components/schemas/BulkUpdateRequestPayload'
+      type: object
+    productBulkUpdateResponse:
+      example:
+        productResponse:
+        - productId: productId
+          success: true
+          attributes:
+            key:
+              typeUrl: typeUrl
+              value: value
+        - productId: productId
+          success: true
+          attributes:
+            key:
+              typeUrl: typeUrl
+              value: value
+      properties:
+        productResponse:
+          items:
+            $ref: '#/components/schemas/BulkUpdateResponseResponse'
+          type: array
+      type: object
+    productCreateProductRequest:
+      properties:
+        tenantId:
+          type: string
+        entityType:
+          type: string
+        entityCode:
+          type: string
+        code:
+          type: string
+        isConfigurable:
+          type: boolean
+        variantAttributes:
+          items:
+            type: string
+          type: array
+        isVirtual:
+          type: boolean
+        isGiftcard:
+          type: boolean
+        urlKey:
+          $ref: '#/components/schemas/productLocalizedText'
+        attributes:
+          additionalProperties:
+            $ref: '#/components/schemas/protobufAny'
+          type: object
+        variants:
+          additionalProperties:
+            $ref: '#/components/schemas/productProductVariant'
+          type: object
+      type: object
+    productCreateProductResponse:
+      example:
+        attributeErrors:
+        - attributeCode: attributeCode
+          code: code
+          message: message
+        - attributeCode: attributeCode
+          code: code
+          message: message
+        success: true
+        productErrors:
+        - code: code
+          message: message
+        - code: code
+          message: message
+        id: id
+      properties:
+        success:
+          type: boolean
+        id:
+          type: string
+        productErrors:
+          items:
+            $ref: '#/components/schemas/productProductResponseError'
+          type: array
+        attributeErrors:
+          items:
+            $ref: '#/components/schemas/productAttributeResponseError'
+          type: array
+      type: object
+    productDeleteRequest:
+      properties:
+        product:
+          $ref: '#/components/schemas/productProductEntity'
+      type: object
+    productDeleteResponse:
+      example:
+        success: true
+      properties:
+        success:
+          type: boolean
+      type: object
+    productFieldMask:
+      properties:
+        paths:
+          items:
+            type: string
+          type: array
+      type: object
+    productGetProductByCodeRequest:
+      properties:
+        tenantId:
+          type: string
+        code:
+          type: string
+      type: object
+    productGetProductByCodeResponse:
+      example:
+        product:
+          entityCode: entityCode
+          code: code
+          variantAttributes:
+          - variantAttributes
+          - variantAttributes
+          isConfigurable: true
+          entityType: entityType
+          variants:
+            key:
+              attributes:
+                key:
+                  typeUrl: typeUrl
+                  value: value
+              id: id
+          urlKey:
+            value:
+              key: value
+          createdAt: createdAt
+          isGiftcard: true
+          tenantId: tenantId
+          mediaGallery:
+            entries:
+            - assetGrn: assetGrn
+              metadata:
+              - roles:
+                - roles
+                - roles
+                alt:
+                  value:
+                    key: value
+              - roles:
+                - roles
+                - roles
+                alt:
+                  value:
+                    key: value
+              id: id
+              position: 0
+            - assetGrn: assetGrn
+              metadata:
+              - roles:
+                - roles
+                - roles
+                alt:
+                  value:
+                    key: value
+              - roles:
+                - roles
+                - roles
+                alt:
+                  value:
+                    key: value
+              id: id
+              position: 0
+          attributes:
+            key:
+              typeUrl: typeUrl
+              value: value
+          id: id
+          isVirtual: true
+          updatedAt: updatedAt
+      properties:
+        product:
+          $ref: '#/components/schemas/productProductEntity'
+      type: object
+    productGetProductByUrlKeyRequest:
+      properties:
+        tenantId:
+          type: string
+        urlKey:
+          type: string
+        locale:
+          type: string
+      type: object
+    productGetProductByUrlKeyResponse:
+      example:
+        product:
+          entityCode: entityCode
+          code: code
+          variantAttributes:
+          - variantAttributes
+          - variantAttributes
+          isConfigurable: true
+          entityType: entityType
+          variants:
+            key:
+              attributes:
+                key:
+                  typeUrl: typeUrl
+                  value: value
+              id: id
+          urlKey:
+            value:
+              key: value
+          createdAt: createdAt
+          isGiftcard: true
+          tenantId: tenantId
+          mediaGallery:
+            entries:
+            - assetGrn: assetGrn
+              metadata:
+              - roles:
+                - roles
+                - roles
+                alt:
+                  value:
+                    key: value
+              - roles:
+                - roles
+                - roles
+                alt:
+                  value:
+                    key: value
+              id: id
+              position: 0
+            - assetGrn: assetGrn
+              metadata:
+              - roles:
+                - roles
+                - roles
+                alt:
+                  value:
+                    key: value
+              - roles:
+                - roles
+                - roles
+                alt:
+                  value:
+                    key: value
+              id: id
+              position: 0
+          attributes:
+            key:
+              typeUrl: typeUrl
+              value: value
+          id: id
+          isVirtual: true
+          updatedAt: updatedAt
+      properties:
+        product:
+          $ref: '#/components/schemas/productProductEntity'
+      type: object
+    productGetProductRequest:
+      properties:
+        tenantId:
+          type: string
+        id:
+          type: string
+      type: object
+    productGetProductResponse:
+      example:
+        product:
+          entityCode: entityCode
+          code: code
+          variantAttributes:
+          - variantAttributes
+          - variantAttributes
+          isConfigurable: true
+          entityType: entityType
+          variants:
+            key:
+              attributes:
+                key:
+                  typeUrl: typeUrl
+                  value: value
+              id: id
+          urlKey:
+            value:
+              key: value
+          createdAt: createdAt
+          isGiftcard: true
+          tenantId: tenantId
+          mediaGallery:
+            entries:
+            - assetGrn: assetGrn
+              metadata:
+              - roles:
+                - roles
+                - roles
+                alt:
+                  value:
+                    key: value
+              - roles:
+                - roles
+                - roles
+                alt:
+                  value:
+                    key: value
+              id: id
+              position: 0
+            - assetGrn: assetGrn
+              metadata:
+              - roles:
+                - roles
+                - roles
+                alt:
+                  value:
+                    key: value
+              - roles:
+                - roles
+                - roles
+                alt:
+                  value:
+                    key: value
+              id: id
+              position: 0
+          attributes:
+            key:
+              typeUrl: typeUrl
+              value: value
+          id: id
+          isVirtual: true
+          updatedAt: updatedAt
+      properties:
+        product:
+          $ref: '#/components/schemas/productProductEntity'
+      type: object
+    productListProductsByIdsRequest:
+      properties:
+        tenantId:
+          type: string
+        ids:
+          items:
+            type: string
+          type: array
+      type: object
+    productListProductsByIdsResponse:
+      example:
+        products:
+        - entityCode: entityCode
+          code: code
+          variantAttributes:
+          - variantAttributes
+          - variantAttributes
+          isConfigurable: true
+          entityType: entityType
+          variants:
+            key:
+              attributes:
+                key:
+                  typeUrl: typeUrl
+                  value: value
+              id: id
+          urlKey:
+            value:
+              key: value
+          createdAt: createdAt
+          isGiftcard: true
+          tenantId: tenantId
+          mediaGallery:
+            entries:
+            - assetGrn: assetGrn
+              metadata:
+              - roles:
+                - roles
+                - roles
+                alt:
+                  value:
+                    key: value
+              - roles:
+                - roles
+                - roles
+                alt:
+                  value:
+                    key: value
+              id: id
+              position: 0
+            - assetGrn: assetGrn
+              metadata:
+              - roles:
+                - roles
+                - roles
+                alt:
+                  value:
+                    key: value
+              - roles:
+                - roles
+                - roles
+                alt:
+                  value:
+                    key: value
+              id: id
+              position: 0
+          attributes:
+            key:
+              typeUrl: typeUrl
+              value: value
+          id: id
+          isVirtual: true
+          updatedAt: updatedAt
+        - entityCode: entityCode
+          code: code
+          variantAttributes:
+          - variantAttributes
+          - variantAttributes
+          isConfigurable: true
+          entityType: entityType
+          variants:
+            key:
+              attributes:
+                key:
+                  typeUrl: typeUrl
+                  value: value
+              id: id
+          urlKey:
+            value:
+              key: value
+          createdAt: createdAt
+          isGiftcard: true
+          tenantId: tenantId
+          mediaGallery:
+            entries:
+            - assetGrn: assetGrn
+              metadata:
+              - roles:
+                - roles
+                - roles
+                alt:
+                  value:
+                    key: value
+              - roles:
+                - roles
+                - roles
+                alt:
+                  value:
+                    key: value
+              id: id
+              position: 0
+            - assetGrn: assetGrn
+              metadata:
+              - roles:
+                - roles
+                - roles
+                alt:
+                  value:
+                    key: value
+              - roles:
+                - roles
+                - roles
+                alt:
+                  value:
+                    key: value
+              id: id
+              position: 0
+          attributes:
+            key:
+              typeUrl: typeUrl
+              value: value
+          id: id
+          isVirtual: true
+          updatedAt: updatedAt
+      properties:
+        products:
+          items:
+            $ref: '#/components/schemas/productProductEntity'
+          type: array
+      type: object
+    productListProductsRequest:
+      properties:
+        tenantId:
+          type: string
+        pageSize:
+          format: uint64
+          type: string
+        pageToken:
+          type: string
+      type: object
+    productListProductsResponse:
+      example:
+        nextPageToken: nextPageToken
+        products:
+        - entityCode: entityCode
+          code: code
+          variantAttributes:
+          - variantAttributes
+          - variantAttributes
+          isConfigurable: true
+          entityType: entityType
+          variants:
+            key:
+              attributes:
+                key:
+                  typeUrl: typeUrl
+                  value: value
+              id: id
+          urlKey:
+            value:
+              key: value
+          createdAt: createdAt
+          isGiftcard: true
+          tenantId: tenantId
+          mediaGallery:
+            entries:
+            - assetGrn: assetGrn
+              metadata:
+              - roles:
+                - roles
+                - roles
+                alt:
+                  value:
+                    key: value
+              - roles:
+                - roles
+                - roles
+                alt:
+                  value:
+                    key: value
+              id: id
+              position: 0
+            - assetGrn: assetGrn
+              metadata:
+              - roles:
+                - roles
+                - roles
+                alt:
+                  value:
+                    key: value
+              - roles:
+                - roles
+                - roles
+                alt:
+                  value:
+                    key: value
+              id: id
+              position: 0
+          attributes:
+            key:
+              typeUrl: typeUrl
+              value: value
+          id: id
+          isVirtual: true
+          updatedAt: updatedAt
+        - entityCode: entityCode
+          code: code
+          variantAttributes:
+          - variantAttributes
+          - variantAttributes
+          isConfigurable: true
+          entityType: entityType
+          variants:
+            key:
+              attributes:
+                key:
+                  typeUrl: typeUrl
+                  value: value
+              id: id
+          urlKey:
+            value:
+              key: value
+          createdAt: createdAt
+          isGiftcard: true
+          tenantId: tenantId
+          mediaGallery:
+            entries:
+            - assetGrn: assetGrn
+              metadata:
+              - roles:
+                - roles
+                - roles
+                alt:
+                  value:
+                    key: value
+              - roles:
+                - roles
+                - roles
+                alt:
+                  value:
+                    key: value
+              id: id
+              position: 0
+            - assetGrn: assetGrn
+              metadata:
+              - roles:
+                - roles
+                - roles
+                alt:
+                  value:
+                    key: value
+              - roles:
+                - roles
+                - roles
+                alt:
+                  value:
+                    key: value
+              id: id
+              position: 0
+          attributes:
+            key:
+              typeUrl: typeUrl
+              value: value
+          id: id
+          isVirtual: true
+          updatedAt: updatedAt
+      properties:
+        products:
+          items:
+            $ref: '#/components/schemas/productProductEntity'
+          type: array
+        nextPageToken:
+          type: string
+      type: object
+    productLocalizedText:
+      example:
+        value:
+          key: value
+      properties:
+        value:
+          additionalProperties:
+            type: string
+          type: object
+      type: object
+    productMediaGallery:
+      example:
+        entries:
+        - assetGrn: assetGrn
+          metadata:
+          - roles:
+            - roles
+            - roles
+            alt:
+              value:
+                key: value
+          - roles:
+            - roles
+            - roles
+            alt:
+              value:
+                key: value
+          id: id
+          position: 0
+        - assetGrn: assetGrn
+          metadata:
+          - roles:
+            - roles
+            - roles
+            alt:
+              value:
+                key: value
+          - roles:
+            - roles
+            - roles
+            alt:
+              value:
+                key: value
+          id: id
+          position: 0
+      properties:
+        entries:
+          items:
+            $ref: '#/components/schemas/productMediaGalleryEntry'
+          type: array
+      type: object
+    productMediaGalleryEntry:
+      example:
+        assetGrn: assetGrn
+        metadata:
+        - roles:
+          - roles
+          - roles
+          alt:
+            value:
+              key: value
+        - roles:
+          - roles
+          - roles
+          alt:
+            value:
+              key: value
+        id: id
+        position: 0
+      properties:
+        id:
+          type: string
+        assetGrn:
+          type: string
+        position:
+          format: int64
+          type: integer
+        metadata:
+          items:
+            $ref: '#/components/schemas/productMediaGalleryEntryMetadata'
+          type: array
+      type: object
+    productMediaGalleryEntryMetadata:
+      example:
+        roles:
+        - roles
+        - roles
+        alt:
+          value:
+            key: value
+      properties:
+        roles:
+          items:
+            type: string
+          type: array
+        alt:
+          $ref: '#/components/schemas/productLocalizedText'
+      type: object
+    productProductEntity:
+      example:
+        entityCode: entityCode
+        code: code
+        variantAttributes:
+        - variantAttributes
+        - variantAttributes
+        isConfigurable: true
+        entityType: entityType
+        variants:
+          key:
+            attributes:
+              key:
+                typeUrl: typeUrl
+                value: value
+            id: id
+        urlKey:
+          value:
+            key: value
+        createdAt: createdAt
+        isGiftcard: true
+        tenantId: tenantId
+        mediaGallery:
+          entries:
+          - assetGrn: assetGrn
+            metadata:
+            - roles:
+              - roles
+              - roles
+              alt:
+                value:
+                  key: value
+            - roles:
+              - roles
+              - roles
+              alt:
+                value:
+                  key: value
+            id: id
+            position: 0
+          - assetGrn: assetGrn
+            metadata:
+            - roles:
+              - roles
+              - roles
+              alt:
+                value:
+                  key: value
+            - roles:
+              - roles
+              - roles
+              alt:
+                value:
+                  key: value
+            id: id
+            position: 0
+        attributes:
+          key:
+            typeUrl: typeUrl
+            value: value
+        id: id
+        isVirtual: true
+        updatedAt: updatedAt
+      properties:
+        tenantId:
+          type: string
+        entityType:
+          type: string
+        entityCode:
+          type: string
+        id:
+          type: string
+        code:
+          type: string
+        variantAttributes:
+          items:
+            type: string
+          type: array
+        isConfigurable:
+          type: boolean
+        isVirtual:
+          type: boolean
+        isGiftcard:
+          type: boolean
+        urlKey:
+          $ref: '#/components/schemas/productLocalizedText'
+        attributes:
+          additionalProperties:
+            $ref: '#/components/schemas/protobufAny'
+          type: object
+        variants:
+          additionalProperties:
+            $ref: '#/components/schemas/productProductVariant'
+          type: object
+        mediaGallery:
+          $ref: '#/components/schemas/productMediaGallery'
+        createdAt:
+          format: int64
+          type: string
+        updatedAt:
+          format: int64
+          type: string
+      type: object
+    productProductResponseError:
+      example:
+        code: code
+        message: message
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+      type: object
+    productProductVariant:
+      example:
+        attributes:
+          key:
+            typeUrl: typeUrl
+            value: value
+        id: id
+      properties:
+        id:
+          type: string
+        attributes:
+          additionalProperties:
+            $ref: '#/components/schemas/protobufAny'
+          type: object
+      type: object
+    productRemoveMediaGalleryEntryRequest:
+      properties:
+        tenantId:
+          type: string
+        productId:
+          type: string
+        id:
+          type: string
+      type: object
+    productRemoveMediaGalleryEntryResponse:
+      type: object
+    productUpdateMediaGalleryEntryRequest:
+      properties:
+        tenantId:
+          type: string
+        productId:
+          type: string
+        id:
+          type: string
+        assetGrn:
+          type: string
+        position:
+          format: int64
+          type: integer
+        metadata:
+          items:
+            $ref: '#/components/schemas/productMediaGalleryEntryMetadata'
+          type: array
+      type: object
+    productUpdateMediaGalleryEntryResponse:
+      type: object
+    productUpdateProductRequest:
+      properties:
+        tenantId:
+          type: string
+        id:
+          type: string
+        code:
+          type: string
+        attributesMask:
+          $ref: '#/components/schemas/productFieldMask'
+        urlKey:
+          $ref: '#/components/schemas/productLocalizedText'
+        attributes:
+          additionalProperties:
+            $ref: '#/components/schemas/protobufAny'
+          type: object
+        variants:
+          additionalProperties:
+            $ref: '#/components/schemas/productProductVariant'
+          type: object
+      type: object
+    productUpdateProductResponse:
+      example:
+        attributeErrors:
+        - attributeCode: attributeCode
+          code: code
+          message: message
+        - attributeCode: attributeCode
+          code: code
+          message: message
+        success: true
+        productErrors:
+        - code: code
+          message: message
+        - code: code
+          message: message
+      properties:
+        success:
+          type: boolean
+        productErrors:
+          items:
+            $ref: '#/components/schemas/productProductResponseError'
+          type: array
+        attributeErrors:
+          items:
+            $ref: '#/components/schemas/productAttributeResponseError'
+          type: array
+      type: object
+    productentitymanagerLocalizedText:
+      example:
+        value:
+          key: value
+      properties:
+        value:
+          additionalProperties:
+            type: string
+          type: object
+      type: object
+    protobufAny:
+      description: |-
+        `Any` contains an arbitrary serialized protocol buffer message along with a
+        URL that describes the type of the serialized message.
+
+        Protobuf library provides support to pack/unpack Any values in the form
+        of utility functions or additional generated methods of the Any type.
+
+        Example 1: Pack and unpack a message in C++.
+
+            Foo foo = ...;
+            Any any;
+            any.PackFrom(foo);
+            ...
+            if (any.UnpackTo(&foo)) {
+              ...
+            }
+
+        Example 2: Pack and unpack a message in Java.
+
+            Foo foo = ...;
+            Any any = Any.pack(foo);
+            ...
+            if (any.is(Foo.class)) {
+              foo = any.unpack(Foo.class);
+            }
+
+         Example 3: Pack and unpack a message in Python.
+
+            foo = Foo(...)
+            any = Any()
+            any.Pack(foo)
+            ...
+            if any.Is(Foo.DESCRIPTOR):
+              any.Unpack(foo)
+              ...
+
+         Example 4: Pack and unpack a message in Go
+
+             foo := &pb.Foo{...}
+             any, err := anypb.New(foo)
+             if err != nil {
+               ...
+             }
+             ...
+             foo := &pb.Foo{}
+             if err := any.UnmarshalTo(foo); err != nil {
+               ...
+             }
+
+        The pack methods provided by protobuf library will by default use
+        'type.googleapis.com/full.type.name' as the type URL and the unpack
+        methods only use the fully qualified type name after the last '/'
+        in the type URL, for example "foo.bar.com/x/y.z" will yield type
+        name "y.z".
+
+
+        JSON
+        ====
+        The JSON representation of an `Any` value uses the regular
+        representation of the deserialized, embedded message, with an
+        additional field `@type` which contains the type URL. Example:
+
+            package google.profile;
+            message Person {
+              string first_name = 1;
+              string last_name = 2;
+            }
+
+            {
+              "@type": "type.googleapis.com/google.profile.Person",
+              "firstName": <string>,
+              "lastName": <string>
+            }
+
+        If the embedded message type is well-known and has a custom JSON
+        representation, that representation will be embedded adding a field
+        `value` which holds the custom JSON in addition to the `@type`
+        field. Example (for message [google.protobuf.Duration][]):
+
+            {
+              "@type": "type.googleapis.com/google.protobuf.Duration",
+              "value": "1.212s"
+            }
+      example:
+        typeUrl: typeUrl
+        value: value
+      properties:
+        typeUrl:
+          description: |-
+            A URL/resource name that uniquely identifies the type of the serialized
+            protocol buffer message. This string must contain at least
+            one "/" character. The last segment of the URL's path must represent
+            the fully qualified name of the type (as in
+            `path/google.protobuf.Duration`). The name should be in a canonical form
+            (e.g., leading "." is not accepted).
+
+            In practice, teams usually precompile into the binary all types that they
+            expect it to use in the context of Any. However, for URLs which use the
+            scheme `http`, `https`, or no scheme, one can optionally set up a type
+            server that maps type URLs to message definitions as follows:
+
+            * If no scheme is provided, `https` is assumed.
+            * An HTTP GET on the URL must yield a [google.protobuf.Type][]
+              value in binary format, or produce an error.
+            * Applications are allowed to cache lookup results based on the
+              URL, or have them precompiled into a binary to avoid any
+              lookup. Therefore, binary compatibility needs to be preserved
+              on changes to types. (Use versioned type names to manage
+              breaking changes.)
+
+            Note: this functionality is not currently available in the official
+            protobuf release, and it is not used for type URLs beginning with
+            type.googleapis.com.
+
+            Schemes other than `http`, `https` (or the empty scheme) might be
+            used with implementation specific semantics.
+          type: string
+        value:
+          description: Must be a valid serialized protocol buffer of the above specified
+            type.
+          format: byte
+          pattern: "^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$"
+          type: string
+      type: object
+    rpcStatus:
+      properties:
+        code:
+          format: int32
+          type: integer
+        message:
+          type: string
+        details:
+          items:
+            $ref: '#/components/schemas/protobufAny'
+          type: array
+      type: object
+  securitySchemes:
+    geminiAuthorization:
+      in: header
+      name: X-Gem-Token
+      type: apiKey
+    standardAuthorization:
+      in: header
+      name: Authorization
+      type: apiKey
+x-original-swagger-version: "2.0"
