@@ -1,4 +1,4 @@
-# # ProtobufAny
+# # InventoryGetQtySalableRequest
 
 
 ## Properties 
@@ -6,8 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**TypeUrl**| **string** |   | [optional]
-**Value**| **string** |   | [optional]
+**TenantId**| **string** |   | [optional]
+**Sku**| **string** |   | [optional]
 
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

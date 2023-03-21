@@ -1,7 +1,8 @@
+
 {
   "swagger": "2.0",
   "info": {
-    "title": "product/product.proto",
+    "title": "inventory.proto",
     "version": "version not set"
   },
   "consumes": [
@@ -11,14 +12,14 @@
     "application/json"
   ],
   "paths": {
-    "/product.Product/AddMediaGalleryEntry": {
+    "/inventory.Inventory/AdjustQty": {
       "post": {
-        "operationId": "Product_AddMediaGalleryEntry",
+        "operationId": "Inventory_AdjustQty",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/productAddMediaGalleryEntryResponse"
+              "$ref": "#/definitions/inventoryStockItem"
             }
           },
           "default": {
@@ -34,23 +35,24 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/productAddMediaGalleryEntryRequest"
+              "$ref": "#/definitions/inventoryAdjustQtyRequest"
             }
           }
         ],
         "tags": [
-          "Product"
+          "Inventory"
         ]
       }
     },
-    "/product.Product/BulkCreateAttribute": {
+    "/inventory.Inventory/AdjustQtyCommitted": {
       "post": {
-        "operationId": "Product_BulkCreateAttribute",
+        "summary": "adjust operations are intended for increment/decrement quantities fields by a certain amount",
+        "operationId": "Inventory_AdjustQtyCommitted",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/entitymanagerBulkCreateAttributeResponse"
+              "$ref": "#/definitions/inventoryStockItem"
             }
           },
           "default": {
@@ -66,23 +68,23 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/entitymanagerBulkCreateAttributeRequest"
+              "$ref": "#/definitions/inventoryAdjustQtyCommittedRequest"
             }
           }
         ],
         "tags": [
-          "Product"
+          "Inventory"
         ]
       }
     },
-    "/product.Product/BulkUpdate": {
+    "/inventory.Inventory/CreateStockItem": {
       "post": {
-        "operationId": "Product_BulkUpdate",
+        "operationId": "Inventory_CreateStockItem",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/productBulkUpdateResponse"
+              "$ref": "#/definitions/inventoryStockItem"
             }
           },
           "default": {
@@ -98,23 +100,23 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/productBulkUpdateRequest"
+              "$ref": "#/definitions/inventoryCreateStockItemRequest"
             }
           }
         ],
         "tags": [
-          "Product"
+          "Inventory"
         ]
       }
     },
-    "/product.Product/CreateAttributeOptions": {
+    "/inventory.Inventory/GetQtySalable": {
       "post": {
-        "operationId": "Product_CreateAttributeOptions",
+        "operationId": "Inventory_GetQtySalable",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/entitymanagerCreateAttributeOptionsResponse"
+              "$ref": "#/definitions/inventoryGetQtySalableResponse"
             }
           },
           "default": {
@@ -130,23 +132,23 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/entitymanagerCreateAttributeOptionsRequest"
+              "$ref": "#/definitions/inventoryGetQtySalableRequest"
             }
           }
         ],
         "tags": [
-          "Product"
+          "Inventory"
         ]
       }
     },
-    "/product.Product/CreateEntity": {
+    "/inventory.Inventory/GetStockItem": {
       "post": {
-        "operationId": "Product_CreateEntity",
+        "operationId": "Inventory_GetStockItem",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/entitymanagerCreateEntityResponse"
+              "$ref": "#/definitions/inventoryStockItem"
             }
           },
           "default": {
@@ -162,23 +164,23 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/entitymanagerEntity"
+              "$ref": "#/definitions/inventoryGetStockItemRequest"
             }
           }
         ],
         "tags": [
-          "Product"
+          "Inventory"
         ]
       }
     },
-    "/product.Product/CreateOptionsList": {
+    "/inventory.Inventory/ListStockItems": {
       "post": {
-        "operationId": "Product_CreateOptionsList",
+        "operationId": "Inventory_ListStockItems",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/entitymanagerCreateOptionsListResponse"
+              "$ref": "#/definitions/inventoryListStockItemsResponse"
             }
           },
           "default": {
@@ -194,23 +196,23 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/entitymanagerCreateOptionsListRequest"
+              "$ref": "#/definitions/inventoryListStockItemsRequest"
             }
           }
         ],
         "tags": [
-          "Product"
+          "Inventory"
         ]
       }
     },
-    "/product.Product/CreateProduct": {
+    "/inventory.Inventory/ListStockItemsBySkus": {
       "post": {
-        "operationId": "Product_CreateProduct",
+        "operationId": "Inventory_ListStockItemsBySkus",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/productCreateProductResponse"
+              "$ref": "#/definitions/inventoryListStockItemsBySkusResponse"
             }
           },
           "default": {
@@ -226,23 +228,24 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/productCreateProductRequest"
+              "$ref": "#/definitions/inventoryListStockItemsBySkusRequest"
             }
           }
         ],
         "tags": [
-          "Product"
+          "Inventory"
         ]
       }
     },
-    "/product.Product/Delete": {
+    "/inventory.Inventory/RebalanceStockQtys": {
       "post": {
-        "operationId": "Product_Delete",
+        "summary": "rebalance operation is intended for apply or discard a certain amount of qty_committed to qty and old qty_committed",
+        "operationId": "Inventory_RebalanceStockQtys",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/productDeleteResponse"
+              "$ref": "#/definitions/inventoryStockItem"
             }
           },
           "default": {
@@ -258,23 +261,23 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/productDeleteRequest"
+              "$ref": "#/definitions/inventoryRebalanceStockQtysRequest"
             }
           }
         ],
         "tags": [
-          "Product"
+          "Inventory"
         ]
       }
     },
-    "/product.Product/GetAttributeOption": {
+    "/inventory.Inventory/UpdateStockItem": {
       "post": {
-        "operationId": "Product_GetAttributeOption",
+        "operationId": "Inventory_UpdateStockItem",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/entitymanagerGetAttributeOptionResponse"
+              "$ref": "#/definitions/inventoryStockItem"
             }
           },
           "default": {
@@ -290,803 +293,99 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/entitymanagerGetAttributeOptionRequest"
+              "$ref": "#/definitions/inventoryUpdateStockItemRequest"
             }
           }
         ],
         "tags": [
-          "Product"
-        ]
-      }
-    },
-    "/product.Product/GetAttributeOptionByCode": {
-      "post": {
-        "operationId": "Product_GetAttributeOptionByCode",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/entitymanagerGetAttributeOptionByCodeResponse"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/rpcStatus"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/entitymanagerGetAttributeOptionByCodeRequest"
-            }
-          }
-        ],
-        "tags": [
-          "Product"
-        ]
-      }
-    },
-    "/product.Product/GetAttributeOptions": {
-      "post": {
-        "operationId": "Product_GetAttributeOptions",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/entitymanagerGetAttributeOptionsResponse"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/rpcStatus"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/entitymanagerGetAttributeOptionsRequest"
-            }
-          }
-        ],
-        "tags": [
-          "Product"
-        ]
-      }
-    },
-    "/product.Product/GetEntity": {
-      "post": {
-        "operationId": "Product_GetEntity",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/entitymanagerEntity"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/rpcStatus"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/entitymanagerEntityRequest"
-            }
-          }
-        ],
-        "tags": [
-          "Product"
-        ]
-      }
-    },
-    "/product.Product/GetOptionsList": {
-      "post": {
-        "operationId": "Product_GetOptionsList",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/entitymanagerGetOptionsListResponse"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/rpcStatus"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/entitymanagerGetOptionsListRequest"
-            }
-          }
-        ],
-        "tags": [
-          "Product"
-        ]
-      }
-    },
-    "/product.Product/GetProduct": {
-      "post": {
-        "operationId": "Product_GetProduct",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/productGetProductResponse"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/rpcStatus"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/productGetProductRequest"
-            }
-          }
-        ],
-        "tags": [
-          "Product"
-        ]
-      }
-    },
-    "/product.Product/GetProductByCode": {
-      "post": {
-        "operationId": "Product_GetProductByCode",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/productGetProductByCodeResponse"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/rpcStatus"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/productGetProductByCodeRequest"
-            }
-          }
-        ],
-        "tags": [
-          "Product"
-        ]
-      }
-    },
-    "/product.Product/GetProductByUrlKey": {
-      "post": {
-        "operationId": "Product_GetProductByUrlKey",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/productGetProductByUrlKeyResponse"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/rpcStatus"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/productGetProductByUrlKeyRequest"
-            }
-          }
-        ],
-        "tags": [
-          "Product"
-        ]
-      }
-    },
-    "/product.Product/ListAttributeOptions": {
-      "post": {
-        "operationId": "Product_ListAttributeOptions",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/entitymanagerListAttributeOptionsResponse"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/rpcStatus"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/entitymanagerListAttributeOptionsRequest"
-            }
-          }
-        ],
-        "tags": [
-          "Product"
-        ]
-      }
-    },
-    "/product.Product/ListEntities": {
-      "post": {
-        "operationId": "Product_ListEntities",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/entitymanagerListEntitiesResponse"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/rpcStatus"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/entitymanagerListEntitiesRequest"
-            }
-          }
-        ],
-        "tags": [
-          "Product"
-        ]
-      }
-    },
-    "/product.Product/ListOptionsLists": {
-      "post": {
-        "operationId": "Product_ListOptionsLists",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/entitymanagerListOptionsListsResponse"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/rpcStatus"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/entitymanagerListOptionsListsRequest"
-            }
-          }
-        ],
-        "tags": [
-          "Product"
-        ]
-      }
-    },
-    "/product.Product/ListProducts": {
-      "post": {
-        "operationId": "Product_ListProducts",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/productListProductsResponse"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/rpcStatus"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/productListProductsRequest"
-            }
-          }
-        ],
-        "tags": [
-          "Product"
-        ]
-      }
-    },
-    "/product.Product/ListProductsByIds": {
-      "post": {
-        "operationId": "Product_ListProductsByIds",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/productListProductsByIdsResponse"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/rpcStatus"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/productListProductsByIdsRequest"
-            }
-          }
-        ],
-        "tags": [
-          "Product"
-        ]
-      }
-    },
-    "/product.Product/RemoveMediaGalleryEntry": {
-      "post": {
-        "operationId": "Product_RemoveMediaGalleryEntry",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/productRemoveMediaGalleryEntryResponse"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/rpcStatus"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/productRemoveMediaGalleryEntryRequest"
-            }
-          }
-        ],
-        "tags": [
-          "Product"
-        ]
-      }
-    },
-    "/product.Product/UpdateAttributeOptions": {
-      "post": {
-        "operationId": "Product_UpdateAttributeOptions",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/entitymanagerUpdateAttributeOptionsResponse"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/rpcStatus"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/entitymanagerUpdateAttributeOptionsRequest"
-            }
-          }
-        ],
-        "tags": [
-          "Product"
-        ]
-      }
-    },
-    "/product.Product/UpdateMediaGalleryEntry": {
-      "post": {
-        "operationId": "Product_UpdateMediaGalleryEntry",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/productUpdateMediaGalleryEntryResponse"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/rpcStatus"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/productUpdateMediaGalleryEntryRequest"
-            }
-          }
-        ],
-        "tags": [
-          "Product"
-        ]
-      }
-    },
-    "/product.Product/UpdateOptionsList": {
-      "post": {
-        "operationId": "Product_UpdateOptionsList",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/entitymanagerUpdateOptionsListResponse"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/rpcStatus"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/entitymanagerUpdateOptionsListRequest"
-            }
-          }
-        ],
-        "tags": [
-          "Product"
-        ]
-      }
-    },
-    "/product.Product/UpdateProduct": {
-      "post": {
-        "operationId": "Product_UpdateProduct",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/productUpdateProductResponse"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/rpcStatus"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/productUpdateProductRequest"
-            }
-          }
-        ],
-        "tags": [
-          "Product"
+          "Inventory"
         ]
       }
     }
   },
   "definitions": {
-    "BulkUpdateRequestPayload": {
+    "UpdateStockItemRequestPayload": {
       "type": "object",
       "properties": {
-        "updateMask": {
-          "$ref": "#/definitions/productFieldMask"
-        },
-        "attributes": {
-          "type": "object",
-          "additionalProperties": {
-            "$ref": "#/definitions/protobufAny"
-          }
-        }
-      }
-    },
-    "BulkUpdateResponseResponse": {
-      "type": "object",
-      "properties": {
-        "productId": {
-          "type": "string"
-        },
-        "success": {
-          "type": "boolean"
-        },
-        "attributes": {
-          "type": "object",
-          "additionalProperties": {
-            "$ref": "#/definitions/protobufAny"
-          }
-        }
-      }
-    },
-    "entitymanagerAttribute": {
-      "type": "object",
-      "properties": {
-        "entityId": {
-          "type": "string"
-        },
-        "code": {
-          "type": "string"
-        },
-        "label": {
-          "type": "string"
-        },
-        "type": {
-          "$ref": "#/definitions/entitymanagerTypes"
-        },
-        "optionList": {
-          "type": "string"
-        },
-        "entity": {
-          "type": "string"
-        },
-        "default": {
-          "type": "string"
-        },
-        "isRequired": {
-          "type": "boolean"
-        },
-        "isSystem": {
-          "type": "boolean"
-        },
-        "isRepeated": {
-          "type": "boolean"
-        }
-      }
-    },
-    "entitymanagerAttributeOption": {
-      "type": "object",
-      "properties": {
-        "option": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "string"
-          }
-        },
-        "sort": {
+        "outOfStockThreshold": {
           "type": "integer",
-          "format": "int64"
+          "format": "int32"
         },
-        "id": {
-          "type": "string"
+        "qty": {
+          "type": "integer",
+          "format": "int32"
         },
-        "code": {
-          "type": "string"
-        },
-        "value": {
-          "$ref": "#/definitions/productentitymanagerLocalizedText"
-        },
-        "swatches": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/entitymanagerAttributeOptionSwatch"
-          }
+        "qtyCommitted": {
+          "type": "integer",
+          "format": "int32"
         }
       }
     },
-    "entitymanagerAttributeOptionErrors": {
-      "type": "object",
-      "properties": {
-        "error": {
-          "type": "string"
-        },
-        "option": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "string"
-          }
-        }
-      }
-    },
-    "entitymanagerAttributeOptionSwatch": {
-      "type": "object",
-      "properties": {
-        "grn": {
-          "type": "string"
-        },
-        "hex": {
-          "type": "string"
-        }
-      }
-    },
-    "entitymanagerAttributeWriteError": {
-      "type": "object",
-      "properties": {
-        "errorCode": {
-          "type": "string"
-        },
-        "attributeCode": {
-          "type": "string"
-        },
-        "message": {
-          "type": "string"
-        }
-      }
-    },
-    "entitymanagerAttributeWriteErrors": {
-      "type": "object",
-      "properties": {
-        "attributeWriteErrors": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/entitymanagerAttributeWriteError"
-          }
-        }
-      }
-    },
-    "entitymanagerBulkCreateAttributeRequest": {
+    "inventoryAdjustQtyCommittedRequest": {
       "type": "object",
       "properties": {
         "tenantId": {
           "type": "string"
         },
-        "entityData": {
-          "$ref": "#/definitions/entitymanagerEntityIdentifier"
-        },
-        "entityId": {
+        "sku": {
           "type": "string"
         },
-        "attributes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/entitymanagerAttribute"
-          }
+        "qtyAdjust": {
+          "type": "integer",
+          "format": "int32"
         }
       }
     },
-    "entitymanagerBulkCreateAttributeResponse": {
-      "type": "object",
-      "properties": {
-        "attributes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/entitymanagerAttribute"
-          }
-        }
-      }
-    },
-    "entitymanagerCreateAttributeOptionsRequest": {
+    "inventoryAdjustQtyRequest": {
       "type": "object",
       "properties": {
         "tenantId": {
           "type": "string"
         },
-        "listCode": {
+        "sku": {
           "type": "string"
         },
-        "options": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/entitymanagerAttributeOption"
-          }
+        "qtyAdjust": {
+          "type": "integer",
+          "format": "int32"
         }
       }
     },
-    "entitymanagerCreateAttributeOptionsResponse": {
-      "type": "object",
-      "properties": {
-        "options": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/entitymanagerAttributeOption"
-          }
-        },
-        "errors": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/entitymanagerAttributeOptionErrors"
-          }
-        }
-      }
-    },
-    "entitymanagerCreateEntityResponse": {
-      "type": "object",
-      "properties": {
-        "attributeWriteErrors": {
-          "$ref": "#/definitions/entitymanagerAttributeWriteErrors"
-        },
-        "entity": {
-          "$ref": "#/definitions/entitymanagerEntity"
-        }
-      }
-    },
-    "entitymanagerCreateOptionsListRequest": {
+    "inventoryCreateStockItemRequest": {
       "type": "object",
       "properties": {
         "tenantId": {
           "type": "string"
         },
-        "optionList": {
-          "$ref": "#/definitions/entitymanagerOptionsList"
+        "sku": {
+          "type": "string"
+        },
+        "outOfStockThreshold": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "qty": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "qtyCommitted": {
+          "type": "integer",
+          "format": "int32"
         }
       }
     },
-    "entitymanagerCreateOptionsListResponse": {
+    "inventoryGetQtySalableRequest": {
       "type": "object",
       "properties": {
-        "optionList": {
-          "$ref": "#/definitions/entitymanagerOptionsList"
+        "tenantId": {
+          "type": "string"
+        },
+        "sku": {
+          "type": "string"
         }
       }
     },
-    "entitymanagerEntity": {
+    "inventoryGetQtySalableResponse": {
       "type": "object",
       "properties": {
         "tenantId": {
@@ -1095,190 +394,52 @@
         "id": {
           "type": "string"
         },
-        "type": {
+        "sku": {
           "type": "string"
         },
-        "code": {
+        "qtySalable": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "inventoryGetStockItemRequest": {
+      "type": "object",
+      "properties": {
+        "tenantId": {
           "type": "string"
         },
-        "parentCode": {
+        "sku": {
+          "type": "string"
+        }
+      }
+    },
+    "inventoryListStockItemsBySkusRequest": {
+      "type": "object",
+      "properties": {
+        "tenantId": {
           "type": "string"
         },
-        "label": {
-          "type": "string"
-        },
-        "relationships": {
+        "skus": {
           "type": "array",
           "items": {
             "type": "string"
           }
-        },
-        "attributes": {
+        }
+      }
+    },
+    "inventoryListStockItemsBySkusResponse": {
+      "type": "object",
+      "properties": {
+        "stockItems": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/entitymanagerAttribute"
+            "$ref": "#/definitions/inventoryStockItem"
           }
         }
       }
     },
-    "entitymanagerEntityIdentifier": {
-      "type": "object",
-      "properties": {
-        "type": {
-          "type": "string"
-        },
-        "code": {
-          "type": "string"
-        }
-      }
-    },
-    "entitymanagerEntityRequest": {
-      "type": "object",
-      "properties": {
-        "tenantId": {
-          "type": "string"
-        },
-        "entityData": {
-          "$ref": "#/definitions/entitymanagerEntityIdentifier"
-        },
-        "entityId": {
-          "type": "string"
-        }
-      }
-    },
-    "entitymanagerGetAttributeOptionByCodeRequest": {
-      "type": "object",
-      "properties": {
-        "tenantId": {
-          "type": "string"
-        },
-        "listCode": {
-          "type": "string"
-        },
-        "code": {
-          "type": "string"
-        }
-      }
-    },
-    "entitymanagerGetAttributeOptionByCodeResponse": {
-      "type": "object",
-      "properties": {
-        "option": {
-          "$ref": "#/definitions/entitymanagerAttributeOption"
-        }
-      }
-    },
-    "entitymanagerGetAttributeOptionRequest": {
-      "type": "object",
-      "properties": {
-        "tenantId": {
-          "type": "string"
-        },
-        "listCode": {
-          "type": "string"
-        },
-        "optionId": {
-          "type": "string"
-        }
-      }
-    },
-    "entitymanagerGetAttributeOptionResponse": {
-      "type": "object",
-      "properties": {
-        "option": {
-          "$ref": "#/definitions/entitymanagerAttributeOption"
-        }
-      }
-    },
-    "entitymanagerGetAttributeOptionsRequest": {
-      "type": "object",
-      "properties": {
-        "tenantId": {
-          "type": "string"
-        },
-        "optionIds": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/entitymanagerGetAttributeOptionsRequestOption"
-          }
-        }
-      }
-    },
-    "entitymanagerGetAttributeOptionsRequestOption": {
-      "type": "object",
-      "properties": {
-        "listCode": {
-          "type": "string"
-        },
-        "optionId": {
-          "type": "string"
-        }
-      }
-    },
-    "entitymanagerGetAttributeOptionsResponse": {
-      "type": "object",
-      "properties": {
-        "options": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/entitymanagerGetAttributeOptionsResponseOption"
-          }
-        }
-      }
-    },
-    "entitymanagerGetAttributeOptionsResponseOption": {
-      "type": "object",
-      "properties": {
-        "listCode": {
-          "type": "string"
-        },
-        "option": {
-          "$ref": "#/definitions/entitymanagerAttributeOption"
-        }
-      }
-    },
-    "entitymanagerGetOptionsListRequest": {
-      "type": "object",
-      "properties": {
-        "tenantId": {
-          "type": "string"
-        },
-        "listCode": {
-          "type": "string"
-        }
-      }
-    },
-    "entitymanagerGetOptionsListResponse": {
-      "type": "object",
-      "properties": {
-        "optionList": {
-          "$ref": "#/definitions/entitymanagerOptionsList"
-        }
-      }
-    },
-    "entitymanagerListAttributeOptionsRequest": {
-      "type": "object",
-      "properties": {
-        "tenantId": {
-          "type": "string"
-        },
-        "listCode": {
-          "type": "string"
-        }
-      }
-    },
-    "entitymanagerListAttributeOptionsResponse": {
-      "type": "object",
-      "properties": {
-        "options": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/entitymanagerAttributeOption"
-          }
-        }
-      }
-    },
-    "entitymanagerListEntitiesRequest": {
+    "inventoryListStockItemsRequest": {
       "type": "object",
       "properties": {
         "tenantId": {
@@ -1286,654 +447,94 @@
         },
         "pageSize": {
           "type": "integer",
-          "format": "int32"
-        }
-      }
-    },
-    "entitymanagerListEntitiesResponse": {
-      "type": "object",
-      "properties": {
-        "entities": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/entitymanagerEntity"
-          }
-        },
-        "nextPage": {
-          "type": "integer",
-          "format": "int32"
-        }
-      }
-    },
-    "entitymanagerListOptionsListsRequest": {
-      "type": "object",
-      "properties": {
-        "tenantId": {
-          "type": "string"
-        }
-      }
-    },
-    "entitymanagerListOptionsListsResponse": {
-      "type": "object",
-      "properties": {
-        "options": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/entitymanagerOptionsList"
-          }
-        }
-      }
-    },
-    "entitymanagerOptionsList": {
-      "type": "object",
-      "properties": {
-        "code": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        }
-      }
-    },
-    "entitymanagerTypes": {
-      "type": "string",
-      "enum": [
-        "TEXT",
-        "NUMBER",
-        "BOOLEAN",
-        "DATETIME",
-        "EXTERNAL",
-        "EMBED",
-        "FLOAT32"
-      ],
-      "default": "TEXT"
-    },
-    "entitymanagerUpdateAttributeOptionsRequest": {
-      "type": "object",
-      "properties": {
-        "tenantId": {
-          "type": "string"
-        },
-        "listCode": {
-          "type": "string"
-        },
-        "options": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/entitymanagerAttributeOption"
-          }
-        }
-      }
-    },
-    "entitymanagerUpdateAttributeOptionsResponse": {
-      "type": "object",
-      "properties": {
-        "options": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/entitymanagerAttributeOption"
-          }
-        },
-        "errors": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/entitymanagerAttributeOptionErrors"
-          }
-        }
-      }
-    },
-    "entitymanagerUpdateOptionsListRequest": {
-      "type": "object",
-      "properties": {
-        "tenantId": {
-          "type": "string"
-        },
-        "optionList": {
-          "$ref": "#/definitions/entitymanagerOptionsList"
-        }
-      }
-    },
-    "entitymanagerUpdateOptionsListResponse": {
-      "type": "object",
-      "properties": {
-        "optionList": {
-          "$ref": "#/definitions/entitymanagerOptionsList"
-        }
-      }
-    },
-    "productAddMediaGalleryEntryRequest": {
-      "type": "object",
-      "properties": {
-        "tenantId": {
-          "type": "string"
-        },
-        "productId": {
-          "type": "string"
-        },
-        "assetGrn": {
-          "type": "string"
-        },
-        "position": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "metadata": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/productMediaGalleryEntryMetadata"
-          }
-        }
-      }
-    },
-    "productAddMediaGalleryEntryResponse": {
-      "type": "object",
-      "properties": {
-        "mediaGalleryEntry": {
-          "$ref": "#/definitions/productMediaGalleryEntry"
-        }
-      }
-    },
-    "productAttributeResponseError": {
-      "type": "object",
-      "properties": {
-        "code": {
-          "type": "string"
-        },
-        "message": {
-          "type": "string"
-        },
-        "attributeCode": {
-          "type": "string"
-        }
-      }
-    },
-    "productBulkUpdateRequest": {
-      "type": "object",
-      "properties": {
-        "tenantId": {
-          "type": "string"
-        },
-        "productIds": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "payload": {
-          "$ref": "#/definitions/BulkUpdateRequestPayload"
-        }
-      }
-    },
-    "productBulkUpdateResponse": {
-      "type": "object",
-      "properties": {
-        "productResponse": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/BulkUpdateResponseResponse"
-          }
-        }
-      }
-    },
-    "productCreateProductRequest": {
-      "type": "object",
-      "properties": {
-        "tenantId": {
-          "type": "string"
-        },
-        "entityType": {
-          "type": "string"
-        },
-        "entityCode": {
-          "type": "string"
-        },
-        "code": {
-          "type": "string"
-        },
-        "isConfigurable": {
-          "type": "boolean"
-        },
-        "variantAttributes": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "isVirtual": {
-          "type": "boolean"
-        },
-        "isGiftcard": {
-          "type": "boolean"
-        },
-        "urlKey": {
-          "$ref": "#/definitions/productLocalizedText"
-        },
-        "attributes": {
-          "type": "object",
-          "additionalProperties": {
-            "$ref": "#/definitions/protobufAny"
-          }
-        },
-        "variants": {
-          "type": "object",
-          "additionalProperties": {
-            "$ref": "#/definitions/productProductVariant"
-          }
-        }
-      }
-    },
-    "productCreateProductResponse": {
-      "type": "object",
-      "properties": {
-        "success": {
-          "type": "boolean"
-        },
-        "id": {
-          "type": "string"
-        },
-        "productErrors": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/productProductResponseError"
-          }
-        },
-        "attributeErrors": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/productAttributeResponseError"
-          }
-        }
-      }
-    },
-    "productDeleteRequest": {
-      "type": "object",
-      "properties": {
-        "product": {
-          "$ref": "#/definitions/productProductEntity"
-        }
-      }
-    },
-    "productDeleteResponse": {
-      "type": "object",
-      "properties": {
-        "success": {
-          "type": "boolean"
-        }
-      }
-    },
-    "productFieldMask": {
-      "type": "object",
-      "properties": {
-        "paths": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      }
-    },
-    "productGetProductByCodeRequest": {
-      "type": "object",
-      "properties": {
-        "tenantId": {
-          "type": "string"
-        },
-        "code": {
-          "type": "string"
-        }
-      }
-    },
-    "productGetProductByCodeResponse": {
-      "type": "object",
-      "properties": {
-        "product": {
-          "$ref": "#/definitions/productProductEntity"
-        }
-      }
-    },
-    "productGetProductByUrlKeyRequest": {
-      "type": "object",
-      "properties": {
-        "tenantId": {
-          "type": "string"
-        },
-        "urlKey": {
-          "type": "string"
-        },
-        "locale": {
-          "type": "string"
-        }
-      }
-    },
-    "productGetProductByUrlKeyResponse": {
-      "type": "object",
-      "properties": {
-        "product": {
-          "$ref": "#/definitions/productProductEntity"
-        }
-      }
-    },
-    "productGetProductRequest": {
-      "type": "object",
-      "properties": {
-        "tenantId": {
-          "type": "string"
-        },
-        "id": {
-          "type": "string"
-        }
-      }
-    },
-    "productGetProductResponse": {
-      "type": "object",
-      "properties": {
-        "product": {
-          "$ref": "#/definitions/productProductEntity"
-        }
-      }
-    },
-    "productListProductsByIdsRequest": {
-      "type": "object",
-      "properties": {
-        "tenantId": {
-          "type": "string"
-        },
-        "ids": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      }
-    },
-    "productListProductsByIdsResponse": {
-      "type": "object",
-      "properties": {
-        "products": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/productProductEntity"
-          }
-        }
-      }
-    },
-    "productListProductsRequest": {
-      "type": "object",
-      "properties": {
-        "tenantId": {
-          "type": "string"
-        },
-        "pageSize": {
-          "type": "string",
-          "format": "uint64"
+          "format": "int64",
+          "description": "The maximum number of items to return."
         },
         "pageToken": {
-          "type": "string"
+          "type": "string",
+          "description": "The next_page_token value returned from a previous List request, if any."
         }
       }
     },
-    "productListProductsResponse": {
+    "inventoryListStockItemsResponse": {
       "type": "object",
       "properties": {
-        "products": {
+        "stockItems": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/productProductEntity"
+            "$ref": "#/definitions/inventoryStockItem"
           }
         },
         "nextPageToken": {
-          "type": "string"
+          "type": "string",
+          "description": "Token to retrieve the next page of results, or empty if there are no\nmore results in the list."
         }
       }
     },
-    "productLocalizedText": {
-      "type": "object",
-      "properties": {
-        "value": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "string"
-          }
-        }
-      }
-    },
-    "productMediaGallery": {
-      "type": "object",
-      "properties": {
-        "entries": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/productMediaGalleryEntry"
-          }
-        }
-      }
-    },
-    "productMediaGalleryEntry": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "assetGrn": {
-          "type": "string"
-        },
-        "position": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "metadata": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/productMediaGalleryEntryMetadata"
-          }
-        }
-      }
-    },
-    "productMediaGalleryEntryMetadata": {
-      "type": "object",
-      "properties": {
-        "roles": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "alt": {
-          "$ref": "#/definitions/productLocalizedText"
-        }
-      }
-    },
-    "productProductEntity": {
+    "inventoryRebalanceStockQtysRequest": {
       "type": "object",
       "properties": {
         "tenantId": {
           "type": "string"
         },
-        "entityType": {
+        "sku": {
           "type": "string"
         },
-        "entityCode": {
+        "qtyCommitted": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "inventoryStockItem": {
+      "type": "object",
+      "properties": {
+        "tenantId": {
           "type": "string"
         },
         "id": {
           "type": "string"
         },
-        "code": {
+        "sku": {
           "type": "string"
         },
-        "variantAttributes": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
+        "outOfStockThreshold": {
+          "type": "integer",
+          "format": "int32"
         },
-        "isConfigurable": {
-          "type": "boolean"
+        "qty": {
+          "type": "integer",
+          "format": "int32"
         },
-        "isVirtual": {
-          "type": "boolean"
-        },
-        "isGiftcard": {
-          "type": "boolean"
-        },
-        "urlKey": {
-          "$ref": "#/definitions/productLocalizedText"
-        },
-        "attributes": {
-          "type": "object",
-          "additionalProperties": {
-            "$ref": "#/definitions/protobufAny"
-          }
-        },
-        "variants": {
-          "type": "object",
-          "additionalProperties": {
-            "$ref": "#/definitions/productProductVariant"
-          }
-        },
-        "mediaGallery": {
-          "$ref": "#/definitions/productMediaGallery"
+        "qtyCommitted": {
+          "type": "integer",
+          "format": "int32"
         },
         "createdAt": {
           "type": "string",
-          "format": "int64"
+          "format": "date-time"
         },
         "updatedAt": {
           "type": "string",
-          "format": "int64"
+          "format": "date-time"
         }
       }
     },
-    "productProductResponseError": {
-      "type": "object",
-      "properties": {
-        "code": {
-          "type": "string"
-        },
-        "message": {
-          "type": "string"
-        }
-      }
-    },
-    "productProductVariant": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "attributes": {
-          "type": "object",
-          "additionalProperties": {
-            "$ref": "#/definitions/protobufAny"
-          }
-        }
-      }
-    },
-    "productRemoveMediaGalleryEntryRequest": {
+    "inventoryUpdateStockItemRequest": {
       "type": "object",
       "properties": {
         "tenantId": {
           "type": "string"
         },
-        "productId": {
+        "sku": {
           "type": "string"
         },
-        "id": {
-          "type": "string"
-        }
-      }
-    },
-    "productRemoveMediaGalleryEntryResponse": {
-      "type": "object"
-    },
-    "productUpdateMediaGalleryEntryRequest": {
-      "type": "object",
-      "properties": {
-        "tenantId": {
-          "type": "string"
+        "payload": {
+          "$ref": "#/definitions/UpdateStockItemRequestPayload"
         },
-        "productId": {
-          "type": "string"
-        },
-        "id": {
-          "type": "string"
-        },
-        "assetGrn": {
-          "type": "string"
-        },
-        "position": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "metadata": {
+        "payloadMask": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/productMediaGalleryEntryMetadata"
-          }
-        }
-      }
-    },
-    "productUpdateMediaGalleryEntryResponse": {
-      "type": "object"
-    },
-    "productUpdateProductRequest": {
-      "type": "object",
-      "properties": {
-        "tenantId": {
-          "type": "string"
-        },
-        "id": {
-          "type": "string"
-        },
-        "code": {
-          "type": "string"
-        },
-        "attributesMask": {
-          "$ref": "#/definitions/productFieldMask"
-        },
-        "urlKey": {
-          "$ref": "#/definitions/productLocalizedText"
-        },
-        "attributes": {
-          "type": "object",
-          "additionalProperties": {
-            "$ref": "#/definitions/protobufAny"
-          }
-        },
-        "variants": {
-          "type": "object",
-          "additionalProperties": {
-            "$ref": "#/definitions/productProductVariant"
-          }
-        }
-      }
-    },
-    "productUpdateProductResponse": {
-      "type": "object",
-      "properties": {
-        "success": {
-          "type": "boolean"
-        },
-        "productErrors": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/productProductResponseError"
-          }
-        },
-        "attributeErrors": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/productAttributeResponseError"
-          }
-        }
-      }
-    },
-    "productentitymanagerLocalizedText": {
-      "type": "object",
-      "properties": {
-        "value": {
-          "type": "object",
-          "additionalProperties": {
             "type": "string"
           }
         }
@@ -1943,16 +544,13 @@
       "type": "object",
       "properties": {
         "typeUrl": {
-          "type": "string",
-          "description": "A URL/resource name that uniquely identifies the type of the serialized\nprotocol buffer message. This string must contain at least\none \"/\" character. The last segment of the URL's path must represent\nthe fully qualified name of the type (as in\n`path/google.protobuf.Duration`). The name should be in a canonical form\n(e.g., leading \".\" is not accepted).\n\nIn practice, teams usually precompile into the binary all types that they\nexpect it to use in the context of Any. However, for URLs which use the\nscheme `http`, `https`, or no scheme, one can optionally set up a type\nserver that maps type URLs to message definitions as follows:\n\n* If no scheme is provided, `https` is assumed.\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nNote: this functionality is not currently available in the official\nprotobuf release, and it is not used for type URLs beginning with\ntype.googleapis.com.\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics."
+          "type": "string"
         },
         "value": {
           "type": "string",
-          "format": "byte",
-          "description": "Must be a valid serialized protocol buffer of the above specified type."
+          "format": "byte"
         }
-      },
-      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := anypb.New(foo)\n     if err != nil {\n       ...\n     }\n     ...\n     foo := \u0026pb.Foo{}\n     if err := any.UnmarshalTo(foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+      }
     },
     "rpcStatus": {
       "type": "object",
@@ -1971,18 +569,6 @@
           }
         }
       }
-    }
-  },
-  "securityDefinitions": {
-    "geminiAuthorization": {
-      "type": "apiKey",
-      "name": "X-Gem-Token",
-      "in": "header"
-    },
-    "standardAuthorization": {
-      "type": "apiKey",
-      "name": "Authorization",
-      "in": "header"
     }
   }
 }

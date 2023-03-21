@@ -22,7 +22,7 @@ go get golang.org/x/net/context
 Put the package under your project folder and add the following in import:
 
 ```golang
-import inventory "bitbucket.org/gogemini/go-client-inventory"
+import inventory "github.com/GIT_USER_ID/GIT_REPO_ID"
 ```
 
 To use a proxy, set the environment variable `HTTP_PROXY`:
@@ -78,132 +78,40 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*ProductApi* | [**ProductAddMediaGalleryEntry**](docs/ProductApi.md#productaddmediagalleryentry) | **Post** /product.Product/AddMediaGalleryEntry | 
-*ProductApi* | [**ProductBulkCreateAttribute**](docs/ProductApi.md#productbulkcreateattribute) | **Post** /product.Product/BulkCreateAttribute | 
-*ProductApi* | [**ProductBulkUpdate**](docs/ProductApi.md#productbulkupdate) | **Post** /product.Product/BulkUpdate | 
-*ProductApi* | [**ProductCreateAttributeOptions**](docs/ProductApi.md#productcreateattributeoptions) | **Post** /product.Product/CreateAttributeOptions | 
-*ProductApi* | [**ProductCreateEntity**](docs/ProductApi.md#productcreateentity) | **Post** /product.Product/CreateEntity | 
-*ProductApi* | [**ProductCreateOptionsList**](docs/ProductApi.md#productcreateoptionslist) | **Post** /product.Product/CreateOptionsList | 
-*ProductApi* | [**ProductCreateProduct**](docs/ProductApi.md#productcreateproduct) | **Post** /product.Product/CreateProduct | 
-*ProductApi* | [**ProductDelete**](docs/ProductApi.md#productdelete) | **Post** /product.Product/Delete | 
-*ProductApi* | [**ProductGetAttributeOption**](docs/ProductApi.md#productgetattributeoption) | **Post** /product.Product/GetAttributeOption | 
-*ProductApi* | [**ProductGetAttributeOptionByCode**](docs/ProductApi.md#productgetattributeoptionbycode) | **Post** /product.Product/GetAttributeOptionByCode | 
-*ProductApi* | [**ProductGetAttributeOptions**](docs/ProductApi.md#productgetattributeoptions) | **Post** /product.Product/GetAttributeOptions | 
-*ProductApi* | [**ProductGetEntity**](docs/ProductApi.md#productgetentity) | **Post** /product.Product/GetEntity | 
-*ProductApi* | [**ProductGetOptionsList**](docs/ProductApi.md#productgetoptionslist) | **Post** /product.Product/GetOptionsList | 
-*ProductApi* | [**ProductGetProduct**](docs/ProductApi.md#productgetproduct) | **Post** /product.Product/GetProduct | 
-*ProductApi* | [**ProductGetProductByCode**](docs/ProductApi.md#productgetproductbycode) | **Post** /product.Product/GetProductByCode | 
-*ProductApi* | [**ProductGetProductByUrlKey**](docs/ProductApi.md#productgetproductbyurlkey) | **Post** /product.Product/GetProductByUrlKey | 
-*ProductApi* | [**ProductListAttributeOptions**](docs/ProductApi.md#productlistattributeoptions) | **Post** /product.Product/ListAttributeOptions | 
-*ProductApi* | [**ProductListEntities**](docs/ProductApi.md#productlistentities) | **Post** /product.Product/ListEntities | 
-*ProductApi* | [**ProductListOptionsLists**](docs/ProductApi.md#productlistoptionslists) | **Post** /product.Product/ListOptionsLists | 
-*ProductApi* | [**ProductListProducts**](docs/ProductApi.md#productlistproducts) | **Post** /product.Product/ListProducts | 
-*ProductApi* | [**ProductListProductsByIds**](docs/ProductApi.md#productlistproductsbyids) | **Post** /product.Product/ListProductsByIds | 
-*ProductApi* | [**ProductRemoveMediaGalleryEntry**](docs/ProductApi.md#productremovemediagalleryentry) | **Post** /product.Product/RemoveMediaGalleryEntry | 
-*ProductApi* | [**ProductUpdateAttributeOptions**](docs/ProductApi.md#productupdateattributeoptions) | **Post** /product.Product/UpdateAttributeOptions | 
-*ProductApi* | [**ProductUpdateMediaGalleryEntry**](docs/ProductApi.md#productupdatemediagalleryentry) | **Post** /product.Product/UpdateMediaGalleryEntry | 
-*ProductApi* | [**ProductUpdateOptionsList**](docs/ProductApi.md#productupdateoptionslist) | **Post** /product.Product/UpdateOptionsList | 
-*ProductApi* | [**ProductUpdateProduct**](docs/ProductApi.md#productupdateproduct) | **Post** /product.Product/UpdateProduct | 
+*InventoryApi* | [**InventoryAdjustQty**](docs/InventoryApi.md#inventoryadjustqty) | **Post** /inventory.Inventory/AdjustQty | 
+*InventoryApi* | [**InventoryAdjustQtyCommitted**](docs/InventoryApi.md#inventoryadjustqtycommitted) | **Post** /inventory.Inventory/AdjustQtyCommitted | adjust operations are intended for increment/decrement quantities fields by a certain amount
+*InventoryApi* | [**InventoryCreateStockItem**](docs/InventoryApi.md#inventorycreatestockitem) | **Post** /inventory.Inventory/CreateStockItem | 
+*InventoryApi* | [**InventoryGetQtySalable**](docs/InventoryApi.md#inventorygetqtysalable) | **Post** /inventory.Inventory/GetQtySalable | 
+*InventoryApi* | [**InventoryGetStockItem**](docs/InventoryApi.md#inventorygetstockitem) | **Post** /inventory.Inventory/GetStockItem | 
+*InventoryApi* | [**InventoryListStockItems**](docs/InventoryApi.md#inventoryliststockitems) | **Post** /inventory.Inventory/ListStockItems | 
+*InventoryApi* | [**InventoryListStockItemsBySkus**](docs/InventoryApi.md#inventoryliststockitemsbyskus) | **Post** /inventory.Inventory/ListStockItemsBySkus | 
+*InventoryApi* | [**InventoryRebalanceStockQtys**](docs/InventoryApi.md#inventoryrebalancestockqtys) | **Post** /inventory.Inventory/RebalanceStockQtys | rebalance operation is intended for apply or discard a certain amount of qty_committed to qty and old qty_committed
+*InventoryApi* | [**InventoryUpdateStockItem**](docs/InventoryApi.md#inventoryupdatestockitem) | **Post** /inventory.Inventory/UpdateStockItem | 
 
 
 ## Documentation For Models
 
- - [BulkUpdateRequestPayload](docs/BulkUpdateRequestPayload.md)
- - [BulkUpdateResponseResponse](docs/BulkUpdateResponseResponse.md)
- - [EntitymanagerAttribute](docs/EntitymanagerAttribute.md)
- - [EntitymanagerAttributeOption](docs/EntitymanagerAttributeOption.md)
- - [EntitymanagerAttributeOptionErrors](docs/EntitymanagerAttributeOptionErrors.md)
- - [EntitymanagerAttributeOptionSwatch](docs/EntitymanagerAttributeOptionSwatch.md)
- - [EntitymanagerAttributeWriteError](docs/EntitymanagerAttributeWriteError.md)
- - [EntitymanagerAttributeWriteErrors](docs/EntitymanagerAttributeWriteErrors.md)
- - [EntitymanagerBulkCreateAttributeRequest](docs/EntitymanagerBulkCreateAttributeRequest.md)
- - [EntitymanagerBulkCreateAttributeResponse](docs/EntitymanagerBulkCreateAttributeResponse.md)
- - [EntitymanagerCreateAttributeOptionsRequest](docs/EntitymanagerCreateAttributeOptionsRequest.md)
- - [EntitymanagerCreateAttributeOptionsResponse](docs/EntitymanagerCreateAttributeOptionsResponse.md)
- - [EntitymanagerCreateEntityResponse](docs/EntitymanagerCreateEntityResponse.md)
- - [EntitymanagerCreateOptionsListRequest](docs/EntitymanagerCreateOptionsListRequest.md)
- - [EntitymanagerCreateOptionsListResponse](docs/EntitymanagerCreateOptionsListResponse.md)
- - [EntitymanagerEntity](docs/EntitymanagerEntity.md)
- - [EntitymanagerEntityIdentifier](docs/EntitymanagerEntityIdentifier.md)
- - [EntitymanagerEntityRequest](docs/EntitymanagerEntityRequest.md)
- - [EntitymanagerGetAttributeOptionByCodeRequest](docs/EntitymanagerGetAttributeOptionByCodeRequest.md)
- - [EntitymanagerGetAttributeOptionByCodeResponse](docs/EntitymanagerGetAttributeOptionByCodeResponse.md)
- - [EntitymanagerGetAttributeOptionRequest](docs/EntitymanagerGetAttributeOptionRequest.md)
- - [EntitymanagerGetAttributeOptionResponse](docs/EntitymanagerGetAttributeOptionResponse.md)
- - [EntitymanagerGetAttributeOptionsRequest](docs/EntitymanagerGetAttributeOptionsRequest.md)
- - [EntitymanagerGetAttributeOptionsRequestOption](docs/EntitymanagerGetAttributeOptionsRequestOption.md)
- - [EntitymanagerGetAttributeOptionsResponse](docs/EntitymanagerGetAttributeOptionsResponse.md)
- - [EntitymanagerGetAttributeOptionsResponseOption](docs/EntitymanagerGetAttributeOptionsResponseOption.md)
- - [EntitymanagerGetOptionsListRequest](docs/EntitymanagerGetOptionsListRequest.md)
- - [EntitymanagerGetOptionsListResponse](docs/EntitymanagerGetOptionsListResponse.md)
- - [EntitymanagerListAttributeOptionsRequest](docs/EntitymanagerListAttributeOptionsRequest.md)
- - [EntitymanagerListAttributeOptionsResponse](docs/EntitymanagerListAttributeOptionsResponse.md)
- - [EntitymanagerListEntitiesRequest](docs/EntitymanagerListEntitiesRequest.md)
- - [EntitymanagerListEntitiesResponse](docs/EntitymanagerListEntitiesResponse.md)
- - [EntitymanagerListOptionsListsRequest](docs/EntitymanagerListOptionsListsRequest.md)
- - [EntitymanagerListOptionsListsResponse](docs/EntitymanagerListOptionsListsResponse.md)
- - [EntitymanagerOptionsList](docs/EntitymanagerOptionsList.md)
- - [EntitymanagerTypes](docs/EntitymanagerTypes.md)
- - [EntitymanagerUpdateAttributeOptionsRequest](docs/EntitymanagerUpdateAttributeOptionsRequest.md)
- - [EntitymanagerUpdateAttributeOptionsResponse](docs/EntitymanagerUpdateAttributeOptionsResponse.md)
- - [EntitymanagerUpdateOptionsListRequest](docs/EntitymanagerUpdateOptionsListRequest.md)
- - [EntitymanagerUpdateOptionsListResponse](docs/EntitymanagerUpdateOptionsListResponse.md)
- - [ProductAddMediaGalleryEntryRequest](docs/ProductAddMediaGalleryEntryRequest.md)
- - [ProductAddMediaGalleryEntryResponse](docs/ProductAddMediaGalleryEntryResponse.md)
- - [ProductAttributeResponseError](docs/ProductAttributeResponseError.md)
- - [ProductBulkUpdateRequest](docs/ProductBulkUpdateRequest.md)
- - [ProductBulkUpdateResponse](docs/ProductBulkUpdateResponse.md)
- - [ProductCreateProductRequest](docs/ProductCreateProductRequest.md)
- - [ProductCreateProductResponse](docs/ProductCreateProductResponse.md)
- - [ProductDeleteRequest](docs/ProductDeleteRequest.md)
- - [ProductDeleteResponse](docs/ProductDeleteResponse.md)
- - [ProductFieldMask](docs/ProductFieldMask.md)
- - [ProductGetProductByCodeRequest](docs/ProductGetProductByCodeRequest.md)
- - [ProductGetProductByCodeResponse](docs/ProductGetProductByCodeResponse.md)
- - [ProductGetProductByUrlKeyRequest](docs/ProductGetProductByUrlKeyRequest.md)
- - [ProductGetProductByUrlKeyResponse](docs/ProductGetProductByUrlKeyResponse.md)
- - [ProductGetProductRequest](docs/ProductGetProductRequest.md)
- - [ProductGetProductResponse](docs/ProductGetProductResponse.md)
- - [ProductListProductsByIdsRequest](docs/ProductListProductsByIdsRequest.md)
- - [ProductListProductsByIdsResponse](docs/ProductListProductsByIdsResponse.md)
- - [ProductListProductsRequest](docs/ProductListProductsRequest.md)
- - [ProductListProductsResponse](docs/ProductListProductsResponse.md)
- - [ProductLocalizedText](docs/ProductLocalizedText.md)
- - [ProductMediaGallery](docs/ProductMediaGallery.md)
- - [ProductMediaGalleryEntry](docs/ProductMediaGalleryEntry.md)
- - [ProductMediaGalleryEntryMetadata](docs/ProductMediaGalleryEntryMetadata.md)
- - [ProductProductEntity](docs/ProductProductEntity.md)
- - [ProductProductResponseError](docs/ProductProductResponseError.md)
- - [ProductProductVariant](docs/ProductProductVariant.md)
- - [ProductRemoveMediaGalleryEntryRequest](docs/ProductRemoveMediaGalleryEntryRequest.md)
- - [ProductUpdateMediaGalleryEntryRequest](docs/ProductUpdateMediaGalleryEntryRequest.md)
- - [ProductUpdateProductRequest](docs/ProductUpdateProductRequest.md)
- - [ProductUpdateProductResponse](docs/ProductUpdateProductResponse.md)
- - [ProductentitymanagerLocalizedText](docs/ProductentitymanagerLocalizedText.md)
+ - [InventoryAdjustQtyCommittedRequest](docs/InventoryAdjustQtyCommittedRequest.md)
+ - [InventoryAdjustQtyRequest](docs/InventoryAdjustQtyRequest.md)
+ - [InventoryCreateStockItemRequest](docs/InventoryCreateStockItemRequest.md)
+ - [InventoryGetQtySalableRequest](docs/InventoryGetQtySalableRequest.md)
+ - [InventoryGetQtySalableResponse](docs/InventoryGetQtySalableResponse.md)
+ - [InventoryGetStockItemRequest](docs/InventoryGetStockItemRequest.md)
+ - [InventoryListStockItemsBySkusRequest](docs/InventoryListStockItemsBySkusRequest.md)
+ - [InventoryListStockItemsBySkusResponse](docs/InventoryListStockItemsBySkusResponse.md)
+ - [InventoryListStockItemsRequest](docs/InventoryListStockItemsRequest.md)
+ - [InventoryListStockItemsResponse](docs/InventoryListStockItemsResponse.md)
+ - [InventoryRebalanceStockQtysRequest](docs/InventoryRebalanceStockQtysRequest.md)
+ - [InventoryStockItem](docs/InventoryStockItem.md)
+ - [InventoryUpdateStockItemRequest](docs/InventoryUpdateStockItemRequest.md)
  - [ProtobufAny](docs/ProtobufAny.md)
  - [RpcStatus](docs/RpcStatus.md)
+ - [UpdateStockItemRequestPayload](docs/UpdateStockItemRequestPayload.md)
 
 
 ## Documentation For Authorization
 
-
-
-### geminiAuthorization
-
-- **Type**: API key
-- **API key parameter name**: X-Gem-Token
-- **Location**: HTTP header
-
-Note, each API key must be added to a map of `map[string]APIKey` where the key is: X-Gem-Token and passed in as the auth context for each request.
-
-
-### standardAuthorization
-
-- **Type**: API key
-- **API key parameter name**: Authorization
-- **Location**: HTTP header
-
-Note, each API key must be added to a map of `map[string]APIKey` where the key is: Authorization and passed in as the auth context for each request.
+ Endpoints do not require authorization.
 
 
 ## Documentation for Utility Methods
