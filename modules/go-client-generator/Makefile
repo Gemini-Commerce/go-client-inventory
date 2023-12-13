@@ -15,8 +15,8 @@ generate-go-client:
 	${openapi_generator} \
 	generate -i go-client-generator/modules/proto/${lower_service}/${lower_service}.swagger.json \
 	-g go -t go-client-generator/templates/go -o go-client-${lower_service} \
-	--git-host=bitbucket.org \
-	--git-user-id=gogemini \
+	--git-host=github.com \
+	--git-user-id=gemini-commerce \
 	--git-repo-id=go-client-${lower_service} \
 	--additional-properties ${artifact_version}\
 	structPrefix=true,\

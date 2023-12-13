@@ -1,4 +1,4 @@
-module bitbucket.org/gogemini/go-client-inventory
+module github.com/gemini-commerce/go-client-inventory
 
 go 1.13
 
