@@ -9,17 +9,17 @@ release_note=$3
 git_host=$4
 
 if [ "$git_host" = "" ]; then
-    git_host="bitbucket.org"
+    git_host="github.com"
     echo "[INFO] No command line input provided. Set \$git_host to $git_host"
 fi
 
 if [ "$git_user_id" = "" ]; then
-    git_user_id="gogemini"
+    git_user_id="gemini-commerce"
     echo "[INFO] No command line input provided. Set \$git_user_id to $git_user_id"
 fi
 
 if [ "$git_repo_id" = "" ]; then
-    git_repo_id="go-client-inventory"
+    git_repo_id="php-client-iambackoffice"
     echo "[INFO] No command line input provided. Set \$git_repo_id to $git_repo_id"
 fi
 
