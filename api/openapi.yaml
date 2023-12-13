@@ -1,13 +1,25 @@
 openapi: 3.0.1
 info:
-  title: inventory.proto
-  version: version not set
+  contact:
+    email: info@gemini-commerce.com
+    name: Gemini Team
+  license:
+    name: Gemini fair use license
+    url: https://gemini-commerce.com/api/fair-use-license
+  title: inventory Service
+  version: v1
 servers:
-- url: /
+- url: https://inventory.api.gogemini.io/
+tags:
+- description: inventory Description
+  externalDocs:
+    url: https://gemini-commerce.com/api/inventory
+  name: Inventory
 paths:
   /inventory.Inventory/AdjustQty:
     post:
-      operationId: Inventory_AdjustQty
+      description: Increment or decrement the quantity
+      operationId: AdjustQty
       requestBody:
         content:
           application/json:
@@ -20,19 +32,34 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/inventoryStockItem'
-          description: A successful response.
+          description: OK
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: Unauthorized
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: An internal error occurred is thrown when an incompatible payload
+            is sent
         default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/rpcStatus'
           description: An unexpected error response.
+      summary: Adjust Quantity
       tags:
       - Inventory
       x-codegen-request-body-name: body
   /inventory.Inventory/AdjustQtyCommitted:
     post:
-      operationId: Inventory_AdjustQtyCommitted
+      description: Increment or decrement the quantity committed
+      operationId: AdjustQtyCommitted
       requestBody:
         content:
           application/json:
@@ -45,21 +72,33 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/inventoryStockItem'
-          description: A successful response.
+          description: OK
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: Unauthorized
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: An internal error occurred is thrown when an incompatible payload
+            is sent
         default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/rpcStatus'
           description: An unexpected error response.
-      summary: adjust operations are intended for increment/decrement quantities fields
-        by a certain amount
+      summary: Adjust Quantity Committed
       tags:
       - Inventory
       x-codegen-request-body-name: body
   /inventory.Inventory/CreateStockItem:
     post:
-      operationId: Inventory_CreateStockItem
+      operationId: CreateStockItem
       requestBody:
         content:
           application/json:
@@ -72,19 +111,35 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/inventoryStockItem'
-          description: A successful response.
+          description: OK
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: Unauthorized
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: An internal error occurred is thrown when an incompatible payload
+            is sent
         default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/rpcStatus'
           description: An unexpected error response.
+      security:
+      - standardAuthorization: []
+      summary: Create Stock Item
       tags:
       - Inventory
       x-codegen-request-body-name: body
   /inventory.Inventory/GetQtySalable:
     post:
-      operationId: Inventory_GetQtySalable
+      operationId: GetQtySalable
       requestBody:
         content:
           application/json:
@@ -97,19 +152,33 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/inventoryGetQtySalableResponse'
-          description: A successful response.
+          description: OK
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: Unauthorized
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: An internal error occurred is thrown when an incompatible payload
+            is sent
         default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/rpcStatus'
           description: An unexpected error response.
+      summary: Get Salable Quantity
       tags:
       - Inventory
       x-codegen-request-body-name: body
   /inventory.Inventory/GetStockItem:
     post:
-      operationId: Inventory_GetStockItem
+      operationId: GetStockItem
       requestBody:
         content:
           application/json:
@@ -122,19 +191,33 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/inventoryStockItem'
-          description: A successful response.
+          description: OK
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: Unauthorized
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: An internal error occurred is thrown when an incompatible payload
+            is sent
         default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/rpcStatus'
           description: An unexpected error response.
+      summary: Get Stock Item
       tags:
       - Inventory
       x-codegen-request-body-name: body
   /inventory.Inventory/ListStockItems:
     post:
-      operationId: Inventory_ListStockItems
+      operationId: ListStockItems
       requestBody:
         content:
           application/json:
@@ -147,19 +230,33 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/inventoryListStockItemsResponse'
-          description: A successful response.
+          description: OK
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: Unauthorized
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: An internal error occurred is thrown when an incompatible payload
+            is sent
         default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/rpcStatus'
           description: An unexpected error response.
+      summary: List Stock Items
       tags:
       - Inventory
       x-codegen-request-body-name: body
   /inventory.Inventory/ListStockItemsBySkus:
     post:
-      operationId: Inventory_ListStockItemsBySkus
+      operationId: ListStockItemsBySkus
       requestBody:
         content:
           application/json:
@@ -172,19 +269,33 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/inventoryListStockItemsBySkusResponse'
-          description: A successful response.
+          description: OK
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: Unauthorized
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: An internal error occurred is thrown when an incompatible payload
+            is sent
         default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/rpcStatus'
           description: An unexpected error response.
+      summary: List Stock Items by SKUs
       tags:
       - Inventory
       x-codegen-request-body-name: body
   /inventory.Inventory/RebalanceStockQtys:
     post:
-      operationId: Inventory_RebalanceStockQtys
+      operationId: RebalanceStockQtys
       requestBody:
         content:
           application/json:
@@ -197,21 +308,33 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/inventoryStockItem'
-          description: A successful response.
+          description: OK
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: Unauthorized
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: An internal error occurred is thrown when an incompatible payload
+            is sent
         default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/rpcStatus'
           description: An unexpected error response.
-      summary: rebalance operation is intended for apply or discard a certain amount
-        of qty_committed to qty and old qty_committed
+      summary: Rebalance Stock Quantities
       tags:
       - Inventory
       x-codegen-request-body-name: body
   /inventory.Inventory/UpdateStockItem:
     post:
-      operationId: Inventory_UpdateStockItem
+      operationId: UpdateStockItem
       requestBody:
         content:
           application/json:
@@ -224,13 +347,27 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/inventoryStockItem'
-          description: A successful response.
+          description: OK
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: Unauthorized
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rpcStatus'
+          description: An internal error occurred is thrown when an incompatible payload
+            is sent
         default:
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/rpcStatus'
           description: An unexpected error response.
+      summary: Update Stock Item
       tags:
       - Inventory
       x-codegen-request-body-name: body
@@ -256,6 +393,7 @@ components:
           type: string
         qtyAdjust:
           format: int32
+          title: delta value
           type: integer
       type: object
     inventoryAdjustQtyRequest:
@@ -266,6 +404,7 @@ components:
           type: string
         qtyAdjust:
           format: int32
+          title: delta value
           type: integer
       type: object
     inventoryCreateStockItemRequest:
@@ -306,6 +445,7 @@ components:
           type: string
         qtySalable:
           format: int32
+          title: qty - qty_committed - out_of_stock_threshold
           type: integer
       type: object
     inventoryGetStockItemRequest:
@@ -330,6 +470,7 @@ components:
         - outOfStockThreshold: 0
           createdAt: 2000-01-23T04:56:07.000+00:00
           qtyCommitted: 1
+          qtySalable: 5
           qty: 6
           tenantId: tenantId
           id: id
@@ -338,6 +479,7 @@ components:
         - outOfStockThreshold: 0
           createdAt: 2000-01-23T04:56:07.000+00:00
           qtyCommitted: 1
+          qtySalable: 5
           qty: 6
           tenantId: tenantId
           id: id
@@ -368,6 +510,7 @@ components:
         - outOfStockThreshold: 0
           createdAt: 2000-01-23T04:56:07.000+00:00
           qtyCommitted: 1
+          qtySalable: 5
           qty: 6
           tenantId: tenantId
           id: id
@@ -376,6 +519,7 @@ components:
         - outOfStockThreshold: 0
           createdAt: 2000-01-23T04:56:07.000+00:00
           qtyCommitted: 1
+          qtySalable: 5
           qty: 6
           tenantId: tenantId
           id: id
@@ -401,6 +545,7 @@ components:
           type: string
         qtyCommitted:
           format: int32
+          title: qty_committed to be applied to qty and old qty_committed
           type: integer
       type: object
     inventoryStockItem:
@@ -408,6 +553,7 @@ components:
         outOfStockThreshold: 0
         createdAt: 2000-01-23T04:56:07.000+00:00
         qtyCommitted: 1
+        qtySalable: 5
         qty: 6
         tenantId: tenantId
         id: id
@@ -429,6 +575,10 @@ components:
         qtyCommitted:
           format: int32
           type: integer
+        qtySalable:
+          format: int32
+          title: qty - qty_committed - out_of_stock_threshold
+          type: integer
         createdAt:
           format: date-time
           type: string
@@ -445,17 +595,13 @@ components:
         payload:
           $ref: '#/components/schemas/UpdateStockItemRequestPayload'
         payloadMask:
-          items:
-            type: string
-          type: array
+          type: string
       type: object
     protobufAny:
+      additionalProperties:
+        type: object
       properties:
-        typeUrl:
-          type: string
-        value:
-          format: byte
-          pattern: "^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$"
+        '@type':
           type: string
       type: object
     rpcStatus:
@@ -470,4 +616,8 @@ components:
             $ref: '#/components/schemas/protobufAny'
           type: array
       type: object
+  securitySchemes:
+    standardAuthorization:
+      flows: {}
+      type: oauth2
 x-original-swagger-version: "2.0"

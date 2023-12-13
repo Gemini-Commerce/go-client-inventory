@@ -1,24 +1,26 @@
 # \InventoryApi
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://inventory.api.gogemini.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**InventoryAdjustQty**](InventoryApi.md#InventoryAdjustQty) | **Post** /inventory.Inventory/AdjustQty | 
-[**InventoryAdjustQtyCommitted**](InventoryApi.md#InventoryAdjustQtyCommitted) | **Post** /inventory.Inventory/AdjustQtyCommitted | adjust operations are intended for increment/decrement quantities fields by a certain amount
-[**InventoryCreateStockItem**](InventoryApi.md#InventoryCreateStockItem) | **Post** /inventory.Inventory/CreateStockItem | 
-[**InventoryGetQtySalable**](InventoryApi.md#InventoryGetQtySalable) | **Post** /inventory.Inventory/GetQtySalable | 
-[**InventoryGetStockItem**](InventoryApi.md#InventoryGetStockItem) | **Post** /inventory.Inventory/GetStockItem | 
-[**InventoryListStockItems**](InventoryApi.md#InventoryListStockItems) | **Post** /inventory.Inventory/ListStockItems | 
-[**InventoryListStockItemsBySkus**](InventoryApi.md#InventoryListStockItemsBySkus) | **Post** /inventory.Inventory/ListStockItemsBySkus | 
-[**InventoryRebalanceStockQtys**](InventoryApi.md#InventoryRebalanceStockQtys) | **Post** /inventory.Inventory/RebalanceStockQtys | rebalance operation is intended for apply or discard a certain amount of qty_committed to qty and old qty_committed
-[**InventoryUpdateStockItem**](InventoryApi.md#InventoryUpdateStockItem) | **Post** /inventory.Inventory/UpdateStockItem | 
+[**AdjustQty**](InventoryApi.md#AdjustQty) | **Post** /inventory.Inventory/AdjustQty | Adjust Quantity
+[**AdjustQtyCommitted**](InventoryApi.md#AdjustQtyCommitted) | **Post** /inventory.Inventory/AdjustQtyCommitted | Adjust Quantity Committed
+[**CreateStockItem**](InventoryApi.md#CreateStockItem) | **Post** /inventory.Inventory/CreateStockItem | Create Stock Item
+[**GetQtySalable**](InventoryApi.md#GetQtySalable) | **Post** /inventory.Inventory/GetQtySalable | Get Salable Quantity
+[**GetStockItem**](InventoryApi.md#GetStockItem) | **Post** /inventory.Inventory/GetStockItem | Get Stock Item
+[**ListStockItems**](InventoryApi.md#ListStockItems) | **Post** /inventory.Inventory/ListStockItems | List Stock Items
+[**ListStockItemsBySkus**](InventoryApi.md#ListStockItemsBySkus) | **Post** /inventory.Inventory/ListStockItemsBySkus | List Stock Items by SKUs
+[**RebalanceStockQtys**](InventoryApi.md#RebalanceStockQtys) | **Post** /inventory.Inventory/RebalanceStockQtys | Rebalance Stock Quantities
+[**UpdateStockItem**](InventoryApi.md#UpdateStockItem) | **Post** /inventory.Inventory/UpdateStockItem | Update Stock Item
 
 
 
-## InventoryAdjustQty
+## AdjustQty
 
-> InventoryStockItem InventoryAdjustQty(ctx).Body(body).Execute()
+> InventoryStockItem AdjustQty(ctx).Body(body).Execute()
+
+Adjust Quantity
 
 
 
@@ -39,13 +41,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InventoryApi.InventoryAdjustQty(context.Background()).Body(body).Execute()
+    resp, r, err := apiClient.InventoryApi.AdjustQty(context.Background()).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InventoryApi.InventoryAdjustQty``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `InventoryApi.AdjustQty``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `InventoryAdjustQty`: InventoryStockItem
-    fmt.Fprintf(os.Stdout, "Response from `InventoryApi.InventoryAdjustQty`: %v\n", resp)
+    // response from `AdjustQty`: InventoryStockItem
+    fmt.Fprintf(os.Stdout, "Response from `InventoryApi.AdjustQty`: %v\n", resp)
 }
 ```
 
@@ -55,7 +57,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiInventoryAdjustQtyRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiAdjustQtyRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -80,11 +82,13 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## InventoryAdjustQtyCommitted
+## AdjustQtyCommitted
 
-> InventoryStockItem InventoryAdjustQtyCommitted(ctx).Body(body).Execute()
+> InventoryStockItem AdjustQtyCommitted(ctx).Body(body).Execute()
 
-adjust operations are intended for increment/decrement quantities fields by a certain amount
+Adjust Quantity Committed
+
+
 
 ### Example
 
@@ -103,13 +107,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InventoryApi.InventoryAdjustQtyCommitted(context.Background()).Body(body).Execute()
+    resp, r, err := apiClient.InventoryApi.AdjustQtyCommitted(context.Background()).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InventoryApi.InventoryAdjustQtyCommitted``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `InventoryApi.AdjustQtyCommitted``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `InventoryAdjustQtyCommitted`: InventoryStockItem
-    fmt.Fprintf(os.Stdout, "Response from `InventoryApi.InventoryAdjustQtyCommitted`: %v\n", resp)
+    // response from `AdjustQtyCommitted`: InventoryStockItem
+    fmt.Fprintf(os.Stdout, "Response from `InventoryApi.AdjustQtyCommitted`: %v\n", resp)
 }
 ```
 
@@ -119,7 +123,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiInventoryAdjustQtyCommittedRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiAdjustQtyCommittedRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -144,11 +148,11 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## InventoryCreateStockItem
+## CreateStockItem
 
-> InventoryStockItem InventoryCreateStockItem(ctx).Body(body).Execute()
+> InventoryStockItem CreateStockItem(ctx).Body(body).Execute()
 
-
+Create Stock Item
 
 ### Example
 
@@ -167,13 +171,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InventoryApi.InventoryCreateStockItem(context.Background()).Body(body).Execute()
+    resp, r, err := apiClient.InventoryApi.CreateStockItem(context.Background()).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InventoryApi.InventoryCreateStockItem``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `InventoryApi.CreateStockItem``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `InventoryCreateStockItem`: InventoryStockItem
-    fmt.Fprintf(os.Stdout, "Response from `InventoryApi.InventoryCreateStockItem`: %v\n", resp)
+    // response from `CreateStockItem`: InventoryStockItem
+    fmt.Fprintf(os.Stdout, "Response from `InventoryApi.CreateStockItem`: %v\n", resp)
 }
 ```
 
@@ -183,7 +187,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiInventoryCreateStockItemRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateStockItemRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -208,11 +212,11 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## InventoryGetQtySalable
+## GetQtySalable
 
-> InventoryGetQtySalableResponse InventoryGetQtySalable(ctx).Body(body).Execute()
+> InventoryGetQtySalableResponse GetQtySalable(ctx).Body(body).Execute()
 
-
+Get Salable Quantity
 
 ### Example
 
@@ -231,13 +235,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InventoryApi.InventoryGetQtySalable(context.Background()).Body(body).Execute()
+    resp, r, err := apiClient.InventoryApi.GetQtySalable(context.Background()).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InventoryApi.InventoryGetQtySalable``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `InventoryApi.GetQtySalable``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `InventoryGetQtySalable`: InventoryGetQtySalableResponse
-    fmt.Fprintf(os.Stdout, "Response from `InventoryApi.InventoryGetQtySalable`: %v\n", resp)
+    // response from `GetQtySalable`: InventoryGetQtySalableResponse
+    fmt.Fprintf(os.Stdout, "Response from `InventoryApi.GetQtySalable`: %v\n", resp)
 }
 ```
 
@@ -247,7 +251,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiInventoryGetQtySalableRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetQtySalableRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -272,11 +276,11 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## InventoryGetStockItem
+## GetStockItem
 
-> InventoryStockItem InventoryGetStockItem(ctx).Body(body).Execute()
+> InventoryStockItem GetStockItem(ctx).Body(body).Execute()
 
-
+Get Stock Item
 
 ### Example
 
@@ -295,13 +299,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InventoryApi.InventoryGetStockItem(context.Background()).Body(body).Execute()
+    resp, r, err := apiClient.InventoryApi.GetStockItem(context.Background()).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InventoryApi.InventoryGetStockItem``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `InventoryApi.GetStockItem``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `InventoryGetStockItem`: InventoryStockItem
-    fmt.Fprintf(os.Stdout, "Response from `InventoryApi.InventoryGetStockItem`: %v\n", resp)
+    // response from `GetStockItem`: InventoryStockItem
+    fmt.Fprintf(os.Stdout, "Response from `InventoryApi.GetStockItem`: %v\n", resp)
 }
 ```
 
@@ -311,7 +315,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiInventoryGetStockItemRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetStockItemRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -336,11 +340,11 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## InventoryListStockItems
+## ListStockItems
 
-> InventoryListStockItemsResponse InventoryListStockItems(ctx).Body(body).Execute()
+> InventoryListStockItemsResponse ListStockItems(ctx).Body(body).Execute()
 
-
+List Stock Items
 
 ### Example
 
@@ -359,13 +363,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InventoryApi.InventoryListStockItems(context.Background()).Body(body).Execute()
+    resp, r, err := apiClient.InventoryApi.ListStockItems(context.Background()).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InventoryApi.InventoryListStockItems``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `InventoryApi.ListStockItems``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `InventoryListStockItems`: InventoryListStockItemsResponse
-    fmt.Fprintf(os.Stdout, "Response from `InventoryApi.InventoryListStockItems`: %v\n", resp)
+    // response from `ListStockItems`: InventoryListStockItemsResponse
+    fmt.Fprintf(os.Stdout, "Response from `InventoryApi.ListStockItems`: %v\n", resp)
 }
 ```
 
@@ -375,7 +379,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiInventoryListStockItemsRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListStockItemsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -400,11 +404,11 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## InventoryListStockItemsBySkus
+## ListStockItemsBySkus
 
-> InventoryListStockItemsBySkusResponse InventoryListStockItemsBySkus(ctx).Body(body).Execute()
+> InventoryListStockItemsBySkusResponse ListStockItemsBySkus(ctx).Body(body).Execute()
 
-
+List Stock Items by SKUs
 
 ### Example
 
@@ -423,13 +427,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InventoryApi.InventoryListStockItemsBySkus(context.Background()).Body(body).Execute()
+    resp, r, err := apiClient.InventoryApi.ListStockItemsBySkus(context.Background()).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InventoryApi.InventoryListStockItemsBySkus``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `InventoryApi.ListStockItemsBySkus``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `InventoryListStockItemsBySkus`: InventoryListStockItemsBySkusResponse
-    fmt.Fprintf(os.Stdout, "Response from `InventoryApi.InventoryListStockItemsBySkus`: %v\n", resp)
+    // response from `ListStockItemsBySkus`: InventoryListStockItemsBySkusResponse
+    fmt.Fprintf(os.Stdout, "Response from `InventoryApi.ListStockItemsBySkus`: %v\n", resp)
 }
 ```
 
@@ -439,7 +443,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiInventoryListStockItemsBySkusRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListStockItemsBySkusRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -464,11 +468,11 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## InventoryRebalanceStockQtys
+## RebalanceStockQtys
 
-> InventoryStockItem InventoryRebalanceStockQtys(ctx).Body(body).Execute()
+> InventoryStockItem RebalanceStockQtys(ctx).Body(body).Execute()
 
-rebalance operation is intended for apply or discard a certain amount of qty_committed to qty and old qty_committed
+Rebalance Stock Quantities
 
 ### Example
 
@@ -487,13 +491,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InventoryApi.InventoryRebalanceStockQtys(context.Background()).Body(body).Execute()
+    resp, r, err := apiClient.InventoryApi.RebalanceStockQtys(context.Background()).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InventoryApi.InventoryRebalanceStockQtys``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `InventoryApi.RebalanceStockQtys``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `InventoryRebalanceStockQtys`: InventoryStockItem
-    fmt.Fprintf(os.Stdout, "Response from `InventoryApi.InventoryRebalanceStockQtys`: %v\n", resp)
+    // response from `RebalanceStockQtys`: InventoryStockItem
+    fmt.Fprintf(os.Stdout, "Response from `InventoryApi.RebalanceStockQtys`: %v\n", resp)
 }
 ```
 
@@ -503,7 +507,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiInventoryRebalanceStockQtysRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiRebalanceStockQtysRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -528,11 +532,11 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## InventoryUpdateStockItem
+## UpdateStockItem
 
-> InventoryStockItem InventoryUpdateStockItem(ctx).Body(body).Execute()
+> InventoryStockItem UpdateStockItem(ctx).Body(body).Execute()
 
-
+Update Stock Item
 
 ### Example
 
@@ -551,13 +555,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InventoryApi.InventoryUpdateStockItem(context.Background()).Body(body).Execute()
+    resp, r, err := apiClient.InventoryApi.UpdateStockItem(context.Background()).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InventoryApi.InventoryUpdateStockItem``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `InventoryApi.UpdateStockItem``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `InventoryUpdateStockItem`: InventoryStockItem
-    fmt.Fprintf(os.Stdout, "Response from `InventoryApi.InventoryUpdateStockItem`: %v\n", resp)
+    // response from `UpdateStockItem`: InventoryStockItem
+    fmt.Fprintf(os.Stdout, "Response from `InventoryApi.UpdateStockItem`: %v\n", resp)
 }
 ```
 
@@ -567,7 +571,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiInventoryUpdateStockItemRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiUpdateStockItemRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

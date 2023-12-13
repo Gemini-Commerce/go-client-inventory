@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **OutOfStockThreshold**| **int32** |   | [optional]
 **Qty**| **int32** |   | [optional]
 **QtyCommitted**| **int32** |   | [optional]
+**QtySalable**| **int32** |   | [optional]
 **CreatedAt**| [**time.Time**](time.Time.md) |   | [optional]
 **UpdatedAt**| [**time.Time**](time.Time.md) |   | [optional]
 

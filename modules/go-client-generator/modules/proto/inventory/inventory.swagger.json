@@ -1,10 +1,31 @@
-
 {
   "swagger": "2.0",
   "info": {
-    "title": "inventory.proto",
-    "version": "version not set"
+    "title": "inventory Service",
+    "version": "v1",
+    "contact": {
+      "name": "Gemini Team",
+      "email": "info@gemini-commerce.com"
+    },
+    "license": {
+      "name": "Gemini fair use license",
+      "url": "https://gemini-commerce.com/api/fair-use-license"
+    }
   },
+  "tags": [
+    {
+      "name": "Inventory",
+      "description": "inventory Description",
+      "externalDocs": {
+        "url": "https://gemini-commerce.com/api/inventory"
+      }
+    }
+  ],
+  "host": "inventory.api.gogemini.io",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
   "consumes": [
     "application/json"
   ],
@@ -14,12 +35,26 @@
   "paths": {
     "/inventory.Inventory/AdjustQty": {
       "post": {
-        "operationId": "Inventory_AdjustQty",
+        "summary": "Adjust Quantity",
+        "description": "Increment or decrement the quantity",
+        "operationId": "AdjustQty",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "OK",
             "schema": {
               "$ref": "#/definitions/inventoryStockItem"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          },
+          "500": {
+            "description": "An internal error occurred is thrown when an incompatible payload is sent",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
             }
           },
           "default": {
@@ -46,13 +81,26 @@
     },
     "/inventory.Inventory/AdjustQtyCommitted": {
       "post": {
-        "summary": "adjust operations are intended for increment/decrement quantities fields by a certain amount",
-        "operationId": "Inventory_AdjustQtyCommitted",
+        "summary": "Adjust Quantity Committed",
+        "description": "Increment or decrement the quantity committed",
+        "operationId": "AdjustQtyCommitted",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "OK",
             "schema": {
               "$ref": "#/definitions/inventoryStockItem"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          },
+          "500": {
+            "description": "An internal error occurred is thrown when an incompatible payload is sent",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
             }
           },
           "default": {
@@ -79,12 +127,25 @@
     },
     "/inventory.Inventory/CreateStockItem": {
       "post": {
-        "operationId": "Inventory_CreateStockItem",
+        "summary": "Create Stock Item",
+        "operationId": "CreateStockItem",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "OK",
             "schema": {
               "$ref": "#/definitions/inventoryStockItem"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          },
+          "500": {
+            "description": "An internal error occurred is thrown when an incompatible payload is sent",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
             }
           },
           "default": {
@@ -106,17 +167,35 @@
         ],
         "tags": [
           "Inventory"
+        ],
+        "security": [
+          {
+            "standardAuthorization": []
+          }
         ]
       }
     },
     "/inventory.Inventory/GetQtySalable": {
       "post": {
-        "operationId": "Inventory_GetQtySalable",
+        "summary": "Get Salable Quantity",
+        "operationId": "GetQtySalable",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "OK",
             "schema": {
               "$ref": "#/definitions/inventoryGetQtySalableResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          },
+          "500": {
+            "description": "An internal error occurred is thrown when an incompatible payload is sent",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
             }
           },
           "default": {
@@ -143,12 +222,25 @@
     },
     "/inventory.Inventory/GetStockItem": {
       "post": {
-        "operationId": "Inventory_GetStockItem",
+        "summary": "Get Stock Item",
+        "operationId": "GetStockItem",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "OK",
             "schema": {
               "$ref": "#/definitions/inventoryStockItem"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          },
+          "500": {
+            "description": "An internal error occurred is thrown when an incompatible payload is sent",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
             }
           },
           "default": {
@@ -175,12 +267,25 @@
     },
     "/inventory.Inventory/ListStockItems": {
       "post": {
-        "operationId": "Inventory_ListStockItems",
+        "summary": "List Stock Items",
+        "operationId": "ListStockItems",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "OK",
             "schema": {
               "$ref": "#/definitions/inventoryListStockItemsResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          },
+          "500": {
+            "description": "An internal error occurred is thrown when an incompatible payload is sent",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
             }
           },
           "default": {
@@ -207,12 +312,25 @@
     },
     "/inventory.Inventory/ListStockItemsBySkus": {
       "post": {
-        "operationId": "Inventory_ListStockItemsBySkus",
+        "summary": "List Stock Items by SKUs",
+        "operationId": "ListStockItemsBySkus",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "OK",
             "schema": {
               "$ref": "#/definitions/inventoryListStockItemsBySkusResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          },
+          "500": {
+            "description": "An internal error occurred is thrown when an incompatible payload is sent",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
             }
           },
           "default": {
@@ -239,13 +357,25 @@
     },
     "/inventory.Inventory/RebalanceStockQtys": {
       "post": {
-        "summary": "rebalance operation is intended for apply or discard a certain amount of qty_committed to qty and old qty_committed",
-        "operationId": "Inventory_RebalanceStockQtys",
+        "summary": "Rebalance Stock Quantities",
+        "operationId": "RebalanceStockQtys",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "OK",
             "schema": {
               "$ref": "#/definitions/inventoryStockItem"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          },
+          "500": {
+            "description": "An internal error occurred is thrown when an incompatible payload is sent",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
             }
           },
           "default": {
@@ -272,12 +402,25 @@
     },
     "/inventory.Inventory/UpdateStockItem": {
       "post": {
-        "operationId": "Inventory_UpdateStockItem",
+        "summary": "Update Stock Item",
+        "operationId": "UpdateStockItem",
         "responses": {
           "200": {
-            "description": "A successful response.",
+            "description": "OK",
             "schema": {
               "$ref": "#/definitions/inventoryStockItem"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          },
+          "500": {
+            "description": "An internal error occurred is thrown when an incompatible payload is sent",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
             }
           },
           "default": {
@@ -332,7 +475,8 @@
         },
         "qtyAdjust": {
           "type": "integer",
-          "format": "int32"
+          "format": "int32",
+          "title": "delta value"
         }
       }
     },
@@ -347,7 +491,8 @@
         },
         "qtyAdjust": {
           "type": "integer",
-          "format": "int32"
+          "format": "int32",
+          "title": "delta value"
         }
       }
     },
@@ -399,7 +544,8 @@
         },
         "qtySalable": {
           "type": "integer",
-          "format": "int32"
+          "format": "int32",
+          "title": "qty - qty_committed - out_of_stock_threshold"
         }
       }
     },
@@ -434,6 +580,7 @@
         "stockItems": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/inventoryStockItem"
           }
         }
@@ -462,6 +609,7 @@
         "stockItems": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/inventoryStockItem"
           }
         },
@@ -482,7 +630,8 @@
         },
         "qtyCommitted": {
           "type": "integer",
-          "format": "int32"
+          "format": "int32",
+          "title": "qty_committed to be applied to qty and old qty_committed"
         }
       }
     },
@@ -510,6 +659,11 @@
           "type": "integer",
           "format": "int32"
         },
+        "qtySalable": {
+          "type": "integer",
+          "format": "int32",
+          "title": "qty - qty_committed - out_of_stock_threshold"
+        },
         "createdAt": {
           "type": "string",
           "format": "date-time"
@@ -533,24 +687,18 @@
           "$ref": "#/definitions/UpdateStockItemRequestPayload"
         },
         "payloadMask": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
+          "type": "string"
         }
       }
     },
     "protobufAny": {
       "type": "object",
       "properties": {
-        "typeUrl": {
+        "@type": {
           "type": "string"
-        },
-        "value": {
-          "type": "string",
-          "format": "byte"
         }
-      }
+      },
+      "additionalProperties": {}
     },
     "rpcStatus": {
       "type": "object",
@@ -565,10 +713,18 @@
         "details": {
           "type": "array",
           "items": {
+            "type": "object",
             "$ref": "#/definitions/protobufAny"
           }
         }
       }
+    }
+  },
+  "securityDefinitions": {
+    "standardAuthorization": {
+      "type": "oauth2",
+      "name": "Authorization",
+      "in": "header"
     }
   }
 }
