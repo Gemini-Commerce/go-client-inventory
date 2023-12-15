@@ -1,7 +1,7 @@
 /*
-inventory.proto
+inventory Service
 
-Testing InventoryApiService
+Testing InventoryAPIService
 
 */
 
@@ -10,124 +10,124 @@ Testing InventoryApiService
 package inventory
 
 import (
-    "context"
-    "github.com/stretchr/testify/assert"
-    "github.com/stretchr/testify/require"
-    "testing"
-    openapiclient "./openapi"
+	"context"
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
+	"testing"
+	openapiclient "github.com/gemini-commerce/go-client-inventory"
 )
 
-func Test_inventory_InventoryApiService(t *testing.T) {
+func Test_inventory_InventoryAPIService(t *testing.T) {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
 
-    t.Run("Test InventoryApiService InventoryAdjustQty", func(t *testing.T) {
+	t.Run("Test InventoryAPIService AdjustQty", func(t *testing.T) {
 
-        t.Skip("skip test")  // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-        resp, httpRes, err := apiClient.InventoryApi.InventoryAdjustQty(context.Background()).Execute()
+		resp, httpRes, err := apiClient.InventoryAPI.AdjustQty(context.Background()).Execute()
 
-        require.Nil(t, err)
-        require.NotNil(t, resp)
-        assert.Equal(t, 200, httpRes.StatusCode)
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
 
-    })
+	})
 
-    t.Run("Test InventoryApiService InventoryAdjustQtyCommitted", func(t *testing.T) {
+	t.Run("Test InventoryAPIService AdjustQtyCommitted", func(t *testing.T) {
 
-        t.Skip("skip test")  // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-        resp, httpRes, err := apiClient.InventoryApi.InventoryAdjustQtyCommitted(context.Background()).Execute()
+		resp, httpRes, err := apiClient.InventoryAPI.AdjustQtyCommitted(context.Background()).Execute()
 
-        require.Nil(t, err)
-        require.NotNil(t, resp)
-        assert.Equal(t, 200, httpRes.StatusCode)
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
 
-    })
+	})
 
-    t.Run("Test InventoryApiService InventoryCreateStockItem", func(t *testing.T) {
+	t.Run("Test InventoryAPIService CreateStockItem", func(t *testing.T) {
 
-        t.Skip("skip test")  // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-        resp, httpRes, err := apiClient.InventoryApi.InventoryCreateStockItem(context.Background()).Execute()
+		resp, httpRes, err := apiClient.InventoryAPI.CreateStockItem(context.Background()).Execute()
 
-        require.Nil(t, err)
-        require.NotNil(t, resp)
-        assert.Equal(t, 200, httpRes.StatusCode)
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
 
-    })
+	})
 
-    t.Run("Test InventoryApiService InventoryGetQtySalable", func(t *testing.T) {
+	t.Run("Test InventoryAPIService GetQtySalable", func(t *testing.T) {
 
-        t.Skip("skip test")  // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-        resp, httpRes, err := apiClient.InventoryApi.InventoryGetQtySalable(context.Background()).Execute()
+		resp, httpRes, err := apiClient.InventoryAPI.GetQtySalable(context.Background()).Execute()
 
-        require.Nil(t, err)
-        require.NotNil(t, resp)
-        assert.Equal(t, 200, httpRes.StatusCode)
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
 
-    })
+	})
 
-    t.Run("Test InventoryApiService InventoryGetStockItem", func(t *testing.T) {
+	t.Run("Test InventoryAPIService GetStockItem", func(t *testing.T) {
 
-        t.Skip("skip test")  // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-        resp, httpRes, err := apiClient.InventoryApi.InventoryGetStockItem(context.Background()).Execute()
+		resp, httpRes, err := apiClient.InventoryAPI.GetStockItem(context.Background()).Execute()
 
-        require.Nil(t, err)
-        require.NotNil(t, resp)
-        assert.Equal(t, 200, httpRes.StatusCode)
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
 
-    })
+	})
 
-    t.Run("Test InventoryApiService InventoryListStockItems", func(t *testing.T) {
+	t.Run("Test InventoryAPIService ListStockItems", func(t *testing.T) {
 
-        t.Skip("skip test")  // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-        resp, httpRes, err := apiClient.InventoryApi.InventoryListStockItems(context.Background()).Execute()
+		resp, httpRes, err := apiClient.InventoryAPI.ListStockItems(context.Background()).Execute()
 
-        require.Nil(t, err)
-        require.NotNil(t, resp)
-        assert.Equal(t, 200, httpRes.StatusCode)
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
 
-    })
+	})
 
-    t.Run("Test InventoryApiService InventoryListStockItemsBySkus", func(t *testing.T) {
+	t.Run("Test InventoryAPIService ListStockItemsBySkus", func(t *testing.T) {
 
-        t.Skip("skip test")  // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-        resp, httpRes, err := apiClient.InventoryApi.InventoryListStockItemsBySkus(context.Background()).Execute()
+		resp, httpRes, err := apiClient.InventoryAPI.ListStockItemsBySkus(context.Background()).Execute()
 
-        require.Nil(t, err)
-        require.NotNil(t, resp)
-        assert.Equal(t, 200, httpRes.StatusCode)
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
 
-    })
+	})
 
-    t.Run("Test InventoryApiService InventoryRebalanceStockQtys", func(t *testing.T) {
+	t.Run("Test InventoryAPIService RebalanceStockQtys", func(t *testing.T) {
 
-        t.Skip("skip test")  // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-        resp, httpRes, err := apiClient.InventoryApi.InventoryRebalanceStockQtys(context.Background()).Execute()
+		resp, httpRes, err := apiClient.InventoryAPI.RebalanceStockQtys(context.Background()).Execute()
 
-        require.Nil(t, err)
-        require.NotNil(t, resp)
-        assert.Equal(t, 200, httpRes.StatusCode)
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
 
-    })
+	})
 
-    t.Run("Test InventoryApiService InventoryUpdateStockItem", func(t *testing.T) {
+	t.Run("Test InventoryAPIService UpdateStockItem", func(t *testing.T) {
 
-        t.Skip("skip test")  // remove to run test
+		t.Skip("skip test")  // remove to run test
 
-        resp, httpRes, err := apiClient.InventoryApi.InventoryUpdateStockItem(context.Background()).Execute()
+		resp, httpRes, err := apiClient.InventoryAPI.UpdateStockItem(context.Background()).Execute()
 
-        require.Nil(t, err)
-        require.NotNil(t, resp)
-        assert.Equal(t, 200, httpRes.StatusCode)
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
 
-    })
+	})
 
 }

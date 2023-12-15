@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the InventoryListStockItemsBySkusResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &InventoryListStockItemsBySkusResponse{}
+
 // InventoryListStockItemsBySkusResponse struct for InventoryListStockItemsBySkusResponse
 type InventoryListStockItemsBySkusResponse struct {
 	StockItems []InventoryStockItem `json:"stockItems,omitempty"`
@@ -39,7 +42,7 @@ func NewInventoryListStockItemsBySkusResponseWithDefaults() *InventoryListStockI
 
 // GetStockItems returns the StockItems field value if set, zero value otherwise.
 func (o *InventoryListStockItemsBySkusResponse) GetStockItems() []InventoryStockItem {
-	if o == nil || isNil(o.StockItems) {
+	if o == nil || IsNil(o.StockItems) {
 		var ret []InventoryStockItem
 		return ret
 	}
@@ -49,15 +52,15 @@ func (o *InventoryListStockItemsBySkusResponse) GetStockItems() []InventoryStock
 // GetStockItemsOk returns a tuple with the StockItems field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryListStockItemsBySkusResponse) GetStockItemsOk() ([]InventoryStockItem, bool) {
-	if o == nil || isNil(o.StockItems) {
-    return nil, false
+	if o == nil || IsNil(o.StockItems) {
+		return nil, false
 	}
 	return o.StockItems, true
 }
 
 // HasStockItems returns a boolean if a field has been set.
 func (o *InventoryListStockItemsBySkusResponse) HasStockItems() bool {
-	if o != nil && !isNil(o.StockItems) {
+	if o != nil && !IsNil(o.StockItems) {
 		return true
 	}
 
@@ -70,11 +73,19 @@ func (o *InventoryListStockItemsBySkusResponse) SetStockItems(v []InventoryStock
 }
 
 func (o InventoryListStockItemsBySkusResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.StockItems) {
-		toSerialize["stockItems"] = o.StockItems
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o InventoryListStockItemsBySkusResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.StockItems) {
+		toSerialize["stockItems"] = o.StockItems
+	}
+	return toSerialize, nil
 }
 
 type NullableInventoryListStockItemsBySkusResponse struct {

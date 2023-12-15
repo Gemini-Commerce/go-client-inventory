@@ -14,27 +14,27 @@ package inventory
 import (
 	"bytes"
 	"context"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
 )
 
 
-// InventoryApiService InventoryApi service
-type InventoryApiService service
+// InventoryAPIService InventoryAPI service
+type InventoryAPIService service
 
-type InventoryApiAdjustQtyRequest struct {
+type InventoryAPIAdjustQtyRequest struct {
 	ctx context.Context
-	ApiService *InventoryApiService
+	ApiService *InventoryAPIService
 	body *InventoryAdjustQtyRequest
 }
 
-func (r InventoryApiAdjustQtyRequest) Body(body InventoryAdjustQtyRequest) InventoryApiAdjustQtyRequest {
+func (r InventoryAPIAdjustQtyRequest) Body(body InventoryAdjustQtyRequest) InventoryAPIAdjustQtyRequest {
 	r.body = &body
 	return r
 }
 
-func (r InventoryApiAdjustQtyRequest) Execute() (*InventoryStockItem, *http.Response, error) {
+func (r InventoryAPIAdjustQtyRequest) Execute() (*InventoryStockItem, *http.Response, error) {
 	return r.ApiService.AdjustQtyExecute(r)
 }
 
@@ -44,10 +44,10 @@ AdjustQty Adjust Quantity
 Increment or decrement the quantity
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return InventoryApiAdjustQtyRequest
+ @return InventoryAPIAdjustQtyRequest
 */
-func (a *InventoryApiService) AdjustQty(ctx context.Context) InventoryApiAdjustQtyRequest {
-	return InventoryApiAdjustQtyRequest{
+func (a *InventoryAPIService) AdjustQty(ctx context.Context) InventoryAPIAdjustQtyRequest {
+	return InventoryAPIAdjustQtyRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -55,7 +55,7 @@ func (a *InventoryApiService) AdjustQty(ctx context.Context) InventoryApiAdjustQ
 
 // Execute executes the request
 //  @return InventoryStockItem
-func (a *InventoryApiService) AdjustQtyExecute(r InventoryApiAdjustQtyRequest) (*InventoryStockItem, *http.Response, error) {
+func (a *InventoryAPIService) AdjustQtyExecute(r InventoryAPIAdjustQtyRequest) (*InventoryStockItem, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -63,7 +63,7 @@ func (a *InventoryApiService) AdjustQtyExecute(r InventoryApiAdjustQtyRequest) (
 		localVarReturnValue  *InventoryStockItem
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryApiService.AdjustQty")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryAPIService.AdjustQty")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -96,6 +96,20 @@ func (a *InventoryApiService) AdjustQtyExecute(r InventoryApiAdjustQtyRequest) (
 	}
 	// body params
 	localVarPostBody = r.body
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Authorization"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -106,9 +120,9 @@ func (a *InventoryApiService) AdjustQtyExecute(r InventoryApiAdjustQtyRequest) (
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -125,8 +139,8 @@ func (a *InventoryApiService) AdjustQtyExecute(r InventoryApiAdjustQtyRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -136,8 +150,8 @@ func (a *InventoryApiService) AdjustQtyExecute(r InventoryApiAdjustQtyRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 			var v RpcStatus
@@ -146,8 +160,8 @@ func (a *InventoryApiService) AdjustQtyExecute(r InventoryApiAdjustQtyRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -163,18 +177,18 @@ func (a *InventoryApiService) AdjustQtyExecute(r InventoryApiAdjustQtyRequest) (
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type InventoryApiAdjustQtyCommittedRequest struct {
+type InventoryAPIAdjustQtyCommittedRequest struct {
 	ctx context.Context
-	ApiService *InventoryApiService
+	ApiService *InventoryAPIService
 	body *InventoryAdjustQtyCommittedRequest
 }
 
-func (r InventoryApiAdjustQtyCommittedRequest) Body(body InventoryAdjustQtyCommittedRequest) InventoryApiAdjustQtyCommittedRequest {
+func (r InventoryAPIAdjustQtyCommittedRequest) Body(body InventoryAdjustQtyCommittedRequest) InventoryAPIAdjustQtyCommittedRequest {
 	r.body = &body
 	return r
 }
 
-func (r InventoryApiAdjustQtyCommittedRequest) Execute() (*InventoryStockItem, *http.Response, error) {
+func (r InventoryAPIAdjustQtyCommittedRequest) Execute() (*InventoryStockItem, *http.Response, error) {
 	return r.ApiService.AdjustQtyCommittedExecute(r)
 }
 
@@ -184,10 +198,10 @@ AdjustQtyCommitted Adjust Quantity Committed
 Increment or decrement the quantity committed
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return InventoryApiAdjustQtyCommittedRequest
+ @return InventoryAPIAdjustQtyCommittedRequest
 */
-func (a *InventoryApiService) AdjustQtyCommitted(ctx context.Context) InventoryApiAdjustQtyCommittedRequest {
-	return InventoryApiAdjustQtyCommittedRequest{
+func (a *InventoryAPIService) AdjustQtyCommitted(ctx context.Context) InventoryAPIAdjustQtyCommittedRequest {
+	return InventoryAPIAdjustQtyCommittedRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -195,7 +209,7 @@ func (a *InventoryApiService) AdjustQtyCommitted(ctx context.Context) InventoryA
 
 // Execute executes the request
 //  @return InventoryStockItem
-func (a *InventoryApiService) AdjustQtyCommittedExecute(r InventoryApiAdjustQtyCommittedRequest) (*InventoryStockItem, *http.Response, error) {
+func (a *InventoryAPIService) AdjustQtyCommittedExecute(r InventoryAPIAdjustQtyCommittedRequest) (*InventoryStockItem, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -203,7 +217,7 @@ func (a *InventoryApiService) AdjustQtyCommittedExecute(r InventoryApiAdjustQtyC
 		localVarReturnValue  *InventoryStockItem
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryApiService.AdjustQtyCommitted")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryAPIService.AdjustQtyCommitted")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -236,6 +250,20 @@ func (a *InventoryApiService) AdjustQtyCommittedExecute(r InventoryApiAdjustQtyC
 	}
 	// body params
 	localVarPostBody = r.body
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Authorization"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -246,9 +274,9 @@ func (a *InventoryApiService) AdjustQtyCommittedExecute(r InventoryApiAdjustQtyC
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -265,8 +293,8 @@ func (a *InventoryApiService) AdjustQtyCommittedExecute(r InventoryApiAdjustQtyC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -276,8 +304,8 @@ func (a *InventoryApiService) AdjustQtyCommittedExecute(r InventoryApiAdjustQtyC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 			var v RpcStatus
@@ -286,8 +314,8 @@ func (a *InventoryApiService) AdjustQtyCommittedExecute(r InventoryApiAdjustQtyC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -303,18 +331,18 @@ func (a *InventoryApiService) AdjustQtyCommittedExecute(r InventoryApiAdjustQtyC
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type InventoryApiCreateStockItemRequest struct {
+type InventoryAPICreateStockItemRequest struct {
 	ctx context.Context
-	ApiService *InventoryApiService
+	ApiService *InventoryAPIService
 	body *InventoryCreateStockItemRequest
 }
 
-func (r InventoryApiCreateStockItemRequest) Body(body InventoryCreateStockItemRequest) InventoryApiCreateStockItemRequest {
+func (r InventoryAPICreateStockItemRequest) Body(body InventoryCreateStockItemRequest) InventoryAPICreateStockItemRequest {
 	r.body = &body
 	return r
 }
 
-func (r InventoryApiCreateStockItemRequest) Execute() (*InventoryStockItem, *http.Response, error) {
+func (r InventoryAPICreateStockItemRequest) Execute() (*InventoryStockItem, *http.Response, error) {
 	return r.ApiService.CreateStockItemExecute(r)
 }
 
@@ -322,10 +350,10 @@ func (r InventoryApiCreateStockItemRequest) Execute() (*InventoryStockItem, *htt
 CreateStockItem Create Stock Item
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return InventoryApiCreateStockItemRequest
+ @return InventoryAPICreateStockItemRequest
 */
-func (a *InventoryApiService) CreateStockItem(ctx context.Context) InventoryApiCreateStockItemRequest {
-	return InventoryApiCreateStockItemRequest{
+func (a *InventoryAPIService) CreateStockItem(ctx context.Context) InventoryAPICreateStockItemRequest {
+	return InventoryAPICreateStockItemRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -333,7 +361,7 @@ func (a *InventoryApiService) CreateStockItem(ctx context.Context) InventoryApiC
 
 // Execute executes the request
 //  @return InventoryStockItem
-func (a *InventoryApiService) CreateStockItemExecute(r InventoryApiCreateStockItemRequest) (*InventoryStockItem, *http.Response, error) {
+func (a *InventoryAPIService) CreateStockItemExecute(r InventoryAPICreateStockItemRequest) (*InventoryStockItem, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -341,7 +369,7 @@ func (a *InventoryApiService) CreateStockItemExecute(r InventoryApiCreateStockIt
 		localVarReturnValue  *InventoryStockItem
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryApiService.CreateStockItem")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryAPIService.CreateStockItem")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -374,6 +402,20 @@ func (a *InventoryApiService) CreateStockItemExecute(r InventoryApiCreateStockIt
 	}
 	// body params
 	localVarPostBody = r.body
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Authorization"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -384,9 +426,9 @@ func (a *InventoryApiService) CreateStockItemExecute(r InventoryApiCreateStockIt
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -403,8 +445,8 @@ func (a *InventoryApiService) CreateStockItemExecute(r InventoryApiCreateStockIt
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -414,8 +456,8 @@ func (a *InventoryApiService) CreateStockItemExecute(r InventoryApiCreateStockIt
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 			var v RpcStatus
@@ -424,8 +466,8 @@ func (a *InventoryApiService) CreateStockItemExecute(r InventoryApiCreateStockIt
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -441,18 +483,18 @@ func (a *InventoryApiService) CreateStockItemExecute(r InventoryApiCreateStockIt
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type InventoryApiGetQtySalableRequest struct {
+type InventoryAPIGetQtySalableRequest struct {
 	ctx context.Context
-	ApiService *InventoryApiService
+	ApiService *InventoryAPIService
 	body *InventoryGetQtySalableRequest
 }
 
-func (r InventoryApiGetQtySalableRequest) Body(body InventoryGetQtySalableRequest) InventoryApiGetQtySalableRequest {
+func (r InventoryAPIGetQtySalableRequest) Body(body InventoryGetQtySalableRequest) InventoryAPIGetQtySalableRequest {
 	r.body = &body
 	return r
 }
 
-func (r InventoryApiGetQtySalableRequest) Execute() (*InventoryGetQtySalableResponse, *http.Response, error) {
+func (r InventoryAPIGetQtySalableRequest) Execute() (*InventoryGetQtySalableResponse, *http.Response, error) {
 	return r.ApiService.GetQtySalableExecute(r)
 }
 
@@ -460,10 +502,10 @@ func (r InventoryApiGetQtySalableRequest) Execute() (*InventoryGetQtySalableResp
 GetQtySalable Get Salable Quantity
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return InventoryApiGetQtySalableRequest
+ @return InventoryAPIGetQtySalableRequest
 */
-func (a *InventoryApiService) GetQtySalable(ctx context.Context) InventoryApiGetQtySalableRequest {
-	return InventoryApiGetQtySalableRequest{
+func (a *InventoryAPIService) GetQtySalable(ctx context.Context) InventoryAPIGetQtySalableRequest {
+	return InventoryAPIGetQtySalableRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -471,7 +513,7 @@ func (a *InventoryApiService) GetQtySalable(ctx context.Context) InventoryApiGet
 
 // Execute executes the request
 //  @return InventoryGetQtySalableResponse
-func (a *InventoryApiService) GetQtySalableExecute(r InventoryApiGetQtySalableRequest) (*InventoryGetQtySalableResponse, *http.Response, error) {
+func (a *InventoryAPIService) GetQtySalableExecute(r InventoryAPIGetQtySalableRequest) (*InventoryGetQtySalableResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -479,7 +521,7 @@ func (a *InventoryApiService) GetQtySalableExecute(r InventoryApiGetQtySalableRe
 		localVarReturnValue  *InventoryGetQtySalableResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryApiService.GetQtySalable")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryAPIService.GetQtySalable")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -512,6 +554,20 @@ func (a *InventoryApiService) GetQtySalableExecute(r InventoryApiGetQtySalableRe
 	}
 	// body params
 	localVarPostBody = r.body
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Authorization"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -522,9 +578,9 @@ func (a *InventoryApiService) GetQtySalableExecute(r InventoryApiGetQtySalableRe
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -541,8 +597,8 @@ func (a *InventoryApiService) GetQtySalableExecute(r InventoryApiGetQtySalableRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -552,8 +608,8 @@ func (a *InventoryApiService) GetQtySalableExecute(r InventoryApiGetQtySalableRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 			var v RpcStatus
@@ -562,8 +618,8 @@ func (a *InventoryApiService) GetQtySalableExecute(r InventoryApiGetQtySalableRe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -579,18 +635,18 @@ func (a *InventoryApiService) GetQtySalableExecute(r InventoryApiGetQtySalableRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type InventoryApiGetStockItemRequest struct {
+type InventoryAPIGetStockItemRequest struct {
 	ctx context.Context
-	ApiService *InventoryApiService
+	ApiService *InventoryAPIService
 	body *InventoryGetStockItemRequest
 }
 
-func (r InventoryApiGetStockItemRequest) Body(body InventoryGetStockItemRequest) InventoryApiGetStockItemRequest {
+func (r InventoryAPIGetStockItemRequest) Body(body InventoryGetStockItemRequest) InventoryAPIGetStockItemRequest {
 	r.body = &body
 	return r
 }
 
-func (r InventoryApiGetStockItemRequest) Execute() (*InventoryStockItem, *http.Response, error) {
+func (r InventoryAPIGetStockItemRequest) Execute() (*InventoryStockItem, *http.Response, error) {
 	return r.ApiService.GetStockItemExecute(r)
 }
 
@@ -598,10 +654,10 @@ func (r InventoryApiGetStockItemRequest) Execute() (*InventoryStockItem, *http.R
 GetStockItem Get Stock Item
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return InventoryApiGetStockItemRequest
+ @return InventoryAPIGetStockItemRequest
 */
-func (a *InventoryApiService) GetStockItem(ctx context.Context) InventoryApiGetStockItemRequest {
-	return InventoryApiGetStockItemRequest{
+func (a *InventoryAPIService) GetStockItem(ctx context.Context) InventoryAPIGetStockItemRequest {
+	return InventoryAPIGetStockItemRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -609,7 +665,7 @@ func (a *InventoryApiService) GetStockItem(ctx context.Context) InventoryApiGetS
 
 // Execute executes the request
 //  @return InventoryStockItem
-func (a *InventoryApiService) GetStockItemExecute(r InventoryApiGetStockItemRequest) (*InventoryStockItem, *http.Response, error) {
+func (a *InventoryAPIService) GetStockItemExecute(r InventoryAPIGetStockItemRequest) (*InventoryStockItem, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -617,7 +673,7 @@ func (a *InventoryApiService) GetStockItemExecute(r InventoryApiGetStockItemRequ
 		localVarReturnValue  *InventoryStockItem
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryApiService.GetStockItem")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryAPIService.GetStockItem")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -650,6 +706,20 @@ func (a *InventoryApiService) GetStockItemExecute(r InventoryApiGetStockItemRequ
 	}
 	// body params
 	localVarPostBody = r.body
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Authorization"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -660,9 +730,9 @@ func (a *InventoryApiService) GetStockItemExecute(r InventoryApiGetStockItemRequ
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -679,8 +749,8 @@ func (a *InventoryApiService) GetStockItemExecute(r InventoryApiGetStockItemRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -690,8 +760,8 @@ func (a *InventoryApiService) GetStockItemExecute(r InventoryApiGetStockItemRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 			var v RpcStatus
@@ -700,8 +770,8 @@ func (a *InventoryApiService) GetStockItemExecute(r InventoryApiGetStockItemRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -717,18 +787,18 @@ func (a *InventoryApiService) GetStockItemExecute(r InventoryApiGetStockItemRequ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type InventoryApiListStockItemsRequest struct {
+type InventoryAPIListStockItemsRequest struct {
 	ctx context.Context
-	ApiService *InventoryApiService
+	ApiService *InventoryAPIService
 	body *InventoryListStockItemsRequest
 }
 
-func (r InventoryApiListStockItemsRequest) Body(body InventoryListStockItemsRequest) InventoryApiListStockItemsRequest {
+func (r InventoryAPIListStockItemsRequest) Body(body InventoryListStockItemsRequest) InventoryAPIListStockItemsRequest {
 	r.body = &body
 	return r
 }
 
-func (r InventoryApiListStockItemsRequest) Execute() (*InventoryListStockItemsResponse, *http.Response, error) {
+func (r InventoryAPIListStockItemsRequest) Execute() (*InventoryListStockItemsResponse, *http.Response, error) {
 	return r.ApiService.ListStockItemsExecute(r)
 }
 
@@ -736,10 +806,10 @@ func (r InventoryApiListStockItemsRequest) Execute() (*InventoryListStockItemsRe
 ListStockItems List Stock Items
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return InventoryApiListStockItemsRequest
+ @return InventoryAPIListStockItemsRequest
 */
-func (a *InventoryApiService) ListStockItems(ctx context.Context) InventoryApiListStockItemsRequest {
-	return InventoryApiListStockItemsRequest{
+func (a *InventoryAPIService) ListStockItems(ctx context.Context) InventoryAPIListStockItemsRequest {
+	return InventoryAPIListStockItemsRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -747,7 +817,7 @@ func (a *InventoryApiService) ListStockItems(ctx context.Context) InventoryApiLi
 
 // Execute executes the request
 //  @return InventoryListStockItemsResponse
-func (a *InventoryApiService) ListStockItemsExecute(r InventoryApiListStockItemsRequest) (*InventoryListStockItemsResponse, *http.Response, error) {
+func (a *InventoryAPIService) ListStockItemsExecute(r InventoryAPIListStockItemsRequest) (*InventoryListStockItemsResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -755,7 +825,7 @@ func (a *InventoryApiService) ListStockItemsExecute(r InventoryApiListStockItems
 		localVarReturnValue  *InventoryListStockItemsResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryApiService.ListStockItems")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryAPIService.ListStockItems")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -788,6 +858,20 @@ func (a *InventoryApiService) ListStockItemsExecute(r InventoryApiListStockItems
 	}
 	// body params
 	localVarPostBody = r.body
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Authorization"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -798,9 +882,9 @@ func (a *InventoryApiService) ListStockItemsExecute(r InventoryApiListStockItems
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -817,8 +901,8 @@ func (a *InventoryApiService) ListStockItemsExecute(r InventoryApiListStockItems
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -828,8 +912,8 @@ func (a *InventoryApiService) ListStockItemsExecute(r InventoryApiListStockItems
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 			var v RpcStatus
@@ -838,8 +922,8 @@ func (a *InventoryApiService) ListStockItemsExecute(r InventoryApiListStockItems
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -855,18 +939,18 @@ func (a *InventoryApiService) ListStockItemsExecute(r InventoryApiListStockItems
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type InventoryApiListStockItemsBySkusRequest struct {
+type InventoryAPIListStockItemsBySkusRequest struct {
 	ctx context.Context
-	ApiService *InventoryApiService
+	ApiService *InventoryAPIService
 	body *InventoryListStockItemsBySkusRequest
 }
 
-func (r InventoryApiListStockItemsBySkusRequest) Body(body InventoryListStockItemsBySkusRequest) InventoryApiListStockItemsBySkusRequest {
+func (r InventoryAPIListStockItemsBySkusRequest) Body(body InventoryListStockItemsBySkusRequest) InventoryAPIListStockItemsBySkusRequest {
 	r.body = &body
 	return r
 }
 
-func (r InventoryApiListStockItemsBySkusRequest) Execute() (*InventoryListStockItemsBySkusResponse, *http.Response, error) {
+func (r InventoryAPIListStockItemsBySkusRequest) Execute() (*InventoryListStockItemsBySkusResponse, *http.Response, error) {
 	return r.ApiService.ListStockItemsBySkusExecute(r)
 }
 
@@ -874,10 +958,10 @@ func (r InventoryApiListStockItemsBySkusRequest) Execute() (*InventoryListStockI
 ListStockItemsBySkus List Stock Items by SKUs
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return InventoryApiListStockItemsBySkusRequest
+ @return InventoryAPIListStockItemsBySkusRequest
 */
-func (a *InventoryApiService) ListStockItemsBySkus(ctx context.Context) InventoryApiListStockItemsBySkusRequest {
-	return InventoryApiListStockItemsBySkusRequest{
+func (a *InventoryAPIService) ListStockItemsBySkus(ctx context.Context) InventoryAPIListStockItemsBySkusRequest {
+	return InventoryAPIListStockItemsBySkusRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -885,7 +969,7 @@ func (a *InventoryApiService) ListStockItemsBySkus(ctx context.Context) Inventor
 
 // Execute executes the request
 //  @return InventoryListStockItemsBySkusResponse
-func (a *InventoryApiService) ListStockItemsBySkusExecute(r InventoryApiListStockItemsBySkusRequest) (*InventoryListStockItemsBySkusResponse, *http.Response, error) {
+func (a *InventoryAPIService) ListStockItemsBySkusExecute(r InventoryAPIListStockItemsBySkusRequest) (*InventoryListStockItemsBySkusResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -893,7 +977,7 @@ func (a *InventoryApiService) ListStockItemsBySkusExecute(r InventoryApiListStoc
 		localVarReturnValue  *InventoryListStockItemsBySkusResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryApiService.ListStockItemsBySkus")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryAPIService.ListStockItemsBySkus")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -926,6 +1010,20 @@ func (a *InventoryApiService) ListStockItemsBySkusExecute(r InventoryApiListStoc
 	}
 	// body params
 	localVarPostBody = r.body
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Authorization"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -936,9 +1034,9 @@ func (a *InventoryApiService) ListStockItemsBySkusExecute(r InventoryApiListStoc
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -955,8 +1053,8 @@ func (a *InventoryApiService) ListStockItemsBySkusExecute(r InventoryApiListStoc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -966,8 +1064,8 @@ func (a *InventoryApiService) ListStockItemsBySkusExecute(r InventoryApiListStoc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 			var v RpcStatus
@@ -976,8 +1074,8 @@ func (a *InventoryApiService) ListStockItemsBySkusExecute(r InventoryApiListStoc
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -993,18 +1091,18 @@ func (a *InventoryApiService) ListStockItemsBySkusExecute(r InventoryApiListStoc
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type InventoryApiRebalanceStockQtysRequest struct {
+type InventoryAPIRebalanceStockQtysRequest struct {
 	ctx context.Context
-	ApiService *InventoryApiService
+	ApiService *InventoryAPIService
 	body *InventoryRebalanceStockQtysRequest
 }
 
-func (r InventoryApiRebalanceStockQtysRequest) Body(body InventoryRebalanceStockQtysRequest) InventoryApiRebalanceStockQtysRequest {
+func (r InventoryAPIRebalanceStockQtysRequest) Body(body InventoryRebalanceStockQtysRequest) InventoryAPIRebalanceStockQtysRequest {
 	r.body = &body
 	return r
 }
 
-func (r InventoryApiRebalanceStockQtysRequest) Execute() (*InventoryStockItem, *http.Response, error) {
+func (r InventoryAPIRebalanceStockQtysRequest) Execute() (*InventoryStockItem, *http.Response, error) {
 	return r.ApiService.RebalanceStockQtysExecute(r)
 }
 
@@ -1012,10 +1110,10 @@ func (r InventoryApiRebalanceStockQtysRequest) Execute() (*InventoryStockItem, *
 RebalanceStockQtys Rebalance Stock Quantities
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return InventoryApiRebalanceStockQtysRequest
+ @return InventoryAPIRebalanceStockQtysRequest
 */
-func (a *InventoryApiService) RebalanceStockQtys(ctx context.Context) InventoryApiRebalanceStockQtysRequest {
-	return InventoryApiRebalanceStockQtysRequest{
+func (a *InventoryAPIService) RebalanceStockQtys(ctx context.Context) InventoryAPIRebalanceStockQtysRequest {
+	return InventoryAPIRebalanceStockQtysRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1023,7 +1121,7 @@ func (a *InventoryApiService) RebalanceStockQtys(ctx context.Context) InventoryA
 
 // Execute executes the request
 //  @return InventoryStockItem
-func (a *InventoryApiService) RebalanceStockQtysExecute(r InventoryApiRebalanceStockQtysRequest) (*InventoryStockItem, *http.Response, error) {
+func (a *InventoryAPIService) RebalanceStockQtysExecute(r InventoryAPIRebalanceStockQtysRequest) (*InventoryStockItem, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1031,7 +1129,7 @@ func (a *InventoryApiService) RebalanceStockQtysExecute(r InventoryApiRebalanceS
 		localVarReturnValue  *InventoryStockItem
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryApiService.RebalanceStockQtys")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryAPIService.RebalanceStockQtys")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1064,6 +1162,20 @@ func (a *InventoryApiService) RebalanceStockQtysExecute(r InventoryApiRebalanceS
 	}
 	// body params
 	localVarPostBody = r.body
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Authorization"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1074,9 +1186,9 @@ func (a *InventoryApiService) RebalanceStockQtysExecute(r InventoryApiRebalanceS
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1093,8 +1205,8 @@ func (a *InventoryApiService) RebalanceStockQtysExecute(r InventoryApiRebalanceS
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1104,8 +1216,8 @@ func (a *InventoryApiService) RebalanceStockQtysExecute(r InventoryApiRebalanceS
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 			var v RpcStatus
@@ -1114,8 +1226,8 @@ func (a *InventoryApiService) RebalanceStockQtysExecute(r InventoryApiRebalanceS
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
@@ -1131,18 +1243,18 @@ func (a *InventoryApiService) RebalanceStockQtysExecute(r InventoryApiRebalanceS
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type InventoryApiUpdateStockItemRequest struct {
+type InventoryAPIUpdateStockItemRequest struct {
 	ctx context.Context
-	ApiService *InventoryApiService
+	ApiService *InventoryAPIService
 	body *InventoryUpdateStockItemRequest
 }
 
-func (r InventoryApiUpdateStockItemRequest) Body(body InventoryUpdateStockItemRequest) InventoryApiUpdateStockItemRequest {
+func (r InventoryAPIUpdateStockItemRequest) Body(body InventoryUpdateStockItemRequest) InventoryAPIUpdateStockItemRequest {
 	r.body = &body
 	return r
 }
 
-func (r InventoryApiUpdateStockItemRequest) Execute() (*InventoryStockItem, *http.Response, error) {
+func (r InventoryAPIUpdateStockItemRequest) Execute() (*InventoryStockItem, *http.Response, error) {
 	return r.ApiService.UpdateStockItemExecute(r)
 }
 
@@ -1150,10 +1262,10 @@ func (r InventoryApiUpdateStockItemRequest) Execute() (*InventoryStockItem, *htt
 UpdateStockItem Update Stock Item
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return InventoryApiUpdateStockItemRequest
+ @return InventoryAPIUpdateStockItemRequest
 */
-func (a *InventoryApiService) UpdateStockItem(ctx context.Context) InventoryApiUpdateStockItemRequest {
-	return InventoryApiUpdateStockItemRequest{
+func (a *InventoryAPIService) UpdateStockItem(ctx context.Context) InventoryAPIUpdateStockItemRequest {
+	return InventoryAPIUpdateStockItemRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1161,7 +1273,7 @@ func (a *InventoryApiService) UpdateStockItem(ctx context.Context) InventoryApiU
 
 // Execute executes the request
 //  @return InventoryStockItem
-func (a *InventoryApiService) UpdateStockItemExecute(r InventoryApiUpdateStockItemRequest) (*InventoryStockItem, *http.Response, error) {
+func (a *InventoryAPIService) UpdateStockItemExecute(r InventoryAPIUpdateStockItemRequest) (*InventoryStockItem, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1169,7 +1281,7 @@ func (a *InventoryApiService) UpdateStockItemExecute(r InventoryApiUpdateStockIt
 		localVarReturnValue  *InventoryStockItem
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryApiService.UpdateStockItem")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InventoryAPIService.UpdateStockItem")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -1202,6 +1314,20 @@ func (a *InventoryApiService) UpdateStockItemExecute(r InventoryApiUpdateStockIt
 	}
 	// body params
 	localVarPostBody = r.body
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Authorization"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1212,9 +1338,9 @@ func (a *InventoryApiService) UpdateStockItemExecute(r InventoryApiUpdateStockIt
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
 		return localVarReturnValue, localVarHTTPResponse, err
 	}
@@ -1231,8 +1357,8 @@ func (a *InventoryApiService) UpdateStockItemExecute(r InventoryApiUpdateStockIt
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1242,8 +1368,8 @@ func (a *InventoryApiService) UpdateStockItemExecute(r InventoryApiUpdateStockIt
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 			var v RpcStatus
@@ -1252,8 +1378,8 @@ func (a *InventoryApiService) UpdateStockItemExecute(r InventoryApiUpdateStockIt
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-            		newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 

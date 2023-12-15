@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the InventoryListStockItemsBySkusRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &InventoryListStockItemsBySkusRequest{}
+
 // InventoryListStockItemsBySkusRequest struct for InventoryListStockItemsBySkusRequest
 type InventoryListStockItemsBySkusRequest struct {
 	TenantId *string `json:"tenantId,omitempty"`
@@ -40,7 +43,7 @@ func NewInventoryListStockItemsBySkusRequestWithDefaults() *InventoryListStockIt
 
 // GetTenantId returns the TenantId field value if set, zero value otherwise.
 func (o *InventoryListStockItemsBySkusRequest) GetTenantId() string {
-	if o == nil || isNil(o.TenantId) {
+	if o == nil || IsNil(o.TenantId) {
 		var ret string
 		return ret
 	}
@@ -50,15 +53,15 @@ func (o *InventoryListStockItemsBySkusRequest) GetTenantId() string {
 // GetTenantIdOk returns a tuple with the TenantId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryListStockItemsBySkusRequest) GetTenantIdOk() (*string, bool) {
-	if o == nil || isNil(o.TenantId) {
-    return nil, false
+	if o == nil || IsNil(o.TenantId) {
+		return nil, false
 	}
 	return o.TenantId, true
 }
 
 // HasTenantId returns a boolean if a field has been set.
 func (o *InventoryListStockItemsBySkusRequest) HasTenantId() bool {
-	if o != nil && !isNil(o.TenantId) {
+	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *InventoryListStockItemsBySkusRequest) SetTenantId(v string) {
 
 // GetSkus returns the Skus field value if set, zero value otherwise.
 func (o *InventoryListStockItemsBySkusRequest) GetSkus() []string {
-	if o == nil || isNil(o.Skus) {
+	if o == nil || IsNil(o.Skus) {
 		var ret []string
 		return ret
 	}
@@ -82,15 +85,15 @@ func (o *InventoryListStockItemsBySkusRequest) GetSkus() []string {
 // GetSkusOk returns a tuple with the Skus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryListStockItemsBySkusRequest) GetSkusOk() ([]string, bool) {
-	if o == nil || isNil(o.Skus) {
-    return nil, false
+	if o == nil || IsNil(o.Skus) {
+		return nil, false
 	}
 	return o.Skus, true
 }
 
 // HasSkus returns a boolean if a field has been set.
 func (o *InventoryListStockItemsBySkusRequest) HasSkus() bool {
-	if o != nil && !isNil(o.Skus) {
+	if o != nil && !IsNil(o.Skus) {
 		return true
 	}
 
@@ -103,14 +106,22 @@ func (o *InventoryListStockItemsBySkusRequest) SetSkus(v []string) {
 }
 
 func (o InventoryListStockItemsBySkusRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.TenantId) {
-		toSerialize["tenantId"] = o.TenantId
-	}
-	if !isNil(o.Skus) {
-		toSerialize["skus"] = o.Skus
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o InventoryListStockItemsBySkusRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.TenantId) {
+		toSerialize["tenantId"] = o.TenantId
+	}
+	if !IsNil(o.Skus) {
+		toSerialize["skus"] = o.Skus
+	}
+	return toSerialize, nil
 }
 
 type NullableInventoryListStockItemsBySkusRequest struct {

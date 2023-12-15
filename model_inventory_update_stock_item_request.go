@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the InventoryUpdateStockItemRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &InventoryUpdateStockItemRequest{}
+
 // InventoryUpdateStockItemRequest struct for InventoryUpdateStockItemRequest
 type InventoryUpdateStockItemRequest struct {
 	TenantId *string `json:"tenantId,omitempty"`
@@ -42,7 +45,7 @@ func NewInventoryUpdateStockItemRequestWithDefaults() *InventoryUpdateStockItemR
 
 // GetTenantId returns the TenantId field value if set, zero value otherwise.
 func (o *InventoryUpdateStockItemRequest) GetTenantId() string {
-	if o == nil || isNil(o.TenantId) {
+	if o == nil || IsNil(o.TenantId) {
 		var ret string
 		return ret
 	}
@@ -52,15 +55,15 @@ func (o *InventoryUpdateStockItemRequest) GetTenantId() string {
 // GetTenantIdOk returns a tuple with the TenantId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryUpdateStockItemRequest) GetTenantIdOk() (*string, bool) {
-	if o == nil || isNil(o.TenantId) {
-    return nil, false
+	if o == nil || IsNil(o.TenantId) {
+		return nil, false
 	}
 	return o.TenantId, true
 }
 
 // HasTenantId returns a boolean if a field has been set.
 func (o *InventoryUpdateStockItemRequest) HasTenantId() bool {
-	if o != nil && !isNil(o.TenantId) {
+	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
 
@@ -74,7 +77,7 @@ func (o *InventoryUpdateStockItemRequest) SetTenantId(v string) {
 
 // GetSku returns the Sku field value if set, zero value otherwise.
 func (o *InventoryUpdateStockItemRequest) GetSku() string {
-	if o == nil || isNil(o.Sku) {
+	if o == nil || IsNil(o.Sku) {
 		var ret string
 		return ret
 	}
@@ -84,15 +87,15 @@ func (o *InventoryUpdateStockItemRequest) GetSku() string {
 // GetSkuOk returns a tuple with the Sku field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryUpdateStockItemRequest) GetSkuOk() (*string, bool) {
-	if o == nil || isNil(o.Sku) {
-    return nil, false
+	if o == nil || IsNil(o.Sku) {
+		return nil, false
 	}
 	return o.Sku, true
 }
 
 // HasSku returns a boolean if a field has been set.
 func (o *InventoryUpdateStockItemRequest) HasSku() bool {
-	if o != nil && !isNil(o.Sku) {
+	if o != nil && !IsNil(o.Sku) {
 		return true
 	}
 
@@ -106,7 +109,7 @@ func (o *InventoryUpdateStockItemRequest) SetSku(v string) {
 
 // GetPayload returns the Payload field value if set, zero value otherwise.
 func (o *InventoryUpdateStockItemRequest) GetPayload() UpdateStockItemRequestPayload {
-	if o == nil || isNil(o.Payload) {
+	if o == nil || IsNil(o.Payload) {
 		var ret UpdateStockItemRequestPayload
 		return ret
 	}
@@ -116,15 +119,15 @@ func (o *InventoryUpdateStockItemRequest) GetPayload() UpdateStockItemRequestPay
 // GetPayloadOk returns a tuple with the Payload field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryUpdateStockItemRequest) GetPayloadOk() (*UpdateStockItemRequestPayload, bool) {
-	if o == nil || isNil(o.Payload) {
-    return nil, false
+	if o == nil || IsNil(o.Payload) {
+		return nil, false
 	}
 	return o.Payload, true
 }
 
 // HasPayload returns a boolean if a field has been set.
 func (o *InventoryUpdateStockItemRequest) HasPayload() bool {
-	if o != nil && !isNil(o.Payload) {
+	if o != nil && !IsNil(o.Payload) {
 		return true
 	}
 
@@ -138,7 +141,7 @@ func (o *InventoryUpdateStockItemRequest) SetPayload(v UpdateStockItemRequestPay
 
 // GetPayloadMask returns the PayloadMask field value if set, zero value otherwise.
 func (o *InventoryUpdateStockItemRequest) GetPayloadMask() string {
-	if o == nil || isNil(o.PayloadMask) {
+	if o == nil || IsNil(o.PayloadMask) {
 		var ret string
 		return ret
 	}
@@ -148,15 +151,15 @@ func (o *InventoryUpdateStockItemRequest) GetPayloadMask() string {
 // GetPayloadMaskOk returns a tuple with the PayloadMask field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryUpdateStockItemRequest) GetPayloadMaskOk() (*string, bool) {
-	if o == nil || isNil(o.PayloadMask) {
-    return nil, false
+	if o == nil || IsNil(o.PayloadMask) {
+		return nil, false
 	}
 	return o.PayloadMask, true
 }
 
 // HasPayloadMask returns a boolean if a field has been set.
 func (o *InventoryUpdateStockItemRequest) HasPayloadMask() bool {
-	if o != nil && !isNil(o.PayloadMask) {
+	if o != nil && !IsNil(o.PayloadMask) {
 		return true
 	}
 
@@ -169,20 +172,28 @@ func (o *InventoryUpdateStockItemRequest) SetPayloadMask(v string) {
 }
 
 func (o InventoryUpdateStockItemRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.TenantId) {
-		toSerialize["tenantId"] = o.TenantId
-	}
-	if !isNil(o.Sku) {
-		toSerialize["sku"] = o.Sku
-	}
-	if !isNil(o.Payload) {
-		toSerialize["payload"] = o.Payload
-	}
-	if !isNil(o.PayloadMask) {
-		toSerialize["payloadMask"] = o.PayloadMask
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o InventoryUpdateStockItemRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.TenantId) {
+		toSerialize["tenantId"] = o.TenantId
+	}
+	if !IsNil(o.Sku) {
+		toSerialize["sku"] = o.Sku
+	}
+	if !IsNil(o.Payload) {
+		toSerialize["payload"] = o.Payload
+	}
+	if !IsNil(o.PayloadMask) {
+		toSerialize["payloadMask"] = o.PayloadMask
+	}
+	return toSerialize, nil
 }
 
 type NullableInventoryUpdateStockItemRequest struct {

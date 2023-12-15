@@ -16,6 +16,9 @@ import (
 	"time"
 )
 
+// checks if the InventoryStockItem type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &InventoryStockItem{}
+
 // InventoryStockItem struct for InventoryStockItem
 type InventoryStockItem struct {
 	TenantId *string `json:"tenantId,omitempty"`
@@ -48,7 +51,7 @@ func NewInventoryStockItemWithDefaults() *InventoryStockItem {
 
 // GetTenantId returns the TenantId field value if set, zero value otherwise.
 func (o *InventoryStockItem) GetTenantId() string {
-	if o == nil || isNil(o.TenantId) {
+	if o == nil || IsNil(o.TenantId) {
 		var ret string
 		return ret
 	}
@@ -58,15 +61,15 @@ func (o *InventoryStockItem) GetTenantId() string {
 // GetTenantIdOk returns a tuple with the TenantId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryStockItem) GetTenantIdOk() (*string, bool) {
-	if o == nil || isNil(o.TenantId) {
-    return nil, false
+	if o == nil || IsNil(o.TenantId) {
+		return nil, false
 	}
 	return o.TenantId, true
 }
 
 // HasTenantId returns a boolean if a field has been set.
 func (o *InventoryStockItem) HasTenantId() bool {
-	if o != nil && !isNil(o.TenantId) {
+	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
 
@@ -80,7 +83,7 @@ func (o *InventoryStockItem) SetTenantId(v string) {
 
 // GetId returns the Id field value if set, zero value otherwise.
 func (o *InventoryStockItem) GetId() string {
-	if o == nil || isNil(o.Id) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
@@ -90,15 +93,15 @@ func (o *InventoryStockItem) GetId() string {
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryStockItem) GetIdOk() (*string, bool) {
-	if o == nil || isNil(o.Id) {
-    return nil, false
+	if o == nil || IsNil(o.Id) {
+		return nil, false
 	}
 	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *InventoryStockItem) HasId() bool {
-	if o != nil && !isNil(o.Id) {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
@@ -112,7 +115,7 @@ func (o *InventoryStockItem) SetId(v string) {
 
 // GetSku returns the Sku field value if set, zero value otherwise.
 func (o *InventoryStockItem) GetSku() string {
-	if o == nil || isNil(o.Sku) {
+	if o == nil || IsNil(o.Sku) {
 		var ret string
 		return ret
 	}
@@ -122,15 +125,15 @@ func (o *InventoryStockItem) GetSku() string {
 // GetSkuOk returns a tuple with the Sku field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryStockItem) GetSkuOk() (*string, bool) {
-	if o == nil || isNil(o.Sku) {
-    return nil, false
+	if o == nil || IsNil(o.Sku) {
+		return nil, false
 	}
 	return o.Sku, true
 }
 
 // HasSku returns a boolean if a field has been set.
 func (o *InventoryStockItem) HasSku() bool {
-	if o != nil && !isNil(o.Sku) {
+	if o != nil && !IsNil(o.Sku) {
 		return true
 	}
 
@@ -144,7 +147,7 @@ func (o *InventoryStockItem) SetSku(v string) {
 
 // GetOutOfStockThreshold returns the OutOfStockThreshold field value if set, zero value otherwise.
 func (o *InventoryStockItem) GetOutOfStockThreshold() int32 {
-	if o == nil || isNil(o.OutOfStockThreshold) {
+	if o == nil || IsNil(o.OutOfStockThreshold) {
 		var ret int32
 		return ret
 	}
@@ -154,15 +157,15 @@ func (o *InventoryStockItem) GetOutOfStockThreshold() int32 {
 // GetOutOfStockThresholdOk returns a tuple with the OutOfStockThreshold field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryStockItem) GetOutOfStockThresholdOk() (*int32, bool) {
-	if o == nil || isNil(o.OutOfStockThreshold) {
-    return nil, false
+	if o == nil || IsNil(o.OutOfStockThreshold) {
+		return nil, false
 	}
 	return o.OutOfStockThreshold, true
 }
 
 // HasOutOfStockThreshold returns a boolean if a field has been set.
 func (o *InventoryStockItem) HasOutOfStockThreshold() bool {
-	if o != nil && !isNil(o.OutOfStockThreshold) {
+	if o != nil && !IsNil(o.OutOfStockThreshold) {
 		return true
 	}
 
@@ -176,7 +179,7 @@ func (o *InventoryStockItem) SetOutOfStockThreshold(v int32) {
 
 // GetQty returns the Qty field value if set, zero value otherwise.
 func (o *InventoryStockItem) GetQty() int32 {
-	if o == nil || isNil(o.Qty) {
+	if o == nil || IsNil(o.Qty) {
 		var ret int32
 		return ret
 	}
@@ -186,15 +189,15 @@ func (o *InventoryStockItem) GetQty() int32 {
 // GetQtyOk returns a tuple with the Qty field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryStockItem) GetQtyOk() (*int32, bool) {
-	if o == nil || isNil(o.Qty) {
-    return nil, false
+	if o == nil || IsNil(o.Qty) {
+		return nil, false
 	}
 	return o.Qty, true
 }
 
 // HasQty returns a boolean if a field has been set.
 func (o *InventoryStockItem) HasQty() bool {
-	if o != nil && !isNil(o.Qty) {
+	if o != nil && !IsNil(o.Qty) {
 		return true
 	}
 
@@ -208,7 +211,7 @@ func (o *InventoryStockItem) SetQty(v int32) {
 
 // GetQtyCommitted returns the QtyCommitted field value if set, zero value otherwise.
 func (o *InventoryStockItem) GetQtyCommitted() int32 {
-	if o == nil || isNil(o.QtyCommitted) {
+	if o == nil || IsNil(o.QtyCommitted) {
 		var ret int32
 		return ret
 	}
@@ -218,15 +221,15 @@ func (o *InventoryStockItem) GetQtyCommitted() int32 {
 // GetQtyCommittedOk returns a tuple with the QtyCommitted field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryStockItem) GetQtyCommittedOk() (*int32, bool) {
-	if o == nil || isNil(o.QtyCommitted) {
-    return nil, false
+	if o == nil || IsNil(o.QtyCommitted) {
+		return nil, false
 	}
 	return o.QtyCommitted, true
 }
 
 // HasQtyCommitted returns a boolean if a field has been set.
 func (o *InventoryStockItem) HasQtyCommitted() bool {
-	if o != nil && !isNil(o.QtyCommitted) {
+	if o != nil && !IsNil(o.QtyCommitted) {
 		return true
 	}
 
@@ -240,7 +243,7 @@ func (o *InventoryStockItem) SetQtyCommitted(v int32) {
 
 // GetQtySalable returns the QtySalable field value if set, zero value otherwise.
 func (o *InventoryStockItem) GetQtySalable() int32 {
-	if o == nil || isNil(o.QtySalable) {
+	if o == nil || IsNil(o.QtySalable) {
 		var ret int32
 		return ret
 	}
@@ -250,15 +253,15 @@ func (o *InventoryStockItem) GetQtySalable() int32 {
 // GetQtySalableOk returns a tuple with the QtySalable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryStockItem) GetQtySalableOk() (*int32, bool) {
-	if o == nil || isNil(o.QtySalable) {
-    return nil, false
+	if o == nil || IsNil(o.QtySalable) {
+		return nil, false
 	}
 	return o.QtySalable, true
 }
 
 // HasQtySalable returns a boolean if a field has been set.
 func (o *InventoryStockItem) HasQtySalable() bool {
-	if o != nil && !isNil(o.QtySalable) {
+	if o != nil && !IsNil(o.QtySalable) {
 		return true
 	}
 
@@ -272,7 +275,7 @@ func (o *InventoryStockItem) SetQtySalable(v int32) {
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *InventoryStockItem) GetCreatedAt() time.Time {
-	if o == nil || isNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -282,15 +285,15 @@ func (o *InventoryStockItem) GetCreatedAt() time.Time {
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryStockItem) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.CreatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.CreatedAt) {
+		return nil, false
 	}
 	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *InventoryStockItem) HasCreatedAt() bool {
-	if o != nil && !isNil(o.CreatedAt) {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
@@ -304,7 +307,7 @@ func (o *InventoryStockItem) SetCreatedAt(v time.Time) {
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
 func (o *InventoryStockItem) GetUpdatedAt() time.Time {
-	if o == nil || isNil(o.UpdatedAt) {
+	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
 	}
@@ -314,15 +317,15 @@ func (o *InventoryStockItem) GetUpdatedAt() time.Time {
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryStockItem) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || isNil(o.UpdatedAt) {
-    return nil, false
+	if o == nil || IsNil(o.UpdatedAt) {
+		return nil, false
 	}
 	return o.UpdatedAt, true
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
 func (o *InventoryStockItem) HasUpdatedAt() bool {
-	if o != nil && !isNil(o.UpdatedAt) {
+	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
 
@@ -335,35 +338,43 @@ func (o *InventoryStockItem) SetUpdatedAt(v time.Time) {
 }
 
 func (o InventoryStockItem) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.TenantId) {
-		toSerialize["tenantId"] = o.TenantId
-	}
-	if !isNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !isNil(o.Sku) {
-		toSerialize["sku"] = o.Sku
-	}
-	if !isNil(o.OutOfStockThreshold) {
-		toSerialize["outOfStockThreshold"] = o.OutOfStockThreshold
-	}
-	if !isNil(o.Qty) {
-		toSerialize["qty"] = o.Qty
-	}
-	if !isNil(o.QtyCommitted) {
-		toSerialize["qtyCommitted"] = o.QtyCommitted
-	}
-	if !isNil(o.QtySalable) {
-		toSerialize["qtySalable"] = o.QtySalable
-	}
-	if !isNil(o.CreatedAt) {
-		toSerialize["createdAt"] = o.CreatedAt
-	}
-	if !isNil(o.UpdatedAt) {
-		toSerialize["updatedAt"] = o.UpdatedAt
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o InventoryStockItem) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.TenantId) {
+		toSerialize["tenantId"] = o.TenantId
+	}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if !IsNil(o.Sku) {
+		toSerialize["sku"] = o.Sku
+	}
+	if !IsNil(o.OutOfStockThreshold) {
+		toSerialize["outOfStockThreshold"] = o.OutOfStockThreshold
+	}
+	if !IsNil(o.Qty) {
+		toSerialize["qty"] = o.Qty
+	}
+	if !IsNil(o.QtyCommitted) {
+		toSerialize["qtyCommitted"] = o.QtyCommitted
+	}
+	if !IsNil(o.QtySalable) {
+		toSerialize["qtySalable"] = o.QtySalable
+	}
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
+	}
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updatedAt"] = o.UpdatedAt
+	}
+	return toSerialize, nil
 }
 
 type NullableInventoryStockItem struct {

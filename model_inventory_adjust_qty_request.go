@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the InventoryAdjustQtyRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &InventoryAdjustQtyRequest{}
+
 // InventoryAdjustQtyRequest struct for InventoryAdjustQtyRequest
 type InventoryAdjustQtyRequest struct {
 	TenantId *string `json:"tenantId,omitempty"`
@@ -41,7 +44,7 @@ func NewInventoryAdjustQtyRequestWithDefaults() *InventoryAdjustQtyRequest {
 
 // GetTenantId returns the TenantId field value if set, zero value otherwise.
 func (o *InventoryAdjustQtyRequest) GetTenantId() string {
-	if o == nil || isNil(o.TenantId) {
+	if o == nil || IsNil(o.TenantId) {
 		var ret string
 		return ret
 	}
@@ -51,15 +54,15 @@ func (o *InventoryAdjustQtyRequest) GetTenantId() string {
 // GetTenantIdOk returns a tuple with the TenantId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryAdjustQtyRequest) GetTenantIdOk() (*string, bool) {
-	if o == nil || isNil(o.TenantId) {
-    return nil, false
+	if o == nil || IsNil(o.TenantId) {
+		return nil, false
 	}
 	return o.TenantId, true
 }
 
 // HasTenantId returns a boolean if a field has been set.
 func (o *InventoryAdjustQtyRequest) HasTenantId() bool {
-	if o != nil && !isNil(o.TenantId) {
+	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *InventoryAdjustQtyRequest) SetTenantId(v string) {
 
 // GetSku returns the Sku field value if set, zero value otherwise.
 func (o *InventoryAdjustQtyRequest) GetSku() string {
-	if o == nil || isNil(o.Sku) {
+	if o == nil || IsNil(o.Sku) {
 		var ret string
 		return ret
 	}
@@ -83,15 +86,15 @@ func (o *InventoryAdjustQtyRequest) GetSku() string {
 // GetSkuOk returns a tuple with the Sku field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryAdjustQtyRequest) GetSkuOk() (*string, bool) {
-	if o == nil || isNil(o.Sku) {
-    return nil, false
+	if o == nil || IsNil(o.Sku) {
+		return nil, false
 	}
 	return o.Sku, true
 }
 
 // HasSku returns a boolean if a field has been set.
 func (o *InventoryAdjustQtyRequest) HasSku() bool {
-	if o != nil && !isNil(o.Sku) {
+	if o != nil && !IsNil(o.Sku) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *InventoryAdjustQtyRequest) SetSku(v string) {
 
 // GetQtyAdjust returns the QtyAdjust field value if set, zero value otherwise.
 func (o *InventoryAdjustQtyRequest) GetQtyAdjust() int32 {
-	if o == nil || isNil(o.QtyAdjust) {
+	if o == nil || IsNil(o.QtyAdjust) {
 		var ret int32
 		return ret
 	}
@@ -115,15 +118,15 @@ func (o *InventoryAdjustQtyRequest) GetQtyAdjust() int32 {
 // GetQtyAdjustOk returns a tuple with the QtyAdjust field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryAdjustQtyRequest) GetQtyAdjustOk() (*int32, bool) {
-	if o == nil || isNil(o.QtyAdjust) {
-    return nil, false
+	if o == nil || IsNil(o.QtyAdjust) {
+		return nil, false
 	}
 	return o.QtyAdjust, true
 }
 
 // HasQtyAdjust returns a boolean if a field has been set.
 func (o *InventoryAdjustQtyRequest) HasQtyAdjust() bool {
-	if o != nil && !isNil(o.QtyAdjust) {
+	if o != nil && !IsNil(o.QtyAdjust) {
 		return true
 	}
 
@@ -136,17 +139,25 @@ func (o *InventoryAdjustQtyRequest) SetQtyAdjust(v int32) {
 }
 
 func (o InventoryAdjustQtyRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.TenantId) {
-		toSerialize["tenantId"] = o.TenantId
-	}
-	if !isNil(o.Sku) {
-		toSerialize["sku"] = o.Sku
-	}
-	if !isNil(o.QtyAdjust) {
-		toSerialize["qtyAdjust"] = o.QtyAdjust
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o InventoryAdjustQtyRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.TenantId) {
+		toSerialize["tenantId"] = o.TenantId
+	}
+	if !IsNil(o.Sku) {
+		toSerialize["sku"] = o.Sku
+	}
+	if !IsNil(o.QtyAdjust) {
+		toSerialize["qtyAdjust"] = o.QtyAdjust
+	}
+	return toSerialize, nil
 }
 
 type NullableInventoryAdjustQtyRequest struct {

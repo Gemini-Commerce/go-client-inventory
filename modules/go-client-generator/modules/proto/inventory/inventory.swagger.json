@@ -167,11 +167,6 @@
         ],
         "tags": [
           "Inventory"
-        ],
-        "security": [
-          {
-            "standardAuthorization": []
-          }
         ]
       }
     },
@@ -721,10 +716,15 @@
     }
   },
   "securityDefinitions": {
-    "standardAuthorization": {
-      "type": "oauth2",
+    "Authorization": {
+      "type": "apiKey",
       "name": "Authorization",
       "in": "header"
     }
-  }
+  },
+  "security": [
+    {
+      "Authorization": []
+    }
+  ]
 }

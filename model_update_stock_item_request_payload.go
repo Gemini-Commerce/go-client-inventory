@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the UpdateStockItemRequestPayload type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UpdateStockItemRequestPayload{}
+
 // UpdateStockItemRequestPayload struct for UpdateStockItemRequestPayload
 type UpdateStockItemRequestPayload struct {
 	OutOfStockThreshold *int32 `json:"outOfStockThreshold,omitempty"`
@@ -41,7 +44,7 @@ func NewUpdateStockItemRequestPayloadWithDefaults() *UpdateStockItemRequestPaylo
 
 // GetOutOfStockThreshold returns the OutOfStockThreshold field value if set, zero value otherwise.
 func (o *UpdateStockItemRequestPayload) GetOutOfStockThreshold() int32 {
-	if o == nil || isNil(o.OutOfStockThreshold) {
+	if o == nil || IsNil(o.OutOfStockThreshold) {
 		var ret int32
 		return ret
 	}
@@ -51,15 +54,15 @@ func (o *UpdateStockItemRequestPayload) GetOutOfStockThreshold() int32 {
 // GetOutOfStockThresholdOk returns a tuple with the OutOfStockThreshold field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateStockItemRequestPayload) GetOutOfStockThresholdOk() (*int32, bool) {
-	if o == nil || isNil(o.OutOfStockThreshold) {
-    return nil, false
+	if o == nil || IsNil(o.OutOfStockThreshold) {
+		return nil, false
 	}
 	return o.OutOfStockThreshold, true
 }
 
 // HasOutOfStockThreshold returns a boolean if a field has been set.
 func (o *UpdateStockItemRequestPayload) HasOutOfStockThreshold() bool {
-	if o != nil && !isNil(o.OutOfStockThreshold) {
+	if o != nil && !IsNil(o.OutOfStockThreshold) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *UpdateStockItemRequestPayload) SetOutOfStockThreshold(v int32) {
 
 // GetQty returns the Qty field value if set, zero value otherwise.
 func (o *UpdateStockItemRequestPayload) GetQty() int32 {
-	if o == nil || isNil(o.Qty) {
+	if o == nil || IsNil(o.Qty) {
 		var ret int32
 		return ret
 	}
@@ -83,15 +86,15 @@ func (o *UpdateStockItemRequestPayload) GetQty() int32 {
 // GetQtyOk returns a tuple with the Qty field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateStockItemRequestPayload) GetQtyOk() (*int32, bool) {
-	if o == nil || isNil(o.Qty) {
-    return nil, false
+	if o == nil || IsNil(o.Qty) {
+		return nil, false
 	}
 	return o.Qty, true
 }
 
 // HasQty returns a boolean if a field has been set.
 func (o *UpdateStockItemRequestPayload) HasQty() bool {
-	if o != nil && !isNil(o.Qty) {
+	if o != nil && !IsNil(o.Qty) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *UpdateStockItemRequestPayload) SetQty(v int32) {
 
 // GetQtyCommitted returns the QtyCommitted field value if set, zero value otherwise.
 func (o *UpdateStockItemRequestPayload) GetQtyCommitted() int32 {
-	if o == nil || isNil(o.QtyCommitted) {
+	if o == nil || IsNil(o.QtyCommitted) {
 		var ret int32
 		return ret
 	}
@@ -115,15 +118,15 @@ func (o *UpdateStockItemRequestPayload) GetQtyCommitted() int32 {
 // GetQtyCommittedOk returns a tuple with the QtyCommitted field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *UpdateStockItemRequestPayload) GetQtyCommittedOk() (*int32, bool) {
-	if o == nil || isNil(o.QtyCommitted) {
-    return nil, false
+	if o == nil || IsNil(o.QtyCommitted) {
+		return nil, false
 	}
 	return o.QtyCommitted, true
 }
 
 // HasQtyCommitted returns a boolean if a field has been set.
 func (o *UpdateStockItemRequestPayload) HasQtyCommitted() bool {
-	if o != nil && !isNil(o.QtyCommitted) {
+	if o != nil && !IsNil(o.QtyCommitted) {
 		return true
 	}
 
@@ -136,17 +139,25 @@ func (o *UpdateStockItemRequestPayload) SetQtyCommitted(v int32) {
 }
 
 func (o UpdateStockItemRequestPayload) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.OutOfStockThreshold) {
-		toSerialize["outOfStockThreshold"] = o.OutOfStockThreshold
-	}
-	if !isNil(o.Qty) {
-		toSerialize["qty"] = o.Qty
-	}
-	if !isNil(o.QtyCommitted) {
-		toSerialize["qtyCommitted"] = o.QtyCommitted
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o UpdateStockItemRequestPayload) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.OutOfStockThreshold) {
+		toSerialize["outOfStockThreshold"] = o.OutOfStockThreshold
+	}
+	if !IsNil(o.Qty) {
+		toSerialize["qty"] = o.Qty
+	}
+	if !IsNil(o.QtyCommitted) {
+		toSerialize["qtyCommitted"] = o.QtyCommitted
+	}
+	return toSerialize, nil
 }
 
 type NullableUpdateStockItemRequestPayload struct {

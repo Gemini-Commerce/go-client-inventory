@@ -5,7 +5,7 @@ CUR_GID := $(shell id -g)
 
 mkfile_path := $(abspath $(lastword $(MAKEFILE_LIST)))
 current_dir := $(dir $(mkfile_path))
-openapi_generator = docker run --rm --user ${CUR_GID}:${CUR_UID} -v ${current_dir}/:/go-client-generator -v ${PWD}/:/go-client-${lower_service} openapitools/openapi-generator-cli:v6.2.1
+openapi_generator = docker run --rm --user ${CUR_GID}:${CUR_UID} -v ${current_dir}/:/go-client-generator -v ${PWD}/:/go-client-${lower_service} openapitools/openapi-generator-cli:v7.1.0
 lower_service = $(shell echo $(service) | sed -e 's/\(.*\)/\L\1/')
 ucf_service = $(shell echo $(service) | sed -e "s/\b\(.\)/\u\1/g")
 artifact_version = $(shell if [ ! -z "${version}" ]; then echo "artifactVersion=${version},"; fi)

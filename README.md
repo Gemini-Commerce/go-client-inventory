@@ -15,7 +15,6 @@ Install the following dependencies:
 
 ```shell
 go get github.com/stretchr/testify/assert
-go get golang.org/x/oauth2
 go get golang.org/x/net/context
 ```
 
@@ -37,7 +36,7 @@ Default configuration comes with `Servers` field that contains server objects as
 
 ### Select Server Configuration
 
-For using other server than the one defined on index 0 set context value `sw.ContextServerIndex` of type `int`.
+For using other server than the one defined on index 0 set context value `inventory.ContextServerIndex` of type `int`.
 
 ```golang
 ctx := context.WithValue(context.Background(), inventory.ContextServerIndex, 1)
@@ -45,7 +44,7 @@ ctx := context.WithValue(context.Background(), inventory.ContextServerIndex, 1)
 
 ### Templated Server URL
 
-Templated server URL is formatted using default variables from configuration or from context value `sw.ContextServerVariables` of type `map[string]string`.
+Templated server URL is formatted using default variables from configuration or from context value `inventory.ContextServerVariables` of type `map[string]string`.
 
 ```golang
 ctx := context.WithValue(context.Background(), inventory.ContextServerVariables, map[string]string{
@@ -59,7 +58,7 @@ Note, enum values are always validated and all unused variables are silently ign
 
 Each operation can use different server URL defined using `OperationServers` map in the `Configuration`.
 An operation is uniquely identified by `"{classname}Service.{nickname}"` string.
-Similar rules for overriding default operation server index and variables applies by using `sw.ContextOperationServerIndices` and `sw.ContextOperationServerVariables` context maps.
+Similar rules for overriding default operation server index and variables applies by using `inventory.ContextOperationServerIndices` and `inventory.ContextOperationServerVariables` context maps.
 
 ```golang
 ctx := context.WithValue(context.Background(), inventory.ContextOperationServerIndices, map[string]int{
@@ -78,15 +77,15 @@ All URIs are relative to *https://inventory.api.gogemini.io*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*InventoryApi* | [**AdjustQty**](docs/InventoryApi.md#adjustqty) | **Post** /inventory.Inventory/AdjustQty | Adjust Quantity
-*InventoryApi* | [**AdjustQtyCommitted**](docs/InventoryApi.md#adjustqtycommitted) | **Post** /inventory.Inventory/AdjustQtyCommitted | Adjust Quantity Committed
-*InventoryApi* | [**CreateStockItem**](docs/InventoryApi.md#createstockitem) | **Post** /inventory.Inventory/CreateStockItem | Create Stock Item
-*InventoryApi* | [**GetQtySalable**](docs/InventoryApi.md#getqtysalable) | **Post** /inventory.Inventory/GetQtySalable | Get Salable Quantity
-*InventoryApi* | [**GetStockItem**](docs/InventoryApi.md#getstockitem) | **Post** /inventory.Inventory/GetStockItem | Get Stock Item
-*InventoryApi* | [**ListStockItems**](docs/InventoryApi.md#liststockitems) | **Post** /inventory.Inventory/ListStockItems | List Stock Items
-*InventoryApi* | [**ListStockItemsBySkus**](docs/InventoryApi.md#liststockitemsbyskus) | **Post** /inventory.Inventory/ListStockItemsBySkus | List Stock Items by SKUs
-*InventoryApi* | [**RebalanceStockQtys**](docs/InventoryApi.md#rebalancestockqtys) | **Post** /inventory.Inventory/RebalanceStockQtys | Rebalance Stock Quantities
-*InventoryApi* | [**UpdateStockItem**](docs/InventoryApi.md#updatestockitem) | **Post** /inventory.Inventory/UpdateStockItem | Update Stock Item
+*InventoryAPI* | [**AdjustQty**](docs/InventoryAPI.md#adjustqty) | **Post** /inventory.Inventory/AdjustQty | Adjust Quantity
+*InventoryAPI* | [**AdjustQtyCommitted**](docs/InventoryAPI.md#adjustqtycommitted) | **Post** /inventory.Inventory/AdjustQtyCommitted | Adjust Quantity Committed
+*InventoryAPI* | [**CreateStockItem**](docs/InventoryAPI.md#createstockitem) | **Post** /inventory.Inventory/CreateStockItem | Create Stock Item
+*InventoryAPI* | [**GetQtySalable**](docs/InventoryAPI.md#getqtysalable) | **Post** /inventory.Inventory/GetQtySalable | Get Salable Quantity
+*InventoryAPI* | [**GetStockItem**](docs/InventoryAPI.md#getstockitem) | **Post** /inventory.Inventory/GetStockItem | Get Stock Item
+*InventoryAPI* | [**ListStockItems**](docs/InventoryAPI.md#liststockitems) | **Post** /inventory.Inventory/ListStockItems | List Stock Items
+*InventoryAPI* | [**ListStockItemsBySkus**](docs/InventoryAPI.md#liststockitemsbyskus) | **Post** /inventory.Inventory/ListStockItemsBySkus | List Stock Items by SKUs
+*InventoryAPI* | [**RebalanceStockQtys**](docs/InventoryAPI.md#rebalancestockqtys) | **Post** /inventory.Inventory/RebalanceStockQtys | Rebalance Stock Quantities
+*InventoryAPI* | [**UpdateStockItem**](docs/InventoryAPI.md#updatestockitem) | **Post** /inventory.Inventory/UpdateStockItem | Update Stock Item
 
 
 ## Documentation For Models
@@ -111,7 +110,28 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Authorization
 
- Endpoints do not require authorization.
+
+Authentication schemes defined for the API:
+### Authorization
+
+- **Type**: API key
+- **API key parameter name**: Authorization
+- **Location**: HTTP header
+
+Note, each API key must be added to a map of `map[string]APIKey` where the key is: Authorization and passed in as the auth context for each request.
+
+Example
+
+```golang
+auth := context.WithValue(
+		context.Background(),
+		inventory.ContextAPIKeys,
+		map[string]inventory.APIKey{
+			"Authorization": {Key: "API_KEY_STRING"},
+		},
+	)
+r, err := client.Service.Operation(auth, args)
+```
 
 
 ## Documentation for Utility Methods

@@ -5,9 +5,9 @@ api/openapi.yaml
 api_inventory.go
 client.go
 configuration.go
+docs/InventoryAPI.md
 docs/InventoryAdjustQtyCommittedRequest.md
 docs/InventoryAdjustQtyRequest.md
-docs/InventoryApi.md
 docs/InventoryCreateStockItemRequest.md
 docs/InventoryGetQtySalableRequest.md
 docs/InventoryGetQtySalableResponse.md

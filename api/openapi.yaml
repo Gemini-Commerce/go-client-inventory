@@ -10,6 +10,8 @@ info:
   version: v1
 servers:
 - url: https://inventory.api.gogemini.io/
+security:
+- Authorization: []
 tags:
 - description: inventory Description
   externalDocs:
@@ -131,8 +133,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/rpcStatus'
           description: An unexpected error response.
-      security:
-      - standardAuthorization: []
       summary: Create Stock Item
       tags:
       - Inventory
@@ -617,7 +617,8 @@ components:
           type: array
       type: object
   securitySchemes:
-    standardAuthorization:
-      flows: {}
-      type: oauth2
+    Authorization:
+      in: header
+      name: Authorization
+      type: apiKey
 x-original-swagger-version: "2.0"

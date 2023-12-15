@@ -1,18 +1,18 @@
-# \InventoryApi
+# \InventoryAPI
 
 All URIs are relative to *https://inventory.api.gogemini.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AdjustQty**](InventoryApi.md#AdjustQty) | **Post** /inventory.Inventory/AdjustQty | Adjust Quantity
-[**AdjustQtyCommitted**](InventoryApi.md#AdjustQtyCommitted) | **Post** /inventory.Inventory/AdjustQtyCommitted | Adjust Quantity Committed
-[**CreateStockItem**](InventoryApi.md#CreateStockItem) | **Post** /inventory.Inventory/CreateStockItem | Create Stock Item
-[**GetQtySalable**](InventoryApi.md#GetQtySalable) | **Post** /inventory.Inventory/GetQtySalable | Get Salable Quantity
-[**GetStockItem**](InventoryApi.md#GetStockItem) | **Post** /inventory.Inventory/GetStockItem | Get Stock Item
-[**ListStockItems**](InventoryApi.md#ListStockItems) | **Post** /inventory.Inventory/ListStockItems | List Stock Items
-[**ListStockItemsBySkus**](InventoryApi.md#ListStockItemsBySkus) | **Post** /inventory.Inventory/ListStockItemsBySkus | List Stock Items by SKUs
-[**RebalanceStockQtys**](InventoryApi.md#RebalanceStockQtys) | **Post** /inventory.Inventory/RebalanceStockQtys | Rebalance Stock Quantities
-[**UpdateStockItem**](InventoryApi.md#UpdateStockItem) | **Post** /inventory.Inventory/UpdateStockItem | Update Stock Item
+[**AdjustQty**](InventoryAPI.md#AdjustQty) | **Post** /inventory.Inventory/AdjustQty | Adjust Quantity
+[**AdjustQtyCommitted**](InventoryAPI.md#AdjustQtyCommitted) | **Post** /inventory.Inventory/AdjustQtyCommitted | Adjust Quantity Committed
+[**CreateStockItem**](InventoryAPI.md#CreateStockItem) | **Post** /inventory.Inventory/CreateStockItem | Create Stock Item
+[**GetQtySalable**](InventoryAPI.md#GetQtySalable) | **Post** /inventory.Inventory/GetQtySalable | Get Salable Quantity
+[**GetStockItem**](InventoryAPI.md#GetStockItem) | **Post** /inventory.Inventory/GetStockItem | Get Stock Item
+[**ListStockItems**](InventoryAPI.md#ListStockItems) | **Post** /inventory.Inventory/ListStockItems | List Stock Items
+[**ListStockItemsBySkus**](InventoryAPI.md#ListStockItemsBySkus) | **Post** /inventory.Inventory/ListStockItemsBySkus | List Stock Items by SKUs
+[**RebalanceStockQtys**](InventoryAPI.md#RebalanceStockQtys) | **Post** /inventory.Inventory/RebalanceStockQtys | Rebalance Stock Quantities
+[**UpdateStockItem**](InventoryAPI.md#UpdateStockItem) | **Post** /inventory.Inventory/UpdateStockItem | Update Stock Item
 
 
 
@@ -33,7 +33,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/gemini-commerce/go-client-inventory"
 )
 
 func main() {
@@ -41,13 +41,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InventoryApi.AdjustQty(context.Background()).Body(body).Execute()
+    resp, r, err := apiClient.InventoryAPI.AdjustQty(context.Background()).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InventoryApi.AdjustQty``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `InventoryAPI.AdjustQty``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `AdjustQty`: InventoryStockItem
-    fmt.Fprintf(os.Stdout, "Response from `InventoryApi.AdjustQty`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `InventoryAPI.AdjustQty`: %v\n", resp)
 }
 ```
 
@@ -70,7 +70,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -99,7 +99,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/gemini-commerce/go-client-inventory"
 )
 
 func main() {
@@ -107,13 +107,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InventoryApi.AdjustQtyCommitted(context.Background()).Body(body).Execute()
+    resp, r, err := apiClient.InventoryAPI.AdjustQtyCommitted(context.Background()).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InventoryApi.AdjustQtyCommitted``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `InventoryAPI.AdjustQtyCommitted``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `AdjustQtyCommitted`: InventoryStockItem
-    fmt.Fprintf(os.Stdout, "Response from `InventoryApi.AdjustQtyCommitted`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `InventoryAPI.AdjustQtyCommitted`: %v\n", resp)
 }
 ```
 
@@ -136,7 +136,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -163,7 +163,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/gemini-commerce/go-client-inventory"
 )
 
 func main() {
@@ -171,13 +171,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InventoryApi.CreateStockItem(context.Background()).Body(body).Execute()
+    resp, r, err := apiClient.InventoryAPI.CreateStockItem(context.Background()).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InventoryApi.CreateStockItem``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `InventoryAPI.CreateStockItem``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CreateStockItem`: InventoryStockItem
-    fmt.Fprintf(os.Stdout, "Response from `InventoryApi.CreateStockItem`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `InventoryAPI.CreateStockItem`: %v\n", resp)
 }
 ```
 
@@ -200,7 +200,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -227,7 +227,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/gemini-commerce/go-client-inventory"
 )
 
 func main() {
@@ -235,13 +235,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InventoryApi.GetQtySalable(context.Background()).Body(body).Execute()
+    resp, r, err := apiClient.InventoryAPI.GetQtySalable(context.Background()).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InventoryApi.GetQtySalable``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `InventoryAPI.GetQtySalable``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetQtySalable`: InventoryGetQtySalableResponse
-    fmt.Fprintf(os.Stdout, "Response from `InventoryApi.GetQtySalable`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `InventoryAPI.GetQtySalable`: %v\n", resp)
 }
 ```
 
@@ -264,7 +264,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -291,7 +291,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/gemini-commerce/go-client-inventory"
 )
 
 func main() {
@@ -299,13 +299,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InventoryApi.GetStockItem(context.Background()).Body(body).Execute()
+    resp, r, err := apiClient.InventoryAPI.GetStockItem(context.Background()).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InventoryApi.GetStockItem``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `InventoryAPI.GetStockItem``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `GetStockItem`: InventoryStockItem
-    fmt.Fprintf(os.Stdout, "Response from `InventoryApi.GetStockItem`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `InventoryAPI.GetStockItem`: %v\n", resp)
 }
 ```
 
@@ -328,7 +328,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -355,7 +355,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/gemini-commerce/go-client-inventory"
 )
 
 func main() {
@@ -363,13 +363,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InventoryApi.ListStockItems(context.Background()).Body(body).Execute()
+    resp, r, err := apiClient.InventoryAPI.ListStockItems(context.Background()).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InventoryApi.ListStockItems``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `InventoryAPI.ListStockItems``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListStockItems`: InventoryListStockItemsResponse
-    fmt.Fprintf(os.Stdout, "Response from `InventoryApi.ListStockItems`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `InventoryAPI.ListStockItems`: %v\n", resp)
 }
 ```
 
@@ -392,7 +392,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -419,7 +419,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/gemini-commerce/go-client-inventory"
 )
 
 func main() {
@@ -427,13 +427,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InventoryApi.ListStockItemsBySkus(context.Background()).Body(body).Execute()
+    resp, r, err := apiClient.InventoryAPI.ListStockItemsBySkus(context.Background()).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InventoryApi.ListStockItemsBySkus``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `InventoryAPI.ListStockItemsBySkus``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ListStockItemsBySkus`: InventoryListStockItemsBySkusResponse
-    fmt.Fprintf(os.Stdout, "Response from `InventoryApi.ListStockItemsBySkus`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `InventoryAPI.ListStockItemsBySkus`: %v\n", resp)
 }
 ```
 
@@ -456,7 +456,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -483,7 +483,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/gemini-commerce/go-client-inventory"
 )
 
 func main() {
@@ -491,13 +491,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InventoryApi.RebalanceStockQtys(context.Background()).Body(body).Execute()
+    resp, r, err := apiClient.InventoryAPI.RebalanceStockQtys(context.Background()).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InventoryApi.RebalanceStockQtys``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `InventoryAPI.RebalanceStockQtys``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `RebalanceStockQtys`: InventoryStockItem
-    fmt.Fprintf(os.Stdout, "Response from `InventoryApi.RebalanceStockQtys`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `InventoryAPI.RebalanceStockQtys`: %v\n", resp)
 }
 ```
 
@@ -520,7 +520,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 
@@ -547,7 +547,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    openapiclient "github.com/gemini-commerce/go-client-inventory"
 )
 
 func main() {
@@ -555,13 +555,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.InventoryApi.UpdateStockItem(context.Background()).Body(body).Execute()
+    resp, r, err := apiClient.InventoryAPI.UpdateStockItem(context.Background()).Body(body).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InventoryApi.UpdateStockItem``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `InventoryAPI.UpdateStockItem``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `UpdateStockItem`: InventoryStockItem
-    fmt.Fprintf(os.Stdout, "Response from `InventoryApi.UpdateStockItem`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `InventoryAPI.UpdateStockItem`: %v\n", resp)
 }
 ```
 
@@ -584,7 +584,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[Authorization](../README.md#Authorization)
 
 ### HTTP request headers
 

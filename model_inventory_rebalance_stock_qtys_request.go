@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the InventoryRebalanceStockQtysRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &InventoryRebalanceStockQtysRequest{}
+
 // InventoryRebalanceStockQtysRequest struct for InventoryRebalanceStockQtysRequest
 type InventoryRebalanceStockQtysRequest struct {
 	TenantId *string `json:"tenantId,omitempty"`
@@ -41,7 +44,7 @@ func NewInventoryRebalanceStockQtysRequestWithDefaults() *InventoryRebalanceStoc
 
 // GetTenantId returns the TenantId field value if set, zero value otherwise.
 func (o *InventoryRebalanceStockQtysRequest) GetTenantId() string {
-	if o == nil || isNil(o.TenantId) {
+	if o == nil || IsNil(o.TenantId) {
 		var ret string
 		return ret
 	}
@@ -51,15 +54,15 @@ func (o *InventoryRebalanceStockQtysRequest) GetTenantId() string {
 // GetTenantIdOk returns a tuple with the TenantId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryRebalanceStockQtysRequest) GetTenantIdOk() (*string, bool) {
-	if o == nil || isNil(o.TenantId) {
-    return nil, false
+	if o == nil || IsNil(o.TenantId) {
+		return nil, false
 	}
 	return o.TenantId, true
 }
 
 // HasTenantId returns a boolean if a field has been set.
 func (o *InventoryRebalanceStockQtysRequest) HasTenantId() bool {
-	if o != nil && !isNil(o.TenantId) {
+	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *InventoryRebalanceStockQtysRequest) SetTenantId(v string) {
 
 // GetSku returns the Sku field value if set, zero value otherwise.
 func (o *InventoryRebalanceStockQtysRequest) GetSku() string {
-	if o == nil || isNil(o.Sku) {
+	if o == nil || IsNil(o.Sku) {
 		var ret string
 		return ret
 	}
@@ -83,15 +86,15 @@ func (o *InventoryRebalanceStockQtysRequest) GetSku() string {
 // GetSkuOk returns a tuple with the Sku field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryRebalanceStockQtysRequest) GetSkuOk() (*string, bool) {
-	if o == nil || isNil(o.Sku) {
-    return nil, false
+	if o == nil || IsNil(o.Sku) {
+		return nil, false
 	}
 	return o.Sku, true
 }
 
 // HasSku returns a boolean if a field has been set.
 func (o *InventoryRebalanceStockQtysRequest) HasSku() bool {
-	if o != nil && !isNil(o.Sku) {
+	if o != nil && !IsNil(o.Sku) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *InventoryRebalanceStockQtysRequest) SetSku(v string) {
 
 // GetQtyCommitted returns the QtyCommitted field value if set, zero value otherwise.
 func (o *InventoryRebalanceStockQtysRequest) GetQtyCommitted() int32 {
-	if o == nil || isNil(o.QtyCommitted) {
+	if o == nil || IsNil(o.QtyCommitted) {
 		var ret int32
 		return ret
 	}
@@ -115,15 +118,15 @@ func (o *InventoryRebalanceStockQtysRequest) GetQtyCommitted() int32 {
 // GetQtyCommittedOk returns a tuple with the QtyCommitted field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryRebalanceStockQtysRequest) GetQtyCommittedOk() (*int32, bool) {
-	if o == nil || isNil(o.QtyCommitted) {
-    return nil, false
+	if o == nil || IsNil(o.QtyCommitted) {
+		return nil, false
 	}
 	return o.QtyCommitted, true
 }
 
 // HasQtyCommitted returns a boolean if a field has been set.
 func (o *InventoryRebalanceStockQtysRequest) HasQtyCommitted() bool {
-	if o != nil && !isNil(o.QtyCommitted) {
+	if o != nil && !IsNil(o.QtyCommitted) {
 		return true
 	}
 
@@ -136,17 +139,25 @@ func (o *InventoryRebalanceStockQtysRequest) SetQtyCommitted(v int32) {
 }
 
 func (o InventoryRebalanceStockQtysRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.TenantId) {
-		toSerialize["tenantId"] = o.TenantId
-	}
-	if !isNil(o.Sku) {
-		toSerialize["sku"] = o.Sku
-	}
-	if !isNil(o.QtyCommitted) {
-		toSerialize["qtyCommitted"] = o.QtyCommitted
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o InventoryRebalanceStockQtysRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.TenantId) {
+		toSerialize["tenantId"] = o.TenantId
+	}
+	if !IsNil(o.Sku) {
+		toSerialize["sku"] = o.Sku
+	}
+	if !IsNil(o.QtyCommitted) {
+		toSerialize["qtyCommitted"] = o.QtyCommitted
+	}
+	return toSerialize, nil
 }
 
 type NullableInventoryRebalanceStockQtysRequest struct {

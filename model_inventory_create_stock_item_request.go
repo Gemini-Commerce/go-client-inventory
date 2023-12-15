@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the InventoryCreateStockItemRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &InventoryCreateStockItemRequest{}
+
 // InventoryCreateStockItemRequest struct for InventoryCreateStockItemRequest
 type InventoryCreateStockItemRequest struct {
 	TenantId *string `json:"tenantId,omitempty"`
@@ -43,7 +46,7 @@ func NewInventoryCreateStockItemRequestWithDefaults() *InventoryCreateStockItemR
 
 // GetTenantId returns the TenantId field value if set, zero value otherwise.
 func (o *InventoryCreateStockItemRequest) GetTenantId() string {
-	if o == nil || isNil(o.TenantId) {
+	if o == nil || IsNil(o.TenantId) {
 		var ret string
 		return ret
 	}
@@ -53,15 +56,15 @@ func (o *InventoryCreateStockItemRequest) GetTenantId() string {
 // GetTenantIdOk returns a tuple with the TenantId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryCreateStockItemRequest) GetTenantIdOk() (*string, bool) {
-	if o == nil || isNil(o.TenantId) {
-    return nil, false
+	if o == nil || IsNil(o.TenantId) {
+		return nil, false
 	}
 	return o.TenantId, true
 }
 
 // HasTenantId returns a boolean if a field has been set.
 func (o *InventoryCreateStockItemRequest) HasTenantId() bool {
-	if o != nil && !isNil(o.TenantId) {
+	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
 
@@ -75,7 +78,7 @@ func (o *InventoryCreateStockItemRequest) SetTenantId(v string) {
 
 // GetSku returns the Sku field value if set, zero value otherwise.
 func (o *InventoryCreateStockItemRequest) GetSku() string {
-	if o == nil || isNil(o.Sku) {
+	if o == nil || IsNil(o.Sku) {
 		var ret string
 		return ret
 	}
@@ -85,15 +88,15 @@ func (o *InventoryCreateStockItemRequest) GetSku() string {
 // GetSkuOk returns a tuple with the Sku field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryCreateStockItemRequest) GetSkuOk() (*string, bool) {
-	if o == nil || isNil(o.Sku) {
-    return nil, false
+	if o == nil || IsNil(o.Sku) {
+		return nil, false
 	}
 	return o.Sku, true
 }
 
 // HasSku returns a boolean if a field has been set.
 func (o *InventoryCreateStockItemRequest) HasSku() bool {
-	if o != nil && !isNil(o.Sku) {
+	if o != nil && !IsNil(o.Sku) {
 		return true
 	}
 
@@ -107,7 +110,7 @@ func (o *InventoryCreateStockItemRequest) SetSku(v string) {
 
 // GetOutOfStockThreshold returns the OutOfStockThreshold field value if set, zero value otherwise.
 func (o *InventoryCreateStockItemRequest) GetOutOfStockThreshold() int32 {
-	if o == nil || isNil(o.OutOfStockThreshold) {
+	if o == nil || IsNil(o.OutOfStockThreshold) {
 		var ret int32
 		return ret
 	}
@@ -117,15 +120,15 @@ func (o *InventoryCreateStockItemRequest) GetOutOfStockThreshold() int32 {
 // GetOutOfStockThresholdOk returns a tuple with the OutOfStockThreshold field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryCreateStockItemRequest) GetOutOfStockThresholdOk() (*int32, bool) {
-	if o == nil || isNil(o.OutOfStockThreshold) {
-    return nil, false
+	if o == nil || IsNil(o.OutOfStockThreshold) {
+		return nil, false
 	}
 	return o.OutOfStockThreshold, true
 }
 
 // HasOutOfStockThreshold returns a boolean if a field has been set.
 func (o *InventoryCreateStockItemRequest) HasOutOfStockThreshold() bool {
-	if o != nil && !isNil(o.OutOfStockThreshold) {
+	if o != nil && !IsNil(o.OutOfStockThreshold) {
 		return true
 	}
 
@@ -139,7 +142,7 @@ func (o *InventoryCreateStockItemRequest) SetOutOfStockThreshold(v int32) {
 
 // GetQty returns the Qty field value if set, zero value otherwise.
 func (o *InventoryCreateStockItemRequest) GetQty() int32 {
-	if o == nil || isNil(o.Qty) {
+	if o == nil || IsNil(o.Qty) {
 		var ret int32
 		return ret
 	}
@@ -149,15 +152,15 @@ func (o *InventoryCreateStockItemRequest) GetQty() int32 {
 // GetQtyOk returns a tuple with the Qty field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryCreateStockItemRequest) GetQtyOk() (*int32, bool) {
-	if o == nil || isNil(o.Qty) {
-    return nil, false
+	if o == nil || IsNil(o.Qty) {
+		return nil, false
 	}
 	return o.Qty, true
 }
 
 // HasQty returns a boolean if a field has been set.
 func (o *InventoryCreateStockItemRequest) HasQty() bool {
-	if o != nil && !isNil(o.Qty) {
+	if o != nil && !IsNil(o.Qty) {
 		return true
 	}
 
@@ -171,7 +174,7 @@ func (o *InventoryCreateStockItemRequest) SetQty(v int32) {
 
 // GetQtyCommitted returns the QtyCommitted field value if set, zero value otherwise.
 func (o *InventoryCreateStockItemRequest) GetQtyCommitted() int32 {
-	if o == nil || isNil(o.QtyCommitted) {
+	if o == nil || IsNil(o.QtyCommitted) {
 		var ret int32
 		return ret
 	}
@@ -181,15 +184,15 @@ func (o *InventoryCreateStockItemRequest) GetQtyCommitted() int32 {
 // GetQtyCommittedOk returns a tuple with the QtyCommitted field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryCreateStockItemRequest) GetQtyCommittedOk() (*int32, bool) {
-	if o == nil || isNil(o.QtyCommitted) {
-    return nil, false
+	if o == nil || IsNil(o.QtyCommitted) {
+		return nil, false
 	}
 	return o.QtyCommitted, true
 }
 
 // HasQtyCommitted returns a boolean if a field has been set.
 func (o *InventoryCreateStockItemRequest) HasQtyCommitted() bool {
-	if o != nil && !isNil(o.QtyCommitted) {
+	if o != nil && !IsNil(o.QtyCommitted) {
 		return true
 	}
 
@@ -202,23 +205,31 @@ func (o *InventoryCreateStockItemRequest) SetQtyCommitted(v int32) {
 }
 
 func (o InventoryCreateStockItemRequest) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.TenantId) {
-		toSerialize["tenantId"] = o.TenantId
-	}
-	if !isNil(o.Sku) {
-		toSerialize["sku"] = o.Sku
-	}
-	if !isNil(o.OutOfStockThreshold) {
-		toSerialize["outOfStockThreshold"] = o.OutOfStockThreshold
-	}
-	if !isNil(o.Qty) {
-		toSerialize["qty"] = o.Qty
-	}
-	if !isNil(o.QtyCommitted) {
-		toSerialize["qtyCommitted"] = o.QtyCommitted
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o InventoryCreateStockItemRequest) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.TenantId) {
+		toSerialize["tenantId"] = o.TenantId
+	}
+	if !IsNil(o.Sku) {
+		toSerialize["sku"] = o.Sku
+	}
+	if !IsNil(o.OutOfStockThreshold) {
+		toSerialize["outOfStockThreshold"] = o.OutOfStockThreshold
+	}
+	if !IsNil(o.Qty) {
+		toSerialize["qty"] = o.Qty
+	}
+	if !IsNil(o.QtyCommitted) {
+		toSerialize["qtyCommitted"] = o.QtyCommitted
+	}
+	return toSerialize, nil
 }
 
 type NullableInventoryCreateStockItemRequest struct {

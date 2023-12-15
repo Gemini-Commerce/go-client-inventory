@@ -15,6 +15,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the InventoryListStockItemsResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &InventoryListStockItemsResponse{}
+
 // InventoryListStockItemsResponse struct for InventoryListStockItemsResponse
 type InventoryListStockItemsResponse struct {
 	StockItems []InventoryStockItem `json:"stockItems,omitempty"`
@@ -41,7 +44,7 @@ func NewInventoryListStockItemsResponseWithDefaults() *InventoryListStockItemsRe
 
 // GetStockItems returns the StockItems field value if set, zero value otherwise.
 func (o *InventoryListStockItemsResponse) GetStockItems() []InventoryStockItem {
-	if o == nil || isNil(o.StockItems) {
+	if o == nil || IsNil(o.StockItems) {
 		var ret []InventoryStockItem
 		return ret
 	}
@@ -51,15 +54,15 @@ func (o *InventoryListStockItemsResponse) GetStockItems() []InventoryStockItem {
 // GetStockItemsOk returns a tuple with the StockItems field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryListStockItemsResponse) GetStockItemsOk() ([]InventoryStockItem, bool) {
-	if o == nil || isNil(o.StockItems) {
-    return nil, false
+	if o == nil || IsNil(o.StockItems) {
+		return nil, false
 	}
 	return o.StockItems, true
 }
 
 // HasStockItems returns a boolean if a field has been set.
 func (o *InventoryListStockItemsResponse) HasStockItems() bool {
-	if o != nil && !isNil(o.StockItems) {
+	if o != nil && !IsNil(o.StockItems) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *InventoryListStockItemsResponse) SetStockItems(v []InventoryStockItem) 
 
 // GetNextPageToken returns the NextPageToken field value if set, zero value otherwise.
 func (o *InventoryListStockItemsResponse) GetNextPageToken() string {
-	if o == nil || isNil(o.NextPageToken) {
+	if o == nil || IsNil(o.NextPageToken) {
 		var ret string
 		return ret
 	}
@@ -83,15 +86,15 @@ func (o *InventoryListStockItemsResponse) GetNextPageToken() string {
 // GetNextPageTokenOk returns a tuple with the NextPageToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InventoryListStockItemsResponse) GetNextPageTokenOk() (*string, bool) {
-	if o == nil || isNil(o.NextPageToken) {
-    return nil, false
+	if o == nil || IsNil(o.NextPageToken) {
+		return nil, false
 	}
 	return o.NextPageToken, true
 }
 
 // HasNextPageToken returns a boolean if a field has been set.
 func (o *InventoryListStockItemsResponse) HasNextPageToken() bool {
-	if o != nil && !isNil(o.NextPageToken) {
+	if o != nil && !IsNil(o.NextPageToken) {
 		return true
 	}
 
@@ -104,14 +107,22 @@ func (o *InventoryListStockItemsResponse) SetNextPageToken(v string) {
 }
 
 func (o InventoryListStockItemsResponse) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.StockItems) {
-		toSerialize["stockItems"] = o.StockItems
-	}
-	if !isNil(o.NextPageToken) {
-		toSerialize["nextPageToken"] = o.NextPageToken
+	toSerialize,err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o InventoryListStockItemsResponse) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.StockItems) {
+		toSerialize["stockItems"] = o.StockItems
+	}
+	if !IsNil(o.NextPageToken) {
+		toSerialize["nextPageToken"] = o.NextPageToken
+	}
+	return toSerialize, nil
 }
 
 type NullableInventoryListStockItemsResponse struct {
